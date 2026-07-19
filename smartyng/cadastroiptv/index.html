@@ -1,0 +1,607 @@
+<!-- ====== FORMULÁRIO DE CADASTRO — cole tudo em um bloco "HTML personalizado" ====== -->
+
+<div id="kt-cadastro">
+
+  <div class="kt-streamings" aria-hidden="true">
+    <div class="kt-streamings__label">Principais streamings</div>
+    <div class="kt-track" id="kt-track1"></div>
+    <div class="kt-track kt-track--reverse" id="kt-track2"></div>
+  </div>
+
+  <div class="kt-card">
+    <h2 class="kt-titulo">Faça seu cadastro</h2>
+    <p class="kt-sub">Preencha os dados abaixo para participar.</p>
+
+    <form id="kt-form" novalidate>
+      <div class="kt-row">
+        <div class="kt-field">
+          <label for="kt-nome">Nome</label>
+          <input id="kt-nome" name="nome" type="text" placeholder="João" autocomplete="given-name" required>
+        </div>
+        <div class="kt-field">
+          <label for="kt-sobrenome">Sobrenome</label>
+          <input id="kt-sobrenome" name="sobrenome" type="text" placeholder="Silva" autocomplete="family-name" required>
+        </div>
+      </div>
+
+      <div class="kt-field">
+        <label for="kt-numero">Número (WhatsApp)</label>
+        <input id="kt-numero" name="numero" type="tel" inputmode="numeric"
+               placeholder="55 11 999999999" autocomplete="tel" required>
+        <div class="kt-hint" id="kt-hint-numero">Formato: 55 DDD 9XXXXXXXX</div>
+      </div>
+
+      <div class="kt-field">
+        <label for="kt-email">E-mail</label>
+        <input id="kt-email" name="email" type="email" placeholder="voce@email.com" autocomplete="email" required>
+        <div class="kt-hint" id="kt-hint-email"></div>
+      </div>
+
+      <button type="submit" id="kt-btn">Enviar cadastro</button>
+      <div class="kt-status" id="kt-status"></div>
+    </form>
+  </div>
+
+  <div class="kt-overlay" id="kt-overlay" role="dialog" aria-modal="true" aria-labelledby="kt-modal-titulo">
+    <div class="kt-modal">
+      <div class="kt-modal__icone" aria-hidden="true">🎉</div>
+      <h2 id="kt-modal-titulo">Obrigado!</h2>
+      <p>Recebemos seu cadastro com sucesso.</p>
+      <div class="kt-modal__destaque">Seu Aplicativo já está funcionando ✅</div>
+      <button type="button" id="kt-btn-whats" class="kt-btn-whats">
+        <span aria-hidden="true">💬</span> Voltar para o WhatsApp
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  /* Tudo escopado em #kt-cadastro para não afetar o tema do WordPress */
+  #kt-cadastro {
+    --kt-bg: #0d0b14;
+    --kt-bg-2: #17122240;
+    --kt-card: rgba(23, 18, 34, .82);
+    --kt-border: rgba(255, 255, 255, .10);
+    --kt-text: #f2eefb;
+    --kt-muted: #9d95b5;
+    --kt-accent: #9146ff;
+    --kt-error: #ff6b81;
+    --kt-ok: #3ddc97;
+
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 660px;
+    padding: 48px 16px 220px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--kt-text);
+    background:
+      radial-gradient(900px 500px at 20% 0%, #2a1a4d 0%, transparent 60%),
+      radial-gradient(700px 500px at 90% 100%, #1c2a4d 0%, transparent 60%),
+      var(--kt-bg);
+    border-radius: 16px;
+  }
+
+  #kt-cadastro *,
+  #kt-cadastro *::before,
+  #kt-cadastro *::after { box-sizing: border-box; }
+
+  /* ---------- Marquee de streamings (atrás do formulário) ---------- */
+  #kt-cadastro .kt-streamings {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 34px;
+    z-index: 0;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  #kt-cadastro .kt-streamings__label {
+    margin: 0 0 14px;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--kt-muted);
+    opacity: .7;
+  }
+
+  #kt-cadastro .kt-streamings__label::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    margin: 10px auto 0;
+    background: var(--kt-border);
+  }
+
+  #kt-cadastro .kt-track {
+    display: flex;
+    width: max-content;
+    gap: 14px;
+    animation: kt-slide 42s linear infinite;
+  }
+
+  #kt-cadastro .kt-track--reverse {
+    margin-top: 14px;
+    animation-duration: 56s;
+    animation-direction: reverse;
+    opacity: .55;
+  }
+
+  @keyframes kt-slide {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  #kt-cadastro .kt-streaming {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    white-space: nowrap;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    color: #ded7f0;
+    background: var(--kt-bg-2);
+    border: 1px solid var(--kt-border);
+    border-radius: 12px;
+  }
+
+  #kt-cadastro .kt-streaming::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    background: var(--kt-marca);
+    box-shadow: 0 0 12px var(--kt-marca);
+  }
+
+  /* ---------- Card / formulário ---------- */
+  #kt-cadastro .kt-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 440px;
+    padding: 34px 30px;
+    background: var(--kt-card);
+    border: 1px solid var(--kt-border);
+    border-radius: 20px;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, .55);
+  }
+
+  #kt-cadastro .kt-titulo {
+    margin: 0 0 6px;
+    font-size: 25px;
+    line-height: 1.2;
+    letter-spacing: -.4px;
+    color: var(--kt-text);
+  }
+
+  #kt-cadastro .kt-sub {
+    margin: 0 0 26px;
+    font-size: 14px;
+    color: var(--kt-muted);
+  }
+
+  #kt-cadastro .kt-field { margin-bottom: 17px; }
+
+  #kt-cadastro .kt-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  #kt-cadastro label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #cfc7e4;
+  }
+
+  #kt-cadastro input {
+    width: 100%;
+    margin: 0;
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    line-height: normal;
+    color: var(--kt-text);
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid var(--kt-border);
+    border-radius: 11px;
+    outline: none;
+    box-shadow: none;
+    transition: border-color .15s, box-shadow .15s;
+  }
+
+  #kt-cadastro input::placeholder { color: #6d6485; opacity: 1; }
+
+  #kt-cadastro input:focus {
+    border-color: var(--kt-accent);
+    box-shadow: 0 0 0 3px rgba(145, 70, 255, .22);
+  }
+
+  #kt-cadastro input.kt-invalid {
+    border-color: var(--kt-error);
+    box-shadow: 0 0 0 3px rgba(255, 107, 129, .18);
+  }
+
+  #kt-cadastro .kt-hint {
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--kt-muted);
+    min-height: 15px;
+  }
+
+  #kt-cadastro .kt-hint.kt-error { color: var(--kt-error); }
+
+  #kt-cadastro button {
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    text-transform: none;
+    letter-spacing: normal;
+    color: #fff;
+    background: linear-gradient(135deg, var(--kt-accent), #6a2ec7);
+    border: 0;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: transform .12s, opacity .15s;
+  }
+
+  #kt-cadastro button:hover:not(:disabled) { transform: translateY(-1px); }
+  #kt-cadastro button:disabled { opacity: .55; cursor: not-allowed; }
+
+  #kt-cadastro .kt-status {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+    min-height: 20px;
+  }
+
+  #kt-cadastro .kt-status.kt-err { color: var(--kt-error); }
+
+  /* ---------- Pop-up de sucesso ---------- */
+  #kt-cadastro .kt-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(6, 4, 12, .72);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .22s ease, visibility .22s;
+  }
+
+  #kt-cadastro .kt-overlay.kt-aberto {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  #kt-cadastro .kt-modal {
+    width: 100%;
+    max-width: 400px;
+    padding: 38px 32px 30px;
+    text-align: center;
+    background: linear-gradient(160deg, #221a38, #161124);
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 22px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+    transform: translateY(14px) scale(.96);
+    transition: transform .26s cubic-bezier(.2, .9, .3, 1.2);
+  }
+
+  #kt-cadastro .kt-overlay.kt-aberto .kt-modal { transform: none; }
+
+  #kt-cadastro .kt-modal__icone {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    border-radius: 50%;
+    background: rgba(61, 220, 151, .12);
+    border: 1px solid rgba(61, 220, 151, .35);
+  }
+
+  #kt-cadastro .kt-modal h2 {
+    margin: 0 0 10px;
+    font-size: 23px;
+    line-height: 1.2;
+    letter-spacing: -.3px;
+    color: var(--kt-text);
+  }
+
+  #kt-cadastro .kt-modal p {
+    margin: 0 0 8px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--kt-muted);
+  }
+
+  #kt-cadastro .kt-modal__destaque {
+    margin: 18px 0 26px;
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--kt-ok);
+    background: rgba(61, 220, 151, .10);
+    border: 1px solid rgba(61, 220, 151, .28);
+    border-radius: 12px;
+  }
+
+  #kt-cadastro .kt-btn-whats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 0;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #kt-cadastro .kt-track { animation: none; }
+    #kt-cadastro .kt-overlay,
+    #kt-cadastro .kt-modal { transition: none; }
+  }
+
+  @media (max-width: 480px) {
+    #kt-cadastro .kt-row { grid-template-columns: 1fr; }
+    #kt-cadastro { padding: 32px 12px 200px; }
+  }
+</style>
+
+<script>
+(function () {
+  const WEBHOOK_URL = "https://kaikytorres.vps-kinghost.net/webhook/4e87e7de-f1f9-4100-bae4-9bfb3995f601";
+
+  // Garante que a fila do dataLayer exista antes de qualquer push para o GTM.
+  window.dataLayer = window.dataLayer || [];
+
+  // Principais serviços de streaming (nome + cor da marca)
+  const STREAMINGS = [
+    { nome: "Netflix",         cor: "#e50914" },
+    { nome: "Prime Video",     cor: "#00a8e1" },
+    { nome: "Disney+",         cor: "#1f80e0" },
+    { nome: "Max",             cor: "#0053ff" },
+    { nome: "Globoplay",       cor: "#f5470e" },
+    { nome: "Apple TV+",       cor: "#dddddd" },
+    { nome: "Paramount+",      cor: "#0064ff" },
+    { nome: "Crunchyroll",     cor: "#f47521" },
+    { nome: "YouTube Premium", cor: "#ff0000" },
+    { nome: "Spotify",         cor: "#1db954" },
+    { nome: "Deezer",          cor: "#a238ff" },
+    { nome: "Telecine",        cor: "#ffb300" }
+  ];
+
+  const $ = (id) => document.getElementById(id);
+
+  /* ---------- Marquee ---------- */
+  function montarTrack(el, lista) {
+    const html = lista
+      .map(s => '<span class="kt-streaming" style="--kt-marca:' + s.cor + '">' + s.nome + '</span>')
+      .join("");
+    el.innerHTML = html + html; // duplicado para o loop ficar contínuo
+  }
+  montarTrack($("kt-track1"), STREAMINGS);
+  montarTrack($("kt-track2"), STREAMINGS.slice().reverse());
+
+  /* ---------- Máscara do telefone: 55 DDD 9XXXXXXXX ---------- */
+  const numero = $("kt-numero");
+  const hintNumero = $("kt-hint-numero");
+
+  function soDigitos(v) {
+    return v.replace(/\D/g, "");
+  }
+
+  // Normaliza para sempre começar com 55 e no máximo 13 dígitos (55 + 2 DDD + 9 número)
+  function normalizar(d) {
+    d = d.slice(0, 13);
+    if (d.length === 0) return "";
+    if (!"55".startsWith(d.slice(0, d.length >= 2 ? 2 : 1))) {
+      // usuário digitou algo que não é 55 -> assume que é o DDD e prefixa 55
+      d = "55" + d;
+    }
+    return d.slice(0, 13);
+  }
+
+  function formatar(d) {
+    let out = d.slice(0, 2);
+    const ddd = d.slice(2, 4);
+    const num = d.slice(4, 13);
+    if (ddd) out += " " + ddd;
+    if (num) out += " " + num;
+    return out;
+  }
+
+  numero.addEventListener("focus", function () {
+    if (!numero.value) numero.value = "55 ";
+  });
+
+  numero.addEventListener("input", function () {
+    numero.value = formatar(normalizar(soDigitos(numero.value)));
+    validarNumero(false);
+  });
+
+  numero.addEventListener("blur", function () {
+    if (numero.value.trim() === "55") numero.value = "";
+    validarNumero(true);
+  });
+
+  function digitosNumero() {
+    return soDigitos(numero.value);
+  }
+
+  function validarNumero(mostrarErro) {
+    const d = digitosNumero();
+    const ok = /^55\d{2}9\d{8}$/.test(d);
+    if (!ok && mostrarErro) {
+      numero.classList.add("kt-invalid");
+      hintNumero.classList.add("kt-error");
+      hintNumero.textContent = d.length < 13
+        ? "Número incompleto — use 55 DDD 9XXXXXXXX."
+        : "Número inválido — o celular deve começar com 9 após o DDD.";
+    } else {
+      numero.classList.remove("kt-invalid");
+      hintNumero.classList.remove("kt-error");
+      hintNumero.textContent = "Formato: 55 DDD 9XXXXXXXX";
+    }
+    return ok;
+  }
+
+  /* ---------- Validação geral ---------- */
+  const form = $("kt-form");
+  const btn = $("kt-btn");
+  const aviso = $("kt-status");
+  const email = $("kt-email");
+  const hintEmail = $("kt-hint-email");
+  const nome = $("kt-nome");
+  const sobrenome = $("kt-sobrenome");
+
+  function validarEmail(mostrarErro) {
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+    if (!ok && mostrarErro) {
+      email.classList.add("kt-invalid");
+      hintEmail.classList.add("kt-error");
+      hintEmail.textContent = "Informe um e-mail válido.";
+    } else {
+      email.classList.remove("kt-invalid");
+      hintEmail.classList.remove("kt-error");
+      hintEmail.textContent = "";
+    }
+    return ok;
+  }
+
+  email.addEventListener("blur", function () { validarEmail(true); });
+  email.addEventListener("input", function () { validarEmail(false); });
+
+  function validarTexto(el, mostrarErro) {
+    const ok = el.value.trim().length >= 2;
+    el.classList.toggle("kt-invalid", !ok && mostrarErro);
+    return ok;
+  }
+
+  [nome, sobrenome].forEach(function (el) {
+    el.addEventListener("blur", function () { validarTexto(el, true); });
+    el.addEventListener("input", function () { el.classList.remove("kt-invalid"); });
+  });
+
+  /* ---------- Evento do GTM ---------- */
+  // Empurra o evento de conversão para o dataLayer SOMENTE quando o cadastro
+  // é enviado com sucesso. No GTM, use um gatilho de "Evento personalizado"
+  // com o nome "cadastro_enviado" (em vez de um gatilho de clique no botão).
+  // Assim o evento nunca dispara por engano: só chega aqui depois que todos os
+  // campos foram validados e o webhook respondeu com sucesso.
+  function enviarEventoGTM(payload) {
+    window.dataLayer.push({
+      event: "cadastro_enviado",
+      form_id: "kt-form",
+      pagina: "smartyng/cadastroiptv",
+      // Dados úteis para o GTM/Ads/Analytics (sem expor o número completo em texto).
+      email: payload.email,
+      numero: payload.numero
+    });
+  }
+
+  /* ---------- Pop-up de sucesso ---------- */
+  const overlay = $("kt-overlay");
+  const btnWhats = $("kt-btn-whats");
+
+  function abrirModal() {
+    overlay.classList.add("kt-aberto");
+    btnWhats.focus();
+  }
+
+  function fecharModal() {
+    overlay.classList.remove("kt-aberto");
+    nome.focus();
+  }
+
+  // No celular abre o app direto; no desktop cai no WhatsApp Web.
+  function voltarParaWhatsApp() {
+    const noCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    window.location.href = noCelular ? "whatsapp://send" : "https://web.whatsapp.com";
+  }
+
+  btnWhats.addEventListener("click", voltarParaWhatsApp);
+
+  // fecha ao clicar fora do card ou apertar Esc
+  overlay.addEventListener("click", function (e) {
+    if (e.target === overlay) fecharModal();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && overlay.classList.contains("kt-aberto")) fecharModal();
+  });
+
+  /* ---------- Envio ---------- */
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    aviso.className = "kt-status";
+    aviso.textContent = "";
+
+    const vNome = validarTexto(nome, true);
+    const vSobre = validarTexto(sobrenome, true);
+    const vNum = validarNumero(true);
+    const vMail = validarEmail(true);
+
+    if (!(vNome && vSobre && vNum && vMail)) {
+      aviso.className = "kt-status kt-err";
+      aviso.textContent = "Confira os campos destacados.";
+      return;
+    }
+
+    const payload = {
+      nome: nome.value.trim(),
+      sobrenome: sobrenome.value.trim(),
+      numero: digitosNumero(),          // 55ddd999999999 — só dígitos
+      email: email.value.trim().toLowerCase()
+    };
+
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+
+    try {
+      const res = await fetch(WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) throw new Error("HTTP " + res.status);
+
+      // Cadastro enviado com sucesso -> agora sim avisamos o GTM.
+      enviarEventoGTM(payload);
+
+      form.reset();
+      hintNumero.textContent = "Formato: 55 DDD 9XXXXXXXX";
+      abrirModal();
+    } catch (err) {
+      aviso.className = "kt-status kt-err";
+      aviso.textContent = "Erro ao enviar. Tente novamente.";
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Enviar cadastro";
+    }
+  });
+})();
+</script>
