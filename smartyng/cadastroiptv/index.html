@@ -42,18 +42,6 @@
     </form>
   </div>
 
-  <div class="kt-overlay" id="kt-overlay" role="dialog" aria-modal="true" aria-labelledby="kt-modal-titulo">
-    <div class="kt-modal">
-      <div class="kt-modal__icone" aria-hidden="true">🎉</div>
-      <h2 id="kt-modal-titulo">Obrigado!</h2>
-      <p>Recebemos seu cadastro com sucesso.</p>
-      <div class="kt-modal__destaque">Seu Aplicativo já está funcionando ✅</div>
-      <button type="button" id="kt-btn-whats" class="kt-btn-whats">
-        <span aria-hidden="true">💬</span> Voltar para o WhatsApp
-      </button>
-    </div>
-  </div>
-
 </div>
 
 <style>
@@ -273,94 +261,8 @@
 
   #kt-cadastro .kt-status.kt-err { color: var(--kt-error); }
 
-  /* ---------- Pop-up de sucesso ---------- */
-  #kt-cadastro .kt-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background: rgba(6, 4, 12, .72);
-    backdrop-filter: blur(6px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .22s ease, visibility .22s;
-  }
-
-  #kt-cadastro .kt-overlay.kt-aberto {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  #kt-cadastro .kt-modal {
-    width: 100%;
-    max-width: 400px;
-    padding: 38px 32px 30px;
-    text-align: center;
-    background: linear-gradient(160deg, #221a38, #161124);
-    border: 1px solid rgba(255, 255, 255, .14);
-    border-radius: 22px;
-    box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
-    transform: translateY(14px) scale(.96);
-    transition: transform .26s cubic-bezier(.2, .9, .3, 1.2);
-  }
-
-  #kt-cadastro .kt-overlay.kt-aberto .kt-modal { transform: none; }
-
-  #kt-cadastro .kt-modal__icone {
-    width: 74px;
-    height: 74px;
-    margin: 0 auto 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 38px;
-    border-radius: 50%;
-    background: rgba(61, 220, 151, .12);
-    border: 1px solid rgba(61, 220, 151, .35);
-  }
-
-  #kt-cadastro .kt-modal h2 {
-    margin: 0 0 10px;
-    font-size: 23px;
-    line-height: 1.2;
-    letter-spacing: -.3px;
-    color: var(--kt-text);
-  }
-
-  #kt-cadastro .kt-modal p {
-    margin: 0 0 8px;
-    font-size: 15px;
-    line-height: 1.55;
-    color: var(--kt-muted);
-  }
-
-  #kt-cadastro .kt-modal__destaque {
-    margin: 18px 0 26px;
-    padding: 13px;
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--kt-ok);
-    background: rgba(61, 220, 151, .10);
-    border: 1px solid rgba(61, 220, 151, .28);
-    border-radius: 12px;
-  }
-
-  #kt-cadastro .kt-btn-whats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-    margin-top: 0;
-    background: linear-gradient(135deg, #25d366, #128c7e);
-  }
-
   @media (prefers-reduced-motion: reduce) {
     #kt-cadastro .kt-track { animation: none; }
-    #kt-cadastro .kt-overlay,
-    #kt-cadastro .kt-modal { transition: none; }
   }
 
   @media (max-width: 480px) {
@@ -373,8 +275,8 @@
 (function () {
   const WEBHOOK_URL = "https://kaikytorres.vps-kinghost.net/webhook/4e87e7de-f1f9-4100-bae4-9bfb3995f601";
 
-  // Garante que a fila do dataLayer exista antes de qualquer push para o GTM.
-  window.dataLayer = window.dataLayer || [];
+  // >>> URL da página de "Obrigado". Troque pelo endereço real da sua página. <<<
+  const PAGINA_OBRIGADO = "/obrigado";
 
   // Principais serviços de streaming (nome + cor da marca)
   const STREAMINGS = [
@@ -504,54 +406,6 @@
     el.addEventListener("input", function () { el.classList.remove("kt-invalid"); });
   });
 
-  /* ---------- Evento do GTM ---------- */
-  // Empurra o evento de conversão para o dataLayer SOMENTE quando o cadastro
-  // é enviado com sucesso. No GTM, use um gatilho de "Evento personalizado"
-  // com o nome "cadastro_enviado" (em vez de um gatilho de clique no botão).
-  // Assim o evento nunca dispara por engano: só chega aqui depois que todos os
-  // campos foram validados e o webhook respondeu com sucesso.
-  function enviarEventoGTM(payload) {
-    window.dataLayer.push({
-      event: "cadastro_enviado",
-      form_id: "kt-form",
-      pagina: "smartyng/cadastroiptv",
-      // Dados úteis para o GTM/Ads/Analytics (sem expor o número completo em texto).
-      email: payload.email,
-      numero: payload.numero
-    });
-  }
-
-  /* ---------- Pop-up de sucesso ---------- */
-  const overlay = $("kt-overlay");
-  const btnWhats = $("kt-btn-whats");
-
-  function abrirModal() {
-    overlay.classList.add("kt-aberto");
-    btnWhats.focus();
-  }
-
-  function fecharModal() {
-    overlay.classList.remove("kt-aberto");
-    nome.focus();
-  }
-
-  // No celular abre o app direto; no desktop cai no WhatsApp Web.
-  function voltarParaWhatsApp() {
-    const noCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-    window.location.href = noCelular ? "whatsapp://send" : "https://web.whatsapp.com";
-  }
-
-  btnWhats.addEventListener("click", voltarParaWhatsApp);
-
-  // fecha ao clicar fora do card ou apertar Esc
-  overlay.addEventListener("click", function (e) {
-    if (e.target === overlay) fecharModal();
-  });
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && overlay.classList.contains("kt-aberto")) fecharModal();
-  });
-
   /* ---------- Envio ---------- */
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
@@ -588,17 +442,13 @@
 
       if (!res.ok) throw new Error("HTTP " + res.status);
 
-      // Cadastro enviado com sucesso -> agora sim avisamos o GTM.
-      enviarEventoGTM(payload);
-
-      form.reset();
-      hintNumero.textContent = "Formato: 55 DDD 9XXXXXXXX";
-      abrirModal();
+      // Cadastro enviado com sucesso -> vai para a página de Obrigado.
+      // É lá que o GTM registra a conversão (visualização da página de Obrigado).
+      window.location.href = PAGINA_OBRIGADO;
     } catch (err) {
       aviso.className = "kt-status kt-err";
       aviso.textContent = "Erro ao enviar. Tente novamente.";
       console.error(err);
-    } finally {
       btn.disabled = false;
       btn.textContent = "Enviar cadastro";
     }
