@@ -1,0 +1,129 @@
+<!-- ====== PÁGINA DE OBRIGADO — cole tudo em um bloco "HTML personalizado" ====== -->
+<!-- Esta página só aparece depois de um cadastro enviado com sucesso.        -->
+<!-- Por isso, a simples visualização dela já pode ser usada como conversão   -->
+<!-- no GTM (gatilho de "Visualização de página" nesta URL).                  -->
+
+<div id="kt-obrigado">
+  <div class="kt-modal">
+    <div class="kt-modal__icone" aria-hidden="true">🎉</div>
+    <h1 id="kt-modal-titulo">Obrigado!</h1>
+    <p>Recebemos seu cadastro com sucesso.</p>
+    <div class="kt-modal__destaque">Seu Aplicativo já está funcionando ✅</div>
+    <button type="button" id="kt-btn-whats" class="kt-btn-whats">
+      <span aria-hidden="true">💬</span> Voltar para o WhatsApp
+    </button>
+  </div>
+</div>
+
+<style>
+  #kt-obrigado {
+    --kt-text: #f2eefb;
+    --kt-muted: #9d95b5;
+    --kt-ok: #3ddc97;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 560px;
+    padding: 48px 16px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--kt-text);
+    background:
+      radial-gradient(900px 500px at 20% 0%, #2a1a4d 0%, transparent 60%),
+      radial-gradient(700px 500px at 90% 100%, #1c2a4d 0%, transparent 60%),
+      #0d0b14;
+    border-radius: 16px;
+  }
+
+  #kt-obrigado *,
+  #kt-obrigado *::before,
+  #kt-obrigado *::after { box-sizing: border-box; }
+
+  #kt-obrigado .kt-modal {
+    width: 100%;
+    max-width: 400px;
+    padding: 38px 32px 30px;
+    text-align: center;
+    background: linear-gradient(160deg, #221a38, #161124);
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 22px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+  }
+
+  #kt-obrigado .kt-modal__icone {
+    width: 74px;
+    height: 74px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    border-radius: 50%;
+    background: rgba(61, 220, 151, .12);
+    border: 1px solid rgba(61, 220, 151, .35);
+  }
+
+  #kt-obrigado .kt-modal h1 {
+    margin: 0 0 10px;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -.3px;
+    color: var(--kt-text);
+  }
+
+  #kt-obrigado .kt-modal p {
+    margin: 0 0 8px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--kt-muted);
+  }
+
+  #kt-obrigado .kt-modal__destaque {
+    margin: 18px 0 26px;
+    padding: 13px;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--kt-ok);
+    background: rgba(61, 220, 151, .10);
+    border: 1px solid rgba(61, 220, 151, .28);
+    border-radius: 12px;
+  }
+
+  #kt-obrigado .kt-btn-whats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #fff;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border: 0;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: transform .12s;
+  }
+
+  #kt-obrigado .kt-btn-whats:hover { transform: translateY(-1px); }
+</style>
+
+<script>
+(function () {
+  // No celular abre o app direto; no desktop cai no WhatsApp Web.
+  function voltarParaWhatsApp() {
+    const noCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    window.location.href = noCelular ? "whatsapp://send" : "https://web.whatsapp.com";
+  }
+
+  document.getElementById("kt-btn-whats")
+    .addEventListener("click", voltarParaWhatsApp);
+
+  // (Opcional) Também avisa o GTM via dataLayer, caso você prefira um
+  // gatilho de "Evento personalizado" em vez de "Visualização de página".
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: "cadastro_concluido", pagina: "cadastroiptv-obg" });
+})();
+</script>
