@@ -13,28 +13,28 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
-        260,
+        240,
         300
       ],
       "webhookId": "5ceaaf18-8d5d-4839-bedf-f014756b4a30"
     },
     {
       "parameters": {
-        "jsCode": "// ==========================================================\n// Monta o payload da Meta Conversions API com VARIOS eventos\n// Contact, AddToCart, InitiateCheckout e Purchase (valor 30,00 BRL)\n// Faz o hash SHA-256 dos dados pessoais (exigido pela Meta)\n// ==========================================================\nconst crypto = require('crypto');\n\n// >>> Ajuste aqui o valor e a moeda se precisar <<<\nconst VALOR = 30.00;\nconst MOEDA = 'BRL';\n\nfunction hash(value) {\n  if (value === undefined || value === null || value === '') return undefined;\n  const normalized = String(value).trim().toLowerCase();\n  if (!normalized) return undefined;\n  return crypto.createHash('sha256').update(normalized).digest('hex');\n}\n\nfunction hashPhone(value) {\n  if (value === undefined || value === null || value === '') return undefined;\n  const digits = String(value).replace(/\\D/g, '');\n  if (!digits) return undefined;\n  return crypto.createHash('sha256').update(digits).digest('hex');\n}\n\nconst input = $input.first().json;\nconst body = input.body || {};\nconst headers = input.headers || {};\n\nconst email = body.email;\nconst phone = body.numero;\nconst firstName = body.nome;\nconst lastName = body.sobrenome;\n\nconst ip = (headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined;\nconst userAgent = headers['user-agent'] || undefined;\nconst sourceUrl = headers['referer'] || headers['origin'] || undefined;\n\nconst userData = {};\nif (hash(email)) userData.em = [hash(email)];\nif (hashPhone(phone)) userData.ph = [hashPhone(phone)];\nif (hash(firstName)) userData.fn = [hash(firstName)];\nif (hash(lastName)) userData.ln = [hash(lastName)];\nif (ip) userData.client_ip_address = ip;\nif (userAgent) userData.client_user_agent = userAgent;\n\nconst eventTime = Math.floor(Date.now() / 1000);\nconst money = { value: VALOR, currency: MOEDA };\n\nfunction makeEvent(name, customData) {\n  const ev = {\n    event_name: name,\n    event_time: eventTime,\n    event_id: crypto.randomUUID(),\n    action_source: 'website',\n    event_source_url: sourceUrl,\n    user_data: userData\n  };\n  if (customData) ev.custom_data = customData;\n  return ev;\n}\n\nconst payload = {\n  data: [\n    makeEvent('Contact'),\n    makeEvent('AddToCart', money),\n    makeEvent('InitiateCheckout', money),\n    makeEvent('Purchase', money)\n  ]\n  // Para testar no \"Test Events\" da Meta, descomente e cole o codigo:\n  // , test_event_code: 'TEST12345'\n};\n\nreturn [{ json: payload }];\n"
+        "jsCode": "// ==========================================================\n// Prepara os dados da pessoa (hash SHA-256) para a Meta CAPI\n// SHA-256 em JavaScript puro (sem require('crypto'))\n// ==========================================================\n\n// >>> Ajuste aqui o valor e a moeda se precisar <<<\nconst VALOR = 30.00;\nconst MOEDA = 'BRL';\n\nconst K = [\n  0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,\n  0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,\n  0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,\n  0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,\n  0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,\n  0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,\n  0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,\n  0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2\n];\n\nfunction rotr(x, n) { return (x >>> n) | (x << (32 - n)); }\n\nfunction utf8Bytes(str) {\n  str = String(str);\n  const bytes = [];\n  for (let i = 0; i < str.length; i++) {\n    let c = str.charCodeAt(i);\n    if (c < 128) bytes.push(c);\n    else if (c < 2048) bytes.push(192 | (c >> 6), 128 | (c & 63));\n    else if (c < 55296 || c >= 57344) bytes.push(224 | (c >> 12), 128 | ((c >> 6) & 63), 128 | (c & 63));\n    else {\n      i++;\n      const c2 = str.charCodeAt(i);\n      const cp = 65536 + ((c & 1023) << 10) + (c2 & 1023);\n      bytes.push(240 | (cp >> 18), 128 | ((cp >> 12) & 63), 128 | ((cp >> 6) & 63), 128 | (cp & 63));\n    }\n  }\n  return bytes;\n}\n\nfunction sha256(bytes) {\n  const H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];\n  const bitLen = bytes.length * 8;\n  bytes.push(0x80);\n  while (bytes.length % 64 !== 56) bytes.push(0);\n  const hi = Math.floor(bitLen / 0x100000000);\n  const lo = bitLen >>> 0;\n  bytes.push((hi >>> 24) & 255, (hi >>> 16) & 255, (hi >>> 8) & 255, hi & 255);\n  bytes.push((lo >>> 24) & 255, (lo >>> 16) & 255, (lo >>> 8) & 255, lo & 255);\n\n  const w = new Array(64);\n  for (let i = 0; i < bytes.length; i += 64) {\n    for (let t = 0; t < 16; t++) {\n      w[t] = (bytes[i + t * 4] << 24) | (bytes[i + t * 4 + 1] << 16) | (bytes[i + t * 4 + 2] << 8) | (bytes[i + t * 4 + 3]);\n    }\n    for (let t = 16; t < 64; t++) {\n      const s0 = rotr(w[t - 15], 7) ^ rotr(w[t - 15], 18) ^ (w[t - 15] >>> 3);\n      const s1 = rotr(w[t - 2], 17) ^ rotr(w[t - 2], 19) ^ (w[t - 2] >>> 10);\n      w[t] = (w[t - 16] + s0 + w[t - 7] + s1) | 0;\n    }\n    let a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];\n    for (let t = 0; t < 64; t++) {\n      const S1 = rotr(e, 6) ^ rotr(e, 11) ^ rotr(e, 25);\n      const ch = (e & f) ^ ((~e) & g);\n      const temp1 = (h + S1 + ch + K[t] + w[t]) | 0;\n      const S0 = rotr(a, 2) ^ rotr(a, 13) ^ rotr(a, 22);\n      const maj = (a & b) ^ (a & c) ^ (b & c);\n      const temp2 = (S0 + maj) | 0;\n      h = g; g = f; f = e; e = (d + temp1) | 0; d = c; c = b; b = a; a = (temp1 + temp2) | 0;\n    }\n    H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0; H[2] = (H[2] + c) | 0; H[3] = (H[3] + d) | 0;\n    H[4] = (H[4] + e) | 0; H[5] = (H[5] + f) | 0; H[6] = (H[6] + g) | 0; H[7] = (H[7] + h) | 0;\n  }\n  let hex = '';\n  for (let i = 0; i < 8; i++) hex += ((H[i] >>> 0).toString(16)).padStart(8, '0');\n  return hex;\n}\n\nfunction hash(value) {\n  if (value === undefined || value === null || value === '') return undefined;\n  const normalized = String(value).trim().toLowerCase();\n  if (!normalized) return undefined;\n  return sha256(utf8Bytes(normalized));\n}\n\nfunction hashPhone(value) {\n  if (value === undefined || value === null || value === '') return undefined;\n  const digits = String(value).replace(/\\D/g, '');\n  if (!digits) return undefined;\n  return sha256(utf8Bytes(digits));\n}\n\nfunction uuid() {\n  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (ch) {\n    const r = Math.random() * 16 | 0;\n    const v = ch === 'x' ? r : (r & 0x3 | 0x8);\n    return v.toString(16);\n  });\n}\n\nconst input = $input.first().json;\nconst body = input.body || {};\nconst headers = input.headers || {};\n\nconst ip = (headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined;\nconst userAgent = headers['user-agent'] || undefined;\nconst sourceUrl = headers['referer'] || headers['origin'] || undefined;\n\nconst userData = {};\nif (hash(body.email)) userData.em = [hash(body.email)];\nif (hashPhone(body.numero)) userData.ph = [hashPhone(body.numero)];\nif (hash(body.nome)) userData.fn = [hash(body.nome)];\nif (hash(body.sobrenome)) userData.ln = [hash(body.sobrenome)];\nif (ip) userData.client_ip_address = ip;\nif (userAgent) userData.client_user_agent = userAgent;\n\nconst eventTime = Math.floor(Date.now() / 1000);\nconst money = { value: VALOR, currency: MOEDA };\n\nfunction build(name, withMoney) {\n  const ev = {\n    event_name: name,\n    event_time: eventTime,\n    event_id: uuid(),\n    action_source: 'website',\n    event_source_url: sourceUrl,\n    user_data: userData\n  };\n  if (withMoney) ev.custom_data = money;\n  return { data: [ev] };\n}\n\nreturn [{\n  json: {\n    contact: build('Contact', false),\n    addtocart: build('AddToCart', true),\n    initiatecheckout: build('InitiateCheckout', true),\n    purchase: build('Purchase', true)\n  }\n}];\n"
       },
       "id": "c2a22222-2222-4222-8222-222222222222",
-      "name": "Montar Eventos Meta",
+      "name": "Preparar Dados",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        520,
+        460,
         300
       ]
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "https://graph.facebook.com/v21.0/SEU_PIXEL_ID/events",
+        "url": "https://graph.facebook.com/v21.0/695612119892863/events",
         "sendQuery": true,
         "queryParameters": {
           "parameters": [
@@ -46,15 +46,96 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify($json) }}",
+        "jsonBody": "={{ JSON.stringify($('Preparar Dados').item.json.contact) }}",
         "options": {}
       },
-      "id": "d3a33333-3333-4333-8333-333333333333",
-      "name": "Enviar para Meta CAPI",
+      "id": "d3a33333-3333-4333-8333-333333333331",
+      "name": "Contact",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        780,
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/695612119892863/events",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "SEU_ACCESS_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($('Preparar Dados').item.json.addtocart) }}",
+        "options": {}
+      },
+      "id": "d3a33333-3333-4333-8333-333333333332",
+      "name": "Add to Cart",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        900,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/695612119892863/events",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "SEU_ACCESS_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($('Preparar Dados').item.json.initiatecheckout) }}",
+        "options": {}
+      },
+      "id": "d3a33333-3333-4333-8333-333333333333",
+      "name": "Initiate Checkout",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1120,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/695612119892863/events",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "SEU_ACCESS_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($('Preparar Dados').item.json.purchase) }}",
+        "options": {}
+      },
+      "id": "d3a33333-3333-4333-8333-333333333334",
+      "name": "Purchase",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1340,
         300
       ]
     }
@@ -64,18 +145,51 @@
       "main": [
         [
           {
-            "node": "Montar Eventos Meta",
+            "node": "Preparar Dados",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Montar Eventos Meta": {
+    "Preparar Dados": {
       "main": [
         [
           {
-            "node": "Enviar para Meta CAPI",
+            "node": "Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact": {
+      "main": [
+        [
+          {
+            "node": "Add to Cart",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add to Cart": {
+      "main": [
+        [
+          {
+            "node": "Initiate Checkout",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Initiate Checkout": {
+      "main": [
+        [
+          {
+            "node": "Purchase",
             "type": "main",
             "index": 0
           }
