@@ -1,0 +1,90 @@
+{
+  "name": "LP -> Meta Conversions API (Lead)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "5ceaaf18-8d5d-4839-bedf-f014756b4a30",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "b1a11111-1111-4111-8111-111111111111",
+      "name": "Webhook LP",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        260,
+        300
+      ],
+      "webhookId": "5ceaaf18-8d5d-4839-bedf-f014756b4a30"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ==========================================================\n// Monta o payload da Meta Conversions API (evento Lead)\n// Faz o hash SHA-256 dos dados pessoais (exigido pela Meta)\n// ==========================================================\nconst crypto = require('crypto');\n\n// Hash SHA-256 para texto (email, nome, sobrenome): trim + lowercase\nfunction hash(value) {\n  if (value === undefined || value === null || value === '') return undefined;\n  const normalized = String(value).trim().toLowerCase();\n  if (!normalized) return undefined;\n  return crypto.createHash('sha256').update(normalized).digest('hex');\n}\n\n// Hash SHA-256 para telefone: mantem somente digitos (com DDI), sem +\nfunction hashPhone(value) {\n  if (value === undefined || value === null || value === '') return undefined;\n  const digits = String(value).replace(/\\D/g, '');\n  if (!digits) return undefined;\n  return crypto.createHash('sha256').update(digits).digest('hex');\n}\n\nconst input = $input.first().json;\nconst body = input.body || {};\nconst headers = input.headers || {};\n\n// --- Dados vindos da LP ---\nconst email = body.email;\nconst phone = body.numero;\nconst firstName = body.nome;\nconst lastName = body.sobrenome;\n\n// --- Dados de contexto (melhoram a qualidade do match, NAO tem hash) ---\nconst ip = (headers['x-forwarded-for'] || '').split(',')[0].trim() || undefined;\nconst userAgent = headers['user-agent'] || undefined;\nconst sourceUrl = headers['referer'] || headers['origin'] || undefined;\n\n// --- user_data ---\nconst userData = {};\nif (hash(email)) userData.em = [hash(email)];\nif (hashPhone(phone)) userData.ph = [hashPhone(phone)];\nif (hash(firstName)) userData.fn = [hash(firstName)];\nif (hash(lastName)) userData.ln = [hash(lastName)];\nif (ip) userData.client_ip_address = ip;\nif (userAgent) userData.client_user_agent = userAgent;\n\n// event_id para deduplicacao caso um dia use tambem o Pixel no navegador\nconst eventId = crypto.randomUUID();\n\nconst payload = {\n  data: [\n    {\n      event_name: 'Lead',\n      event_time: Math.floor(Date.now() / 1000),\n      event_id: eventId,\n      action_source: 'website',\n      event_source_url: sourceUrl,\n      user_data: userData\n    }\n  ]\n  // Para testar no \"Test Events\" da Meta, descomente a linha abaixo\n  // e cole o codigo que aparece na aba Test Events do Gerenciador de Eventos:\n  // , test_event_code: 'TEST12345'\n};\n\nreturn [{ json: payload }];\n"
+      },
+      "id": "c2a22222-2222-4222-8222-222222222222",
+      "name": "Montar Payload Meta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        520,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v21.0/SEU_PIXEL_ID/events",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "SEU_ACCESS_TOKEN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "d3a33333-3333-4333-8333-333333333333",
+      "name": "Enviar para Meta CAPI",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        780,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook LP": {
+      "main": [
+        [
+          {
+            "node": "Montar Payload Meta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Montar Payload Meta": {
+      "main": [
+        [
+          {
+            "node": "Enviar para Meta CAPI",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
