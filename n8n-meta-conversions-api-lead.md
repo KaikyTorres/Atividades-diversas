@@ -13,6 +13,9 @@ Webhook LP → Preparar Dados → Contact → Add to Cart → Initiate Checkout 
 - **Contact / Add to Cart / Initiate Checkout / Purchase**: um nó HTTP por evento.
   Os três de fundo de funil vão com `value: 30.00` e `currency: "BRL"`.
 
+Os eventos usam `action_source: "chat"` (lead vindo de conversa/chat, não de navegação
+num site), por isso não enviam `event_source_url`.
+
 ## Como importar
 
 1. Copie todo o conteúdo de `n8n-meta-conversions-api-lead.json`.
@@ -36,7 +39,6 @@ Para mudar o valor ou a moeda, edite `VALOR` e `MOEDA` no topo do nó **Preparar
 | `ln` (sobrenome) | `body.sobrenome` | sim |
 | `client_ip_address` | header `x-forwarded-for` | não |
 | `client_user_agent` | header `user-agent` | não |
-| `event_source_url` | header `referer`/`origin` | não |
 | `event_id` | gerado (UUID) | não |
 | `custom_data.value` / `currency` | `30.00` / `BRL` (só AddToCart, InitiateCheckout, Purchase) | não |
 
