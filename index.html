@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aprenda inglês de forma definitiva com um método comprovado. Professor C1, Cambridge nota 955 e 15 anos de experiência. Métodos Opus Intensivo e Lotus.">
+<title>Domine o Inglês | Método Comprovado — Cambridge C1</title>
+<style>
+  :root{
+    --usa-blue:#0a3161;
+    --usa-blue-2:#1e4d8c;
+    --usa-red:#b31942;
+    --usa-red-2:#e01b46;
+    --ink:#0b1220;
+    --paper:#f6f8fc;
+    --white:#ffffff;
+    --muted:#6b7688;
+    --glow-blue:rgba(30,77,140,.55);
+    --glow-red:rgba(224,27,70,.5);
+    --radius:18px;
+    --shadow:0 20px 60px -20px rgba(10,49,97,.35);
+    --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font);
+    background:var(--ink);
+    color:#e8edf6;
+    overflow-x:hidden;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  section{position:relative}
+  .wrap{width:min(1140px,92vw);margin-inline:auto}
+
+  /* ---------- Animated tech background ---------- */
+  .bg-grid{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(30,77,140,.35), transparent 60%),
+      radial-gradient(1000px 500px at 90% 10%, rgba(179,25,66,.28), transparent 60%),
+      linear-gradient(180deg,#070c16 0%, #0b1220 40%, #070c16 100%);
+  }
+  .bg-grid::after{
+    content:"";position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(120,160,220,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(120,160,220,.06) 1px, transparent 1px);
+    background-size:48px 48px;
+    mask-image:radial-gradient(circle at 50% 30%, #000 0%, transparent 75%);
+    animation:gridpan 24s linear infinite;
+  }
+  @keyframes gridpan{from{background-position:0 0,0 0}to{background-position:48px 48px,48px 48px}}
+
+  .orb{position:fixed;border-radius:50%;filter:blur(60px);opacity:.5;z-index:0;pointer-events:none;animation:float 14s ease-in-out infinite}
+  .orb.b{width:340px;height:340px;background:var(--usa-blue-2);top:8%;left:-6%}
+  .orb.r{width:300px;height:300px;background:var(--usa-red);bottom:6%;right:-5%;animation-delay:-6s}
+  @keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(40px) translateX(24px)}}
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    background:rgba(7,12,22,.72);
+    border-bottom:1px solid rgba(120,160,220,.12);
+  }
+  .nav-in{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
+  .logo .mark{
+    width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:15px;font-weight:900;
+    background:linear-gradient(135deg,var(--usa-blue-2),var(--usa-red));
+    box-shadow:0 0 22px var(--glow-blue);
+  }
+  .logo small{display:block;font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+  .nav-cta{
+    padding:10px 20px;border-radius:999px;font-weight:700;font-size:14px;
+    background:linear-gradient(135deg,var(--usa-red),var(--usa-red-2));
+    box-shadow:0 8px 24px -6px var(--glow-red);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px -6px var(--glow-red)}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 72px;position:relative;z-index:1}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+  .badge-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+  .chip{
+    display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+    padding:7px 13px;border-radius:999px;border:1px solid rgba(120,160,220,.25);
+    background:rgba(30,77,140,.14);color:#cfe0f7;
+  }
+  .chip .dot{width:7px;height:7px;border-radius:50%;background:var(--usa-red-2);box-shadow:0 0 10px var(--usa-red-2)}
+  h1.hero-title{
+    font-size:clamp(30px,5vw,54px);line-height:1.08;font-weight:900;letter-spacing:-.5px;
+    background:linear-gradient(120deg,#ffffff 20%,#9fc0f0 55%,#ff8aa6 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin-bottom:8px;
+  }
+  .hero-punch{
+    font-size:clamp(18px,2.4vw,24px);font-weight:800;color:#fff;margin:18px 0 14px;
+    padding-left:16px;border-left:4px solid var(--usa-red);
+  }
+  .hero-sub{font-size:16.5px;color:#c4cede;max-width:540px;margin-bottom:28px}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .btn{
+    cursor:pointer;border:none;font-family:inherit;font-weight:800;font-size:16px;
+    padding:16px 30px;border-radius:14px;color:#fff;position:relative;overflow:hidden;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--usa-red),var(--usa-red-2));
+    box-shadow:0 14px 34px -10px var(--glow-red);
+  }
+  .btn-primary::after{
+    content:"";position:absolute;top:0;left:-120%;width:80%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);
+    transform:skewX(-20deg);animation:shine 3.2s ease-in-out infinite;
+  }
+  @keyframes shine{0%,60%{left:-120%}100%{left:150%}}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 20px 40px -10px var(--glow-red)}
+  .btn-ghost{
+    background:rgba(30,77,140,.2);border:1px solid rgba(120,160,220,.3);
+    box-shadow:inset 0 0 0 0 var(--usa-blue-2);
+  }
+  .btn-ghost:hover{transform:translateY(-3px);background:rgba(30,77,140,.35)}
+  .trust-mini{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-top:18px}
+  .stars{color:#ffcf3f;letter-spacing:2px}
+
+  /* Hero card */
+  .hero-card{
+    background:linear-gradient(160deg,rgba(20,32,54,.9),rgba(12,20,36,.9));
+    border:1px solid rgba(120,160,220,.18);border-radius:24px;padding:28px;
+    box-shadow:var(--shadow);position:relative;overflow:hidden;
+  }
+  .hero-card::before{
+    content:"";position:absolute;inset:0;border-radius:24px;padding:1px;
+    background:linear-gradient(135deg,var(--usa-blue-2),transparent 40%,var(--usa-red) 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:.6;
+  }
+  .flagbar{display:flex;height:6px;border-radius:999px;overflow:hidden;margin-bottom:20px}
+  .flagbar i{flex:1}
+  .flagbar i.b{background:var(--usa-blue-2)}
+  .flagbar i.w{background:#dbe6f5}
+  .flagbar i.r{background:var(--usa-red)}
+  .card-title{font-size:14px;text-transform:uppercase;letter-spacing:1px;color:#9fc0f0;font-weight:700;margin-bottom:16px}
+  .stat-list{display:grid;gap:14px}
+  .stat-item{display:flex;align-items:center;gap:14px;padding:14px;border-radius:14px;background:rgba(9,16,30,.6);border:1px solid rgba(120,160,220,.1)}
+  .stat-ico{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,var(--usa-blue-2),var(--usa-red));flex-shrink:0}
+  .stat-num{font-size:22px;font-weight:900;color:#fff;line-height:1}
+  .stat-lab{font-size:13px;color:var(--muted)}
+
+  /* ---------- Section headings ---------- */
+  .sec{padding:78px 0;position:relative;z-index:1}
+  .sec-head{text-align:center;max-width:720px;margin:0 auto 48px}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+    color:var(--usa-red-2);margin-bottom:12px}
+  h2.sec-title{font-size:clamp(26px,4vw,40px);font-weight:900;letter-spacing:-.5px;color:#fff;line-height:1.15}
+  .sec-title span{background:linear-gradient(120deg,#9fc0f0,#ff8aa6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sec-sub{color:#c4cede;font-size:16.5px;margin-top:14px}
+
+  /* ---------- Authority ---------- */
+  .auth-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .auth-card{
+    text-align:center;padding:30px 20px;border-radius:var(--radius);
+    background:linear-gradient(160deg,rgba(20,32,54,.7),rgba(12,20,36,.7));
+    border:1px solid rgba(120,160,220,.14);transition:transform .25s ease,border-color .25s ease;
+  }
+  .auth-card:hover{transform:translateY(-6px);border-color:var(--usa-red)}
+  .auth-num{font-size:clamp(30px,4vw,44px);font-weight:900;
+    background:linear-gradient(120deg,#9fc0f0,#ff8aa6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .auth-lab{font-size:14px;color:#c4cede;margin-top:6px;font-weight:600}
+
+  /* ---------- Professor ---------- */
+  .prof-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
+  .prof-photo{
+    position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+    background:linear-gradient(160deg,#13233f,#0a1526);
+    border:1px solid rgba(120,160,220,.2);box-shadow:var(--shadow);
+  }
+  .prof-photo::before{
+    content:"";position:absolute;inset:0;border-radius:24px;padding:1.5px;z-index:3;pointer-events:none;
+    background:linear-gradient(135deg,var(--usa-blue-2),transparent 45%,var(--usa-red) 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:.7;
+  }
+  .prof-photo .flagbar.top{position:absolute;top:0;left:0;right:0;margin:0;border-radius:0;height:6px;z-index:4}
+  .prof-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;position:relative;z-index:1}
+  .prof-fallback{
+    position:absolute;inset:0;display:none;place-items:center;z-index:2;
+    color:#5f7699;font-weight:800;font-size:15px;letter-spacing:.5px;text-align:center;padding:20px;
+  }
+  .prof-photo.no-img{
+    background-image:
+      radial-gradient(circle at 50% 38%, rgba(30,77,140,.35), transparent 60%),
+      repeating-linear-gradient(45deg, rgba(120,160,220,.05) 0 12px, transparent 12px 24px);
+  }
+  .prof-photo.no-img .prof-fallback{display:grid}
+  .prof-badge{
+    position:absolute;left:14px;bottom:14px;z-index:4;font-size:13px;font-weight:800;color:#fff;
+    padding:9px 14px;border-radius:999px;backdrop-filter:blur(8px);
+    background:linear-gradient(135deg,rgba(179,25,66,.9),rgba(224,27,70,.9));
+    box-shadow:0 8px 24px -8px var(--glow-red);
+  }
+  .prof-info .eyebrow{margin-bottom:12px}
+  .prof-info .sec-title{text-align:left}
+  .prof-info .sec-sub{margin-bottom:26px}
+  .prof-list{list-style:none;display:grid;gap:14px;margin-bottom:30px}
+  .prof-list li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;color:#dbe6f5}
+  .prof-list li span{
+    flex-shrink:0;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:19px;
+    background:linear-gradient(135deg,rgba(30,77,140,.5),rgba(224,27,70,.45));border:1px solid rgba(120,160,220,.2);
+  }
+  .prof-list li b{color:#fff}
+
+  /* ---------- Methods ---------- */
+  .methods{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .method{
+    position:relative;border-radius:24px;padding:34px;overflow:hidden;
+    background:linear-gradient(165deg,rgba(20,32,54,.85),rgba(12,20,36,.9));
+    border:1px solid rgba(120,160,220,.16);transition:transform .3s ease;
+  }
+  .method:hover{transform:translateY(-8px)}
+  .method .halo{position:absolute;width:220px;height:220px;border-radius:50%;filter:blur(70px);opacity:.4;top:-60px;right:-40px}
+  .method.opus .halo{background:var(--usa-blue-2)}
+  .method.lotus .halo{background:var(--usa-red)}
+  .method.lotus{border-color:rgba(224,27,70,.35)}
+  .m-tag{position:absolute;top:22px;right:22px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;
+    padding:6px 12px;border-radius:999px}
+  .method.opus .m-tag{background:rgba(30,77,140,.35);color:#bcd6f7;border:1px solid rgba(120,160,220,.4)}
+  .method.lotus .m-tag{background:rgba(224,27,70,.25);color:#ffb3c4;border:1px solid rgba(224,27,70,.5)}
+  .m-name{font-size:26px;font-weight:900;color:#fff;margin-bottom:4px;position:relative}
+  .m-freq{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px;margin:6px 0 18px;color:#9fc0f0}
+  .method.lotus .m-freq{color:#ffb3c4}
+  .m-desc{color:#c4cede;font-size:15.5px;margin-bottom:20px}
+  .m-list{list-style:none;display:grid;gap:11px;margin-bottom:26px}
+  .m-list li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#dbe6f5}
+  .m-list li::before{content:"✓";display:grid;place-items:center;width:22px;height:22px;border-radius:50%;flex-shrink:0;
+    font-size:12px;font-weight:900;color:#fff;background:linear-gradient(135deg,var(--usa-blue-2),var(--usa-red))}
+  .m-btn{width:100%;display:block;text-align:center;padding:15px;border-radius:13px;font-weight:800;font-size:15.5px;cursor:pointer;border:none;color:#fff;transition:transform .2s ease,box-shadow .2s ease}
+  .method.opus .m-btn{background:linear-gradient(135deg,var(--usa-blue),var(--usa-blue-2));box-shadow:0 12px 30px -10px var(--glow-blue)}
+  .method.lotus .m-btn{background:linear-gradient(135deg,var(--usa-red),var(--usa-red-2));box-shadow:0 12px 30px -10px var(--glow-red)}
+  .m-btn:hover{transform:translateY(-2px)}
+
+  /* ---------- Reasons / Themes ---------- */
+  .reasons{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .reason{
+    padding:30px 26px;border-radius:var(--radius);
+    background:linear-gradient(160deg,rgba(20,32,54,.7),rgba(12,20,36,.7));
+    border:1px solid rgba(120,160,220,.14);transition:transform .25s ease,border-color .25s;
+  }
+  .reason:hover{transform:translateY(-6px);border-color:var(--usa-blue-2)}
+  .reason .ico{width:56px;height:56px;border-radius:15px;display:grid;place-items:center;font-size:28px;margin-bottom:18px;
+    background:linear-gradient(135deg,rgba(30,77,140,.4),rgba(224,27,70,.4));border:1px solid rgba(120,160,220,.2)}
+  .reason h3{font-size:19px;color:#fff;font-weight:800;margin-bottom:8px}
+  .reason p{color:#c4cede;font-size:15px}
+
+  /* ---------- Steps ---------- */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step}
+  .step{position:relative;padding:28px 22px;border-radius:var(--radius);
+    background:linear-gradient(160deg,rgba(20,32,54,.6),rgba(12,20,36,.6));border:1px solid rgba(120,160,220,.12)}
+  .step::before{counter-increment:step;content:"0" counter(step);font-size:34px;font-weight:900;
+    background:linear-gradient(120deg,#9fc0f0,#ff8aa6);-webkit-background-clip:text;background-clip:text;color:transparent;display:block;margin-bottom:10px}
+  .step h4{color:#fff;font-size:17px;margin-bottom:6px}
+  .step p{color:#c4cede;font-size:14px}
+
+  /* ---------- Testimonials ---------- */
+  .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .quote{padding:28px;border-radius:var(--radius);background:linear-gradient(160deg,rgba(20,32,54,.7),rgba(12,20,36,.7));border:1px solid rgba(120,160,220,.14)}
+  .quote .stars{font-size:15px;margin-bottom:12px;display:block}
+  .quote p{color:#dbe6f5;font-size:15px;font-style:italic;margin-bottom:18px}
+  .who{display:flex;align-items:center;gap:12px}
+  .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:900;color:#fff;
+    background:linear-gradient(135deg,var(--usa-blue-2),var(--usa-red))}
+  .who b{color:#fff;font-size:14.5px;display:block}
+  .who small{color:var(--muted);font-size:13px}
+
+  /* ---------- FAQ ---------- */
+  .faq{max-width:820px;margin:0 auto;display:grid;gap:14px}
+  .qa{border:1px solid rgba(120,160,220,.16);border-radius:14px;background:rgba(12,20,36,.6);overflow:hidden;transition:border-color .2s}
+  .qa[open]{border-color:var(--usa-red)}
+  .qa summary{cursor:pointer;list-style:none;padding:20px 24px;font-weight:700;font-size:16.5px;color:#fff;
+    display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .qa summary::-webkit-details-marker{display:none}
+  .qa summary .plus{flex-shrink:0;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-size:18px;
+    background:linear-gradient(135deg,var(--usa-blue-2),var(--usa-red));transition:transform .25s}
+  .qa[open] summary .plus{transform:rotate(45deg)}
+  .qa .a{padding:0 24px 22px;color:#c4cede;font-size:15.5px}
+
+  /* ---------- Final CTA ---------- */
+  .final{
+    text-align:center;border-radius:28px;padding:60px 30px;position:relative;overflow:hidden;
+    background:linear-gradient(135deg,var(--usa-blue) 0%,#122a52 50%,var(--usa-red) 140%);
+    border:1px solid rgba(120,160,220,.25);
+  }
+  .final::before{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 20% 20%,rgba(255,255,255,.12),transparent 40%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.08),transparent 40%)}
+  .final h2{font-size:clamp(26px,4vw,40px);font-weight:900;color:#fff;position:relative;margin-bottom:14px}
+  .final p{color:#e2ecf9;font-size:17px;position:relative;margin-bottom:28px;max-width:600px;margin-inline:auto}
+
+  /* ---------- Footer ---------- */
+  footer{padding:40px 0;border-top:1px solid rgba(120,160,220,.12);text-align:center;color:var(--muted);font-size:14px;position:relative;z-index:1}
+  footer .logo{justify-content:center;margin-bottom:14px}
+
+  /* ---------- Modal / Form ---------- */
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex;animation:fade .3s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal-bg{position:absolute;inset:0;background:rgba(4,8,16,.78);backdrop-filter:blur(6px)}
+  .modal-box{position:relative;width:min(480px,100%);border-radius:22px;padding:34px;
+    background:linear-gradient(165deg,#101c33,#0a1526);border:1px solid rgba(120,160,220,.22);
+    box-shadow:var(--shadow);animation:pop .35s cubic-bezier(.2,.9,.3,1.2);max-height:92vh;overflow-y:auto}
+  @keyframes pop{from{transform:scale(.9) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+  .modal-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:9px;cursor:pointer;
+    background:rgba(120,160,220,.12);border:1px solid rgba(120,160,220,.2);color:#cfe0f7;font-size:18px;display:grid;place-items:center}
+  .modal-close:hover{background:rgba(224,27,70,.25)}
+  .modal-box .flagbar{margin-bottom:18px}
+  .modal-box h3{font-size:24px;color:#fff;font-weight:900;margin-bottom:6px}
+  .modal-box .msub{color:#c4cede;font-size:14.5px;margin-bottom:22px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:13.5px;font-weight:700;color:#cfe0f7;margin-bottom:7px}
+  .field input,.field select{
+    width:100%;padding:13px 15px;border-radius:11px;font-family:inherit;font-size:15px;color:#fff;
+    background:rgba(9,16,30,.8);border:1px solid rgba(120,160,220,.22);transition:border-color .2s,box-shadow .2s;
+  }
+  .field input::placeholder{color:#5f6c80}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--usa-red-2);box-shadow:0 0 0 3px rgba(224,27,70,.18)}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%239fc0f0' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .field select option{background:#0a1526}
+  .submit-btn{width:100%;padding:16px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:16px;color:#fff;
+    background:linear-gradient(135deg,var(--usa-red),var(--usa-red-2));box-shadow:0 12px 30px -10px var(--glow-red);transition:transform .2s}
+  .submit-btn:hover{transform:translateY(-2px)}
+  .form-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:14px}
+  .success{text-align:center;padding:20px 0}
+  .success .check{width:72px;height:72px;border-radius:50%;margin:0 auto 18px;display:grid;place-items:center;font-size:36px;
+    background:linear-gradient(135deg,var(--usa-blue-2),var(--usa-red));animation:pop .4s ease}
+  .success h3{color:#fff;margin-bottom:8px}
+  .success p{color:#c4cede;font-size:15px}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Sticky mobile CTA ---------- */
+  .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:12px 16px;display:none;
+    background:rgba(7,12,22,.92);backdrop-filter:blur(12px);border-top:1px solid rgba(120,160,220,.15)}
+  .sticky-cta button{width:100%;padding:15px;border-radius:12px;border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:16px;color:#fff;
+    background:linear-gradient(135deg,var(--usa-red),var(--usa-red-2))}
+
+  /* ---------- Responsive ---------- */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:34px}
+    .prof-grid{grid-template-columns:1fr;gap:30px}
+    .prof-photo{max-width:380px;margin-inline:auto}
+    .prof-info .sec-title{text-align:center}
+    .prof-info .eyebrow{display:block;text-align:center}
+    .auth-grid{grid-template-columns:repeat(2,1fr)}
+    .methods{grid-template-columns:1fr}
+    .reasons{grid-template-columns:1fr}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .testi{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    .sec{padding:56px 0}
+    .hero{padding:40px 0 56px}
+    .nav-cta{display:none}
+    .auth-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:1fr}
+    .hero-actions{flex-direction:column;align-items:stretch}
+    .btn{width:100%;text-align:center}
+    .sticky-cta{display:block}
+    body{padding-bottom:76px}
+    .final{padding:44px 22px}
+    .modal-box{padding:26px 22px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="orb b"></div>
+<div class="orb r"></div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-in">
+    <div class="logo">
+      <span class="mark">EN</span>
+      <span>English Pro<small>Cambridge C1 • 15 anos</small></span>
+    </div>
+    <a class="nav-cta" href="#planos" onclick="return true">Começar agora</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge-row">
+        <span class="chip"><span class="dot"></span>Método comprovado</span>
+        <span class="chip"><span class="dot"></span>Aulas ao vivo</span>
+        <span class="chip"><span class="dot"></span>Turmas reduzidas</span>
+      </div>
+      <h1 class="hero-title">Fale inglês de verdade. Sem enrolação.</h1>
+      <p class="hero-punch">Quantas oportunidades você já perdeu por não saber falar inglês?</p>
+      <p class="hero-sub">
+        Viagens, promoções, entrevistas, intercâmbio, migração. Tudo isso passa por uma habilidade só —
+        e ela pode começar hoje. Aprenda com um professor <strong>nível C1</strong>, aprovado no
+        <strong>Exame de Cambridge com nota 955</strong> e <strong>15 anos</strong> de experiência.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" data-cta="Quero começar (Hero)">Quero minha vaga →</button>
+        <a class="btn btn-ghost" href="#metodos">Ver os métodos</a>
+      </div>
+      <div class="trust-mini">
+        <span class="stars">★★★★★</span> Aprovado por centenas de alunos em todo o Brasil
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="flagbar"><i class="b"></i><i class="w"></i><i class="r"></i></div>
+      <div class="card-title">Credenciais do professor</div>
+      <div class="stat-list">
+        <div class="stat-item">
+          <div class="stat-ico">🎓</div>
+          <div><div class="stat-num">15 anos</div><div class="stat-lab">de formação e ensino de inglês</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-ico">🏆</div>
+          <div><div class="stat-num">955 pontos</div><div class="stat-lab">no Exame de Cambridge</div></div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-ico">📈</div>
+          <div><div class="stat-num">Nível C1</div><div class="stat-lab">proficiência avançada certificada</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<section class="sec" id="sobre">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Por que aprender comigo</span>
+      <h2 class="sec-title">Experiência real, resultado <span>que se comprova</span></h2>
+      <p class="sec-sub">Não é curso genérico de plataforma. É acompanhamento próximo, com um profissional certificado internacionalmente.</p>
+    </div>
+    <div class="auth-grid">
+      <div class="auth-card reveal"><div class="auth-num">15</div><div class="auth-lab">Anos de formação em inglês</div></div>
+      <div class="auth-card reveal"><div class="auth-num">955</div><div class="auth-lab">Nota no Exame de Cambridge</div></div>
+      <div class="auth-card reveal"><div class="auth-num">C1</div><div class="auth-lab">Nível de proficiência</div></div>
+      <div class="auth-card reveal"><div class="auth-num">100%</div><div class="auth-lab">Foco em conversação real</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFESSOR -->
+<section class="sec" id="professor">
+  <div class="wrap">
+    <div class="prof-grid">
+      <div class="prof-photo-col reveal">
+        <div class="prof-photo">
+          <div class="flagbar top"><i class="b"></i><i class="w"></i><i class="r"></i></div>
+          <img src="assets/professor.jpg" alt="Seu professor de inglês — certificado Cambridge C1"
+               onerror="this.style.display='none';this.parentNode.classList.add('no-img');">
+          <span class="prof-fallback">Sua foto aqui</span>
+          <div class="prof-badge">🏆 Cambridge 955</div>
+        </div>
+      </div>
+      <div class="prof-info reveal">
+        <span class="eyebrow">Conheça seu professor</span>
+        <h2 class="sec-title">Quem vai te levar <span>à fluência</span></h2>
+        <p class="sec-sub">Mais de <strong>15 anos</strong> dedicados ao ensino de inglês, com certificação internacional e foco total em resultado real: você falando inglês com confiança.</p>
+        <ul class="prof-list">
+          <li><span>🎓</span><div><b>15 anos de formação</b> em ensino de inglês</div></li>
+          <li><span>🏆</span><div><b>Exame de Cambridge — nota 955</b>, aprovação com excelência</div></li>
+          <li><span>📈</span><div><b>Nível C1</b> — proficiência avançada certificada</div></li>
+          <li><span>🎯</span><div>Metodologia própria: <b>Opus Intensivo</b> e <b>Lotus</b></div></li>
+        </ul>
+        <button class="btn btn-primary" data-cta="Falar com o professor">Quero aula com o professor →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODS / PLANS -->
+<section class="sec" id="metodos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Escolha seu ritmo</span>
+      <h2 class="sec-title">Dois métodos, <span>um objetivo: fluência</span></h2>
+      <p class="sec-sub">Seja para construir uma base sólida a longo prazo ou para acelerar e destravar o inglês rápido — tem um caminho certo pra você.</p>
+    </div>
+
+    <div class="methods" id="planos">
+      <!-- OPUS -->
+      <div class="method opus reveal">
+        <span class="halo"></span>
+        <span class="m-tag">Longo prazo</span>
+        <div class="m-name">Método Opus Intensivo</div>
+        <div class="m-freq">🗓️ 3 aulas por semana</div>
+        <p class="m-desc">Para quem quer aprender inglês de forma <strong>definitiva</strong>. Uma jornada estruturada que constrói base sólida, elimina lacunas e leva você à fluência para sempre.</p>
+        <ul class="m-list">
+          <li>Progressão consistente com base gramatical sólida</li>
+          <li>Conversação em todas as aulas, desde o início</li>
+          <li>Correção de pronúncia e vícios de linguagem</li>
+          <li>Material e plano de estudo personalizados</li>
+          <li>Ideal para fixar o inglês de forma permanente</li>
+        </ul>
+        <button class="m-btn" data-cta="Método Opus Intensivo">Quero o Método Opus →</button>
+      </div>
+
+      <!-- LOTUS -->
+      <div class="method lotus reveal">
+        <span class="halo"></span>
+        <span class="m-tag">Turbo / rápido</span>
+        <div class="m-name">Método Lotus</div>
+        <div class="m-freq">⚡ 5 aulas por semana</div>
+        <p class="m-desc">Para quem precisa aprender <strong>rápido</strong>. Um intensivo de imersão total que acelera sua evolução e destrava a fala no menor tempo possível.</p>
+        <ul class="m-list">
+          <li>Imersão diária para resultados acelerados</li>
+          <li>Foco máximo em conversação e escuta ativa</li>
+          <li>Ideal para prazos apertados (viagem, entrevista, mudança)</li>
+          <li>Vocabulário prático e situações reais</li>
+          <li>Evolução visível semana após semana</li>
+        </ul>
+        <button class="m-btn" data-cta="Método Lotus">Quero o Método Lotus →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REASONS / THEMES -->
+<section class="sec" id="motivos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">O inglês abre portas</span>
+      <h2 class="sec-title">Para onde o inglês <span>vai te levar?</span></h2>
+      <p class="sec-sub">Cada aluno tem um motivo. Qual é o seu?</p>
+    </div>
+    <div class="reasons">
+      <div class="reason reveal">
+        <div class="ico">✈️</div>
+        <h3>Viagem</h3>
+        <p>Viaje com confiança, converse com qualquer pessoa, resolva imprevistos e viva a experiência completa sem depender de tradutor.</p>
+      </div>
+      <div class="reason reveal">
+        <div class="ico">💼</div>
+        <h3>Emprego & Carreira</h3>
+        <p>Destrave promoções, salários maiores e vagas internacionais. Inglês é o diferencial que coloca seu currículo no topo.</p>
+      </div>
+      <div class="reason reveal">
+        <div class="ico">🌎</div>
+        <h3>Preparação para migração</h3>
+        <p>Vai morar fora? Prepare-se para entrevistas, provas de proficiência e para a vida no dia a dia em outro país com segurança.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="sec" id="como">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Simples do começo ao fim</span>
+      <h2 class="sec-title">Como funciona <span>na prática</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h4>Preencha o formulário</h4><p>Conte seu objetivo e deixe seu contato. Leva menos de 1 minuto.</p></div>
+      <div class="step reveal"><h4>Aula diagnóstica</h4><p>Avaliamos seu nível atual e definimos o método ideal para você.</p></div>
+      <div class="step reveal"><h4>Plano personalizado</h4><p>Você recebe uma trilha sob medida: Opus ou Lotus.</p></div>
+      <div class="step reveal"><h4>Evolua e fale</h4><p>Aulas ao vivo, prática constante e resultado que você sente.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec" id="depoimentos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Quem já vive isso</span>
+      <h2 class="sec-title">Resultados de <span>alunos reais</span></h2>
+    </div>
+    <div class="testi">
+      <div class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <p>"Em 4 meses no método Lotus eu saí do zero à conversação. Passei na entrevista de uma empresa internacional!"</p>
+        <div class="who"><div class="avatar">MR</div><div><b>Marina R.</b><small>Migração para o Canadá</small></div></div>
+      </div>
+      <div class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <p>"O método Opus me deu a base que nenhum outro curso deu. Hoje viajo e falo com naturalidade. Vale cada aula."</p>
+        <div class="who"><div class="avatar">JP</div><div><b>João Paulo</b><small>Viagens a trabalho</small></div></div>
+      </div>
+      <div class="quote reveal">
+        <span class="stars">★★★★★</span>
+        <p>"Professor atencioso e muito preparado. A didática é excelente e as aulas passam voando. Recomendo demais!"</p>
+        <div class="who"><div class="avatar">CS</div><div><b>Camila S.</b><small>Promoção na carreira</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Tire suas dúvidas</span>
+      <h2 class="sec-title">Perguntas <span>frequentes</span></h2>
+    </div>
+    <div class="faq">
+      <details class="qa reveal">
+        <summary>Nunca estudei inglês. Consigo começar do zero?<span class="plus">+</span></summary>
+        <div class="a">Sim! Os dois métodos atendem do iniciante ao avançado. Fazemos uma aula diagnóstica para entender seu nível e montar um plano do ponto exato onde você está.</div>
+      </details>
+      <details class="qa reveal">
+        <summary>Qual a diferença entre o Opus Intensivo e o Lotus?<span class="plus">+</span></summary>
+        <div class="a">O <strong>Opus Intensivo</strong> tem 3 aulas por semana e é indicado para quem quer aprender de forma definitiva e a longo prazo, com base sólida. O <strong>Lotus</strong> tem 5 aulas por semana e é um intensivo para quem precisa evoluir rápido, com imersão diária.</div>
+      </details>
+      <details class="qa reveal">
+        <summary>As aulas são ao vivo ou gravadas?<span class="plus">+</span></summary>
+        <div class="a">As aulas são <strong>ao vivo</strong>, com interação real e correção em tempo real. É isso que garante a evolução rápida na conversação — algo que aulas gravadas não entregam.</div>
+      </details>
+      <details class="qa reveal">
+        <summary>Quanto tempo até eu conseguir me comunicar?<span class="plus">+</span></summary>
+        <div class="a">Depende do método e da sua dedicação. No Lotus, alunos costumam sentir evolução clara já nas primeiras semanas. No Opus, a construção é mais gradual e definitiva. Em ambos, você fala inglês desde a primeira aula.</div>
+      </details>
+      <details class="qa reveal">
+        <summary>O curso prepara para provas de proficiência (Cambridge, IELTS, TOEFL)?<span class="plus">+</span></summary>
+        <div class="a">Sim. Como professor certificado com nota 955 no Exame de Cambridge e nível C1, ofereço preparação específica para provas de proficiência, muito útil para quem busca migração ou intercâmbio.</div>
+      </details>
+      <details class="qa reveal">
+        <summary>Como faço para começar?<span class="plus">+</span></summary>
+        <div class="a">Simples: clique em qualquer botão de contato, preencha o formulário rápido com seu nome, telefone, e-mail e o motivo de aprender inglês. Em seguida entramos em contato para agendar sua aula diagnóstica.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec" id="contato">
+  <div class="wrap">
+    <div class="final reveal">
+      <h2>Sua próxima oportunidade não vai esperar você aprender inglês.</h2>
+      <p>Comece hoje. Escolha seu método, garanta sua vaga e transforme o inglês de obstáculo em vantagem.</p>
+      <button class="btn btn-primary" data-cta="CTA Final">Quero garantir minha vaga →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="logo"><span class="mark">EN</span><span>English Pro<small>Cambridge C1 • 15 anos</small></span></div>
+    <p>Aulas de inglês ao vivo • Métodos Opus Intensivo e Lotus</p>
+    <p style="margin-top:8px">© 2026 English Pro. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta">
+  <button data-cta="Sticky Mobile">Quero aprender inglês →</button>
+</div>
+
+<!-- MODAL FORM -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-bg" data-close></div>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" data-close aria-label="Fechar">✕</button>
+    <div id="form-view">
+      <div class="flagbar"><i class="b"></i><i class="w"></i><i class="r"></i></div>
+      <h3 id="modal-title">Garanta sua vaga</h3>
+      <p class="msub">Preencha os dados abaixo e entraremos em contato para agendar sua aula diagnóstica.</p>
+      <form id="lead-form" novalidate>
+        <input type="hidden" name="interesse" id="interesse">
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="telefone">Telefone / WhatsApp</label>
+          <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="voce@email.com" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="motivo">Por que você quer aprender inglês?</label>
+          <select id="motivo" name="motivo" required>
+            <option value="" disabled selected>Selecione uma opção</option>
+            <option value="Viagem">Viagem</option>
+            <option value="Emprego">Emprego</option>
+            <option value="Preparação para migração">Preparação para migração</option>
+          </select>
+        </div>
+        <button type="submit" class="submit-btn">Quero começar agora →</button>
+        <p class="form-note">🔒 Seus dados estão seguros. Sem spam, prometido.</p>
+      </form>
+    </div>
+    <div id="success-view" class="success" style="display:none">
+      <div class="check">✓</div>
+      <h3>Recebido com sucesso!</h3>
+      <p>Obrigado! Em breve entraremos em contato pelo telefone ou e-mail informado para agendar sua aula diagnóstica. 🚀</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var modal=document.getElementById('modal');
+  var formView=document.getElementById('form-view');
+  var successView=document.getElementById('success-view');
+  var form=document.getElementById('lead-form');
+  var interesseField=document.getElementById('interesse');
+  var motivoSelect=document.getElementById('motivo');
+
+  function openModal(source){
+    interesseField.value=source||'Geral';
+    // Pré-seleciona o motivo se o CTA vier de uma seção temática
+    formView.style.display='block';
+    successView.style.display='none';
+    form.reset();
+    interesseField.value=source||'Geral';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow='hidden';
+    setTimeout(function(){document.getElementById('nome').focus();},250);
+  }
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+
+  // Bind all CTA buttons
+  document.querySelectorAll('[data-cta]').forEach(function(btn){
+    btn.addEventListener('click',function(e){
+      e.preventDefault();
+      openModal(btn.getAttribute('data-cta'));
+    });
+  });
+  // Nav + anchor CTAs that point to #planos should just scroll (kept native) — nothing to do.
+
+  // Close handlers
+  document.querySelectorAll('[data-close]').forEach(function(el){
+    el.addEventListener('click',closeModal);
+  });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeModal(); });
+
+  // Form submit
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    var data={
+      nome:form.nome.value.trim(),
+      telefone:form.telefone.value.trim(),
+      email:form.email.value.trim(),
+      motivo:form.motivo.value,
+      interesse:interesseField.value
+    };
+    // Persist locally as fallback (no backend in this static LP)
+    try{
+      var leads=JSON.parse(localStorage.getItem('leads')||'[]');
+      leads.push(Object.assign({data_hora:new Date().toISOString()},data));
+      localStorage.setItem('leads',JSON.stringify(leads));
+    }catch(err){}
+    // TODO: integrar com backend / e-mail / CRM / WhatsApp aqui.
+    console.log('Lead capturado:',data);
+    formView.style.display='none';
+    successView.style.display='block';
+  });
+
+  // Scroll reveal
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
