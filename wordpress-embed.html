@@ -1,0 +1,409 @@
+<!-- ===== KAWAN MANDÚ · MANDÚ MARQUES ADVOCACIA — bloco HTML para WordPress =====
+     Cole este código inteiro em um bloco "HTML Personalizado" (Custom HTML) do WordPress.
+     Tudo está isolado dentro de #kmm para não conflitar com o tema.
+     Para adicionar a foto: envie a imagem na Biblioteca de Mídia do WordPress,
+     copie a URL dela e substitua COLOQUE_A_URL_DA_FOTO_AQUI abaixo. =========== -->
+<div id="kmm">
+  <style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  #kmm{
+    --marinho:#1b2b3e; --creme:#fcfaf3; --creme-shade:#f4efe2; --tinta:#2a2d33;
+    --cinza:#6a7079; --line:#d9d2c2; --gold:#b08d4f;
+    --serif-display:"Cormorant Garamond",Garamond,"Times New Roman",serif;
+    --serif-body:"EB Garamond",Garamond,"Times New Roman",serif;
+    --maxw:1160px; --gutter:clamp(1.25rem,4vw,3rem);
+    font-family:var(--serif-body); font-size:1.125rem; line-height:1.7;
+    color:var(--tinta); background:var(--creme); -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  #kmm, #kmm *, #kmm *::before, #kmm *::after{ box-sizing:border-box; }
+  #kmm a{ color:inherit; }
+  #kmm img{ max-width:100%; display:block; }
+
+  #kmm .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding-inline:var(--gutter); }
+
+  #kmm .eyebrow{ font-family:var(--serif-body); text-transform:uppercase; letter-spacing:.32em;
+    font-size:.72rem; color:var(--cinza); margin:0 0 .9rem; font-weight:500; }
+  #kmm .eyebrow--light{ color:rgba(252,250,243,.6); }
+  #kmm .section__title{ font-family:var(--serif-display); font-weight:500;
+    font-size:clamp(2rem,4.5vw,3rem); line-height:1.08; color:var(--marinho); margin:0; letter-spacing:.01em; }
+  #kmm .section__title--light{ color:var(--creme); }
+
+  #kmm .brand{ display:inline-flex; align-items:center; gap:.85rem; text-decoration:none; }
+  #kmm .brand__mark{ display:inline-flex; align-items:baseline; justify-content:center;
+    border:1.5px solid var(--marinho); color:var(--marinho); padding:.28em .4em .2em;
+    font-family:var(--serif-display); line-height:1; }
+  #kmm .brand__mark-k{ font-size:1.5em; font-weight:600; }
+  #kmm .brand__mark-mm{ font-size:.98em; font-weight:600; letter-spacing:.02em; }
+  #kmm .brand__mark--light{ border-color:var(--creme); color:var(--creme); }
+  #kmm .brand__mark--lg{ font-size:2.6rem; padding:.3em .42em .22em; }
+  #kmm .brand__word{ display:flex; flex-direction:column; line-height:1.05; }
+  #kmm .brand__name{ font-family:var(--serif-display); font-size:1.32rem; font-weight:600;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--marinho); }
+  #kmm .brand__sub{ font-family:var(--serif-body); font-size:.66rem; letter-spacing:.42em;
+    text-transform:uppercase; color:var(--cinza); padding-left:.1em; }
+
+  #kmm .topbar{ background:var(--marinho); color:rgba(252,250,243,.82); font-size:.78rem;
+    letter-spacing:.14em; text-transform:uppercase; }
+  #kmm .topbar__inner{ display:flex; align-items:center; justify-content:center; gap:.75rem;
+    padding-block:.55rem; flex-wrap:wrap; }
+  #kmm .topbar__item{ color:inherit; text-decoration:none; }
+  #kmm .topbar__item:hover{ color:var(--creme); }
+  #kmm .topbar__sep{ opacity:.5; }
+
+  #kmm .header{ position:sticky; top:0; z-index:30; background:rgba(252,250,243,.92);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  #kmm .header__inner{ display:flex; align-items:center; justify-content:space-between;
+    gap:1.5rem; padding-block:1rem; }
+  #kmm .header .brand__name{ font-size:1.12rem; }
+  #kmm .header .brand__mark{ padding:.22em .32em .16em; font-size:.86rem; }
+  #kmm .nav{ display:flex; align-items:center; gap:clamp(1rem,2.4vw,2.25rem);
+    font-size:.86rem; letter-spacing:.14em; text-transform:uppercase; }
+  #kmm .nav a{ text-decoration:none; color:var(--tinta); transition:color .2s; }
+  #kmm .nav a:hover{ color:var(--marinho); }
+  #kmm .nav__cta{ border:1px solid var(--marinho); padding:.5rem 1rem; color:var(--marinho)!important;
+    transition:background .25s,color .25s; }
+  #kmm .nav__cta:hover{ background:var(--marinho); color:var(--creme)!important; }
+
+  #kmm .btn{ display:inline-block; font-family:var(--serif-body); font-size:.9rem; letter-spacing:.16em;
+    text-transform:uppercase; text-decoration:none; padding:.85rem 1.75rem; border:1px solid var(--marinho);
+    transition:background .25s,color .25s,border-color .25s; cursor:pointer; }
+  #kmm .btn--primary{ background:var(--marinho); color:var(--creme); }
+  #kmm .btn--primary:hover{ background:#24384f; border-color:#24384f; }
+  #kmm .btn--ghost{ background:transparent; color:var(--marinho); }
+  #kmm .btn--ghost:hover{ background:var(--marinho); color:var(--creme); }
+  #kmm .btn--block{ display:block; text-align:center; width:100%; }
+
+  #kmm .hero{ position:relative; background:linear-gradient(180deg,var(--creme) 0%,var(--creme-shade) 100%);
+    border-bottom:1px solid var(--line); overflow:hidden; }
+  #kmm .hero__inner{ display:grid; grid-template-columns:1.15fr .85fr; gap:clamp(2rem,5vw,4.5rem);
+    align-items:center; padding-block:clamp(3.5rem,8vw,6.5rem); }
+  #kmm .hero__title{ font-family:var(--serif-display); font-weight:600; font-size:clamp(3rem,7vw,5.25rem);
+    line-height:1; color:var(--marinho); margin:0 0 .5rem; letter-spacing:.01em; }
+  #kmm .hero__role{ font-size:1.12rem; color:var(--cinza); font-style:italic; margin:0 0 1.75rem;
+    padding-bottom:1.75rem; border-bottom:1px solid var(--line); max-width:34ch; }
+  #kmm .hero__lead{ font-size:1.22rem; max-width:46ch; margin:0 0 2.25rem; color:#3a3d44; }
+  #kmm .hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
+
+  #kmm .hero__portrait{ display:flex; justify-content:center; }
+  #kmm .portrait{ position:relative; margin:0; width:min(100%,380px); aspect-ratio:4/5;
+    border:1px solid var(--marinho); padding:12px; background:var(--creme); }
+  #kmm .portrait::after{ content:""; position:absolute; inset:20px;
+    border:1px solid rgba(27,43,62,.18); pointer-events:none; z-index:2; }
+  #kmm .portrait img{ width:100%; height:100%; object-fit:cover; filter:grayscale(8%) contrast(1.02); }
+  #kmm .portrait__placeholder{ display:none; width:100%; height:100%; align-items:center; justify-content:center;
+    background:repeating-linear-gradient(135deg,#eee7d6 0 2px,transparent 2px 16px),var(--creme-shade);
+    color:var(--marinho); }
+  #kmm .portrait--empty .portrait__placeholder{ display:flex; }
+
+  #kmm .creds{ background:var(--marinho); color:var(--creme); }
+  #kmm .creds__inner{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(1.5rem,4vw,3.5rem);
+    padding-block:clamp(2rem,4vw,2.75rem); }
+  #kmm .cred{ display:flex; flex-direction:column; gap:.5rem; }
+  #kmm .cred+.cred{ position:relative; }
+  #kmm .cred+.cred::before{ content:""; position:absolute; left:calc(-1 * clamp(.75rem,2vw,1.75rem));
+    top:.15rem; bottom:.15rem; width:1px; background:rgba(252,250,243,.18); }
+  #kmm .cred__label{ text-transform:uppercase; letter-spacing:.28em; font-size:.7rem; color:rgba(252,250,243,.55); }
+  #kmm .cred__value{ font-size:1rem; line-height:1.5; color:rgba(252,250,243,.92); }
+
+  #kmm .section{ padding-block:clamp(3.5rem,8vw,6rem); }
+  #kmm .section__head{ max-width:46rem; margin-bottom:clamp(2.5rem,5vw,3.5rem); }
+  #kmm .section__intro{ color:var(--cinza); font-size:1.15rem; margin:.75rem 0 0; }
+
+  #kmm .sobre__inner{ display:grid; grid-template-columns:.4fr .6fr; gap:clamp(2rem,5vw,4rem); }
+  #kmm .section__aside{ position:sticky; top:6rem; align-self:start; }
+  #kmm .sobre__body p{ margin:0 0 1.35rem; font-size:1.2rem; }
+  #kmm .sobre__body p:last-child{ margin-bottom:0; }
+  #kmm .sobre__body strong{ color:var(--marinho); font-weight:600; }
+
+  #kmm .atuacao{ background:var(--creme-shade); border-block:1px solid var(--line); }
+  #kmm .areas{ display:grid; grid-template-columns:repeat(2,1fr); gap:clamp(1.25rem,3vw,2rem); }
+  #kmm .area{ background:var(--creme); border:1px solid var(--line); padding:clamp(1.75rem,3vw,2.5rem);
+    transition:border-color .25s,box-shadow .25s,transform .25s; }
+  #kmm .area:hover{ border-color:var(--marinho); box-shadow:0 18px 40px -28px rgba(27,43,62,.55); transform:translateY(-3px); }
+  #kmm .area__head{ display:grid; grid-template-columns:auto 1fr; grid-template-areas:"num title" "num tag";
+    column-gap:1.1rem; align-items:baseline; padding-bottom:1.25rem; margin-bottom:1.25rem; border-bottom:1px solid var(--line); }
+  #kmm .area__num{ grid-area:num; align-self:center; font-family:var(--serif-display); font-size:1.6rem;
+    color:var(--gold); border:1px solid var(--line); width:2.6rem; height:2.6rem; display:flex;
+    align-items:center; justify-content:center; letter-spacing:.05em; }
+  #kmm .area__title{ grid-area:title; font-family:var(--serif-display); font-weight:600; font-size:1.7rem;
+    color:var(--marinho); margin:0; line-height:1.1; }
+  #kmm .area__tag{ grid-area:tag; margin:.15rem 0 0; font-size:.82rem; text-transform:uppercase;
+    letter-spacing:.14em; color:var(--cinza); }
+  #kmm .area__list{ list-style:none; margin:0; padding:0; }
+  #kmm .area__list li{ position:relative; padding-left:1.4rem; margin-bottom:1rem; font-size:1.05rem; line-height:1.55; }
+  #kmm .area__list li:last-child{ margin-bottom:0; }
+  #kmm .area__list li::before{ content:""; position:absolute; left:0; top:.68em; width:.5rem; height:1px; background:var(--gold); }
+  #kmm .area__list strong{ color:var(--marinho); font-weight:600; }
+
+  #kmm .contato{ background:var(--marinho); color:var(--creme); }
+  #kmm .contato__inner{ display:grid; grid-template-columns:1fr .85fr; gap:clamp(2.5rem,6vw,5rem); align-items:center; }
+  #kmm .contato__lead{ font-size:1.2rem; color:rgba(252,250,243,.8); max-width:40ch; margin:1.25rem 0 0; }
+  #kmm .contato__card{ background:rgba(252,250,243,.05); border:1px solid rgba(252,250,243,.2); padding:clamp(1.75rem,4vw,2.75rem); }
+  #kmm .contato__list{ margin:0 0 1.75rem; }
+  #kmm .contato__list>div{ padding:1rem 0; border-bottom:1px solid rgba(252,250,243,.14); }
+  #kmm .contato__list>div:first-child{ padding-top:0; }
+  #kmm .contato__list dt{ text-transform:uppercase; letter-spacing:.22em; font-size:.7rem; color:rgba(252,250,243,.55); margin-bottom:.3rem; }
+  #kmm .contato__list dd{ margin:0; font-size:1.15rem; color:var(--creme); }
+  #kmm .contato__list dd a{ text-decoration:none; border-bottom:1px solid rgba(252,250,243,.35); }
+  #kmm .contato__list dd a:hover{ border-color:var(--creme); }
+  #kmm .contato__card .btn--primary{ background:var(--creme); color:var(--marinho); border-color:var(--creme); }
+  #kmm .contato__card .btn--primary:hover{ background:#fff; }
+
+  #kmm .footer{ background:#14202e; color:rgba(252,250,243,.7); padding-block:clamp(2.5rem,5vw,3.5rem); }
+  #kmm .footer__inner{ display:grid; grid-template-columns:auto 1fr; align-items:center; gap:1.5rem 2.5rem; }
+  #kmm .footer__brand{ display:inline-flex; align-items:center; gap:.85rem; }
+  #kmm .footer .brand__name{ color:var(--creme); font-size:1.05rem; }
+  #kmm .footer .brand__sub{ color:rgba(252,250,243,.5); }
+  #kmm .footer__info{ text-align:right; font-size:.95rem; line-height:1.6; }
+  #kmm .footer__info p{ margin:0; }
+  #kmm .footer__info a{ text-decoration:none; border-bottom:1px solid rgba(252,250,243,.3); }
+  #kmm .footer__info a:hover{ color:var(--creme); }
+  #kmm .footer__legal{ grid-column:1/-1; margin:0; padding-top:1.5rem; border-top:1px solid rgba(252,250,243,.12);
+    font-size:.8rem; letter-spacing:.04em; color:rgba(252,250,243,.45); text-align:center; }
+
+  @media (max-width:900px){
+    #kmm .hero__inner{ grid-template-columns:1fr; }
+    #kmm .hero__portrait{ order:-1; }
+    #kmm .portrait{ width:min(78%,320px); }
+    #kmm .sobre__inner{ grid-template-columns:1fr; }
+    #kmm .section__aside{ position:static; }
+    #kmm .creds__inner{ grid-template-columns:1fr; gap:1.5rem; }
+    #kmm .cred+.cred::before{ display:none; }
+    #kmm .cred{ border-top:1px solid rgba(252,250,243,.15); padding-top:1.25rem; }
+    #kmm .cred:first-child{ border-top:none; padding-top:0; }
+    #kmm .areas{ grid-template-columns:1fr; }
+    #kmm .contato__inner{ grid-template-columns:1fr; }
+    #kmm .footer__inner{ grid-template-columns:1fr; text-align:center; }
+    #kmm .footer__brand{ justify-content:center; }
+    #kmm .footer__info{ text-align:center; }
+  }
+  @media (max-width:640px){
+    #kmm .nav{ display:none; }
+    #kmm{ font-size:1.06rem; }
+  }
+  @media (prefers-reduced-motion:reduce){ #kmm *{ transition:none!important; } }
+  </style>
+
+  <!-- Barra institucional -->
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span class="topbar__item">OAB/SP nº 67.323</span>
+      <span class="topbar__sep" aria-hidden="true">·</span>
+      <a class="topbar__item" href="mailto:kawanmandu@adv.oabsp.org.br">kawanmandu@adv.oabsp.org.br</a>
+    </div>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a class="brand" href="#topo" aria-label="Mandú Marques Advocacia — início">
+        <span class="brand__mark" aria-hidden="true"><span class="brand__mark-k">K</span><span class="brand__mark-mm">MM</span></span>
+        <span class="brand__word">
+          <span class="brand__name">Mandú Marques</span>
+          <span class="brand__sub">Advocacia</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#atuacao">Áreas de Atuação</a>
+        <a href="#contato">Contato</a>
+        <a class="nav__cta" href="mailto:kawanmandu@adv.oabsp.org.br">Fale com o escritório</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text">
+        <p class="eyebrow">Advocacia</p>
+        <h1 class="hero__title">Kawan Mandú</h1>
+        <p class="hero__role">Advogado · Bacharel e Mestre em Direito Político e Econômico</p>
+        <p class="hero__lead">
+          Assessoria jurídica de excelência, pautada pela tradição, pelo rigor técnico
+          e pelo compromisso com a segurança jurídica de cada cliente. Uma advocacia
+          construída sobre estudo, discrição e resultado.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="mailto:kawanmandu@adv.oabsp.org.br">Agende uma consulta</a>
+          <a class="btn btn--ghost" href="#atuacao">Conheça as áreas de atuação</a>
+        </div>
+      </div>
+      <div class="hero__portrait">
+        <figure class="portrait portrait--empty">
+          <!-- Para exibir a foto: troque COLOQUE_A_URL_DA_FOTO_AQUI pela URL da imagem enviada na Biblioteca de Mídia,
+               e remova a classe "portrait--empty" da linha <figure> acima. -->
+          <img src="COLOQUE_A_URL_DA_FOTO_AQUI" alt="Retrato de Kawan Mandú, advogado"
+               onerror="this.closest('.portrait').classList.add('portrait--empty'); this.remove();">
+          <span class="portrait__placeholder" aria-hidden="true">
+            <span class="brand__mark brand__mark--lg"><span class="brand__mark-k">K</span><span class="brand__mark-mm">MM</span></span>
+          </span>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Credenciais -->
+  <section class="creds" aria-label="Formação e afiliações institucionais">
+    <div class="container creds__inner">
+      <div class="cred">
+        <span class="cred__label">Formação</span>
+        <span class="cred__value">Bacharel e Mestre em Direito Político e Econômico — Universidade Presbiteriana Mackenzie</span>
+      </div>
+      <div class="cred">
+        <span class="cred__label">OAB/SP</span>
+        <span class="cred__value">Comissão Permanente de Exame de Ordem · Comissão Especial de Direito Constitucional</span>
+      </div>
+      <div class="cred">
+        <span class="cred__label">IASP</span>
+        <span class="cred__value">Membro da Comissão dos Novos Advogados</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="section sobre" id="sobre">
+    <div class="container sobre__inner">
+      <div class="section__aside">
+        <p class="eyebrow">Sobre</p>
+        <h2 class="section__title">O advogado</h2>
+      </div>
+      <div class="sobre__body">
+        <p>
+          <strong>Kawan Mandú</strong> é advogado, Bacharel e Mestre em Direito Político e Econômico
+          pela Universidade Presbiteriana Mackenzie. Sua trajetória une sólida formação acadêmica à
+          prática forense, com atuação orientada pela profundidade técnica e pela responsabilidade
+          com cada demanda confiada ao escritório.
+        </p>
+        <p>
+          É membro da <strong>Comissão Permanente de Exame de Ordem</strong> e da
+          <strong>Comissão Especial de Direito Constitucional</strong> da OAB/SP, além de integrar a
+          <strong>Comissão dos Novos Advogados do IASP</strong> — participações que refletem seu
+          compromisso permanente com o aperfeiçoamento e o fortalecimento da advocacia.
+        </p>
+        <p>
+          O escritório <strong>Kawan Mandú Sociedade Individual de Advocacia</strong> oferece
+          atendimento personalizado e estratégico, com foco na prevenção de riscos, na proteção do
+          patrimônio e na defesa consistente dos interesses de seus clientes, seja na esfera
+          consultiva ou contenciosa.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Áreas de Atuação -->
+  <section class="section atuacao" id="atuacao">
+    <div class="container">
+      <div class="section__head">
+        <p class="eyebrow">Portfólio de serviços jurídicos</p>
+        <h2 class="section__title">Áreas de Atuação</h2>
+        <p class="section__intro">Soluções processuais e consultivas conduzidas com técnica, discrição e visão estratégica.</p>
+      </div>
+      <div class="areas">
+        <article class="area">
+          <div class="area__head">
+            <span class="area__num">I</span>
+            <h3 class="area__title">Direito Civil</h3>
+            <p class="area__tag">Contratos, Cobranças e Responsabilidade Civil</p>
+          </div>
+          <ul class="area__list">
+            <li><strong>Elaboração e revisão de contratos:</strong> redação e estruturação de acordos comerciais, prestação de serviços e parcerias, com foco na prevenção de riscos.</li>
+            <li><strong>Execuções, monitórias e cobranças:</strong> medidas judiciais e extrajudiciais para recuperação de créditos, cheques, notas promissórias e valores inadimplidos.</li>
+            <li><strong>Ações de indenização:</strong> reparação por danos morais, materiais, estéticos ou lucros cessantes decorrentes de atos ilícitos.</li>
+            <li><strong>Embargos e defesas em execução:</strong> impugnação de cobranças indevidas e proteção do patrimônio legalmente resguardado.</li>
+          </ul>
+        </article>
+        <article class="area">
+          <div class="area__head">
+            <span class="area__num">II</span>
+            <h3 class="area__title">Direito Imobiliário</h3>
+            <p class="area__tag">Imóveis, Posse e Propriedade</p>
+          </div>
+          <ul class="area__list">
+            <li><strong>Ações possessórias:</strong> reintegração, manutenção e interdito proibitório para proteção e retomada de bens imóveis.</li>
+            <li><strong>Usucapião judicial e extrajudicial:</strong> regularização do domínio com base na posse prolongada e mansa.</li>
+            <li><strong>Compra, venda e locação:</strong> assessoria em transações imobiliárias com plena segurança jurídica.</li>
+            <li><strong>Extinção de condomínio e alienação judicial:</strong> dissolução de copropriedade quando não há consenso amigável.</li>
+          </ul>
+        </article>
+        <article class="area">
+          <div class="area__head">
+            <span class="area__num">III</span>
+            <h3 class="area__title">Família e Sucessões</h3>
+            <p class="area__tag">Direito de Família</p>
+          </div>
+          <ul class="area__list">
+            <li><strong>Guarda e convivência:</strong> definição da modalidade de guarda e regime de visitas, priorizando o melhor interesse do menor.</li>
+            <li><strong>Alienação parental:</strong> intervenções para preservar o vínculo afetivo da criança e do adolescente.</li>
+            <li><strong>Divórcio judicial e extrajudicial:</strong> dissolução do vínculo matrimonial por via consensual ou litigiosa.</li>
+            <li><strong>Alimentos e inventários:</strong> fixação e revisão de pensão, além de partilha e transferência de herança.</li>
+          </ul>
+        </article>
+        <article class="area">
+          <div class="area__head">
+            <span class="area__num">IV</span>
+            <h3 class="area__title">Direito Tributário</h3>
+            <p class="area__tag">Defesa Fiscal e Contencioso Tributário</p>
+          </div>
+          <ul class="area__list">
+            <li><strong>Defesa em execução fiscal:</strong> patrocínio de defesas em cobranças movidas pelas Fazendas Públicas Federal, Estadual e Municipal.</li>
+            <li><strong>Exceção de pré-executividade e embargos:</strong> demonstração de nulidades, prescrição de débitos e cobranças abusivas.</li>
+            <li><strong>Ação anulatória de débito fiscal:</strong> desconstituição de lançamentos e multas aplicados de forma ilegal pela administração pública.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="section contato" id="contato">
+    <div class="container contato__inner">
+      <div class="contato__text">
+        <p class="eyebrow eyebrow--light">Contato</p>
+        <h2 class="section__title section__title--light">Fale com o escritório</h2>
+        <p class="contato__lead">
+          Atendimento por agendamento. Encaminhe sua demanda e receba uma análise
+          orientada às particularidades do seu caso.
+        </p>
+      </div>
+      <div class="contato__card">
+        <dl class="contato__list">
+          <div>
+            <dt>Escritório</dt>
+            <dd>Kawan Mandú Sociedade Individual de Advocacia</dd>
+          </div>
+          <div>
+            <dt>OAB/SP</dt>
+            <dd>nº 67.323</dd>
+          </div>
+          <div>
+            <dt>E-mail</dt>
+            <dd><a href="mailto:kawanmandu@adv.oabsp.org.br">kawanmandu@adv.oabsp.org.br</a></dd>
+          </div>
+        </dl>
+        <a class="btn btn--primary btn--block" href="mailto:kawanmandu@adv.oabsp.org.br">Enviar mensagem</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__mark brand__mark--light" aria-hidden="true"><span class="brand__mark-k">K</span><span class="brand__mark-mm">MM</span></span>
+        <span class="brand__word">
+          <span class="brand__name">Mandú Marques</span>
+          <span class="brand__sub">Advocacia</span>
+        </span>
+      </div>
+      <div class="footer__info">
+        <p>Kawan Mandú Sociedade Individual de Advocacia</p>
+        <p>OAB/SP nº 67.323 · <a href="mailto:kawanmandu@adv.oabsp.org.br">kawanmandu@adv.oabsp.org.br</a></p>
+      </div>
+      <p class="footer__legal">© 2026 Kawan Mandú Sociedade Individual de Advocacia. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</div>
+<!-- ===== FIM DO BLOCO ===== -->

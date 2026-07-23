@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#1b2b3e"/>
+  <rect x="10" y="10" width="44" height="44" fill="none" stroke="#fcfaf3" stroke-width="2"/>
+  <text x="32" y="40" text-anchor="middle" fill="#fcfaf3" font-family="Georgia, 'Times New Roman', serif" font-weight="600">
+    <tspan font-size="24">K</tspan><tspan font-size="15">MM</tspan>
+  </text>
+</svg>
