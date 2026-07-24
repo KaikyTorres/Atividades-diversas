@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smartyng · Marketing &amp; Tecnologia que gera resultado</title>
+<meta name="description" content="Smartyng — agência de marketing e tecnologia. Tráfego pago, social media, sites de alta conversão, KAY CRM com I.A. e automações inteligentes.">
+<meta name="theme-color" content="#070515">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Smartyng · Marketing &amp; Tecnologia que gera resultado">
+<meta property="og:description" content="Tráfego pago, social media, sites, KAY CRM com I.A. e automações. Tudo para sua empresa vender mais.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/smartyng-logo.png">
+
+<!-- Favicon (logo Smartyng em SVG) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23120d4a'/%3E%3Cg stroke='%23fff' stroke-width='3.4' stroke-linecap='round' fill='none'%3E%3Cellipse cx='50' cy='50' rx='34' ry='14' transform='rotate(-32 50 50)'/%3E%3Cellipse cx='50' cy='50' rx='34' ry='14' transform='rotate(28 50 50)'/%3E%3Cpath d='M22 62 Q50 30 78 44'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='4.4' fill='%23fff'/%3E%3C/svg%3E">
+</head>
+<body>
+<!-- ================================================================= -->
+<!--  SMARTYNG · LANDING PAGE                                           -->
+<!--  Página autônoma. Também pode ser colada em um bloco              -->
+<!--  "HTML personalizado" do WordPress (todo o conteúdo do             -->
+<!--  <div id="smartyng-lp"> é 100% escopado).                          -->
+<!-- ================================================================= -->
+<div id="smartyng-lp">
+<style>
+/* ============ FONTES ============ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&display=swap');
+
+/* ============ RESET / ESCOPO ============ */
+#smartyng-lp *{margin:0;padding:0;box-sizing:border-box;}
+#smartyng-lp{
+  --ink:#04030e;
+  --bg:#070515;
+  --bg2:#0c0926;
+  --navy:#120d4a;
+  --blue:#3b2fe6;
+  --blue-2:#5a4bff;
+  --glow:#6d5bff;
+  --cyan:#25e6d3;
+  --purple:#9b5cf6;
+  --purple-2:#7c3aed;
+  --txt:#eef0ff;
+  --muted:#a9adce;
+  --line:rgba(140,140,255,.16);
+  --card:rgba(255,255,255,.035);
+  --radius:22px;
+  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  color:var(--txt);
+  background:var(--ink);
+  line-height:1.55;
+  position:relative;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+#smartyng-lp img{max-width:100%;display:block;}
+#smartyng-lp a{text-decoration:none;color:inherit;}
+#smartyng-lp h1,#smartyng-lp h2,#smartyng-lp h3{font-family:'Sora',sans-serif;line-height:1.1;letter-spacing:-.02em;}
+#smartyng-lp .wrap{width:min(1180px,92%);margin-inline:auto;position:relative;z-index:2;}
+#smartyng-lp .grad-txt{
+  background:linear-gradient(100deg,#fff 0%,#a9b3ff 40%,var(--glow) 70%,var(--purple) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+}
+#smartyng-lp .eyebrow{
+  display:inline-flex;align-items:center;gap:9px;font-size:.74rem;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:#c3c8ff;padding:8px 15px;border:1px solid var(--line);border-radius:100px;
+  background:rgba(90,75,255,.07);backdrop-filter:blur(6px);
+}
+#smartyng-lp .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);animation:pulse 1.8s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+
+/* ============ FUNDO ANIMADO GLOBAL ============ */
+#smartyng-lp .bg-fx{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+#smartyng-lp #sty-particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.6;}
+#smartyng-lp .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;}
+#smartyng-lp .orb.a{width:520px;height:520px;background:radial-gradient(circle,#4b3bff,transparent 65%);top:-160px;left:-120px;animation:float1 18s ease-in-out infinite;}
+#smartyng-lp .orb.b{width:480px;height:480px;background:radial-gradient(circle,#9b5cf6,transparent 65%);top:30%;right:-160px;animation:float2 22s ease-in-out infinite;}
+#smartyng-lp .orb.c{width:420px;height:420px;background:radial-gradient(circle,#25e6d3,transparent 60%);bottom:-140px;left:35%;opacity:.28;animation:float1 26s ease-in-out infinite reverse;}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(60px,50px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-70px,40px)}}
+#smartyng-lp .grid-overlay{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 30%,transparent 80%);opacity:.5;}
+
+/* ============ HEADER ============ */
+#smartyng-lp .nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.35s;}
+#smartyng-lp .nav.scrolled{background:rgba(7,5,21,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+#smartyng-lp .nav-in{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+#smartyng-lp .brand{display:flex;align-items:center;gap:12px;z-index:60;}
+#smartyng-lp .brand .mark{width:44px;height:44px;flex:none;border-radius:12px;}
+#smartyng-lp .brand .name{font-family:'Sora';font-weight:800;font-size:1.35rem;letter-spacing:-.01em;}
+#smartyng-lp .nav-links{display:flex;align-items:center;gap:34px;}
+#smartyng-lp .nav-links a{font-size:.94rem;color:var(--muted);font-weight:500;transition:.25s;position:relative;}
+#smartyng-lp .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:linear-gradient(90deg,var(--glow),var(--cyan));transition:.3s;border-radius:2px;}
+#smartyng-lp .nav-links a:hover{color:#fff;}
+#smartyng-lp .nav-links a:hover::after{width:100%;}
+#smartyng-lp .burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;align-items:center;justify-content:center;z-index:60;}
+#smartyng-lp .burger span{width:20px;height:2px;background:#fff;border-radius:2px;transition:.3s;}
+#smartyng-lp .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+#smartyng-lp .burger.open span:nth-child(2){opacity:0;}
+#smartyng-lp .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ============ BOTÕES ============ */
+#smartyng-lp .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Space Grotesk';font-weight:600;font-size:.98rem;padding:15px 28px;border-radius:100px;cursor:pointer;transition:.3s;border:none;position:relative;overflow:hidden;white-space:nowrap;}
+#smartyng-lp .btn svg{width:18px;height:18px;}
+#smartyng-lp .btn-primary{background:linear-gradient(100deg,var(--blue),var(--blue-2) 55%,var(--purple));color:#fff;box-shadow:0 10px 34px -8px rgba(91,75,255,.7);}
+#smartyng-lp .btn-primary::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--purple),var(--blue-2),var(--cyan));opacity:0;transition:.35s;}
+#smartyng-lp .btn-primary span{position:relative;z-index:2;display:inline-flex;align-items:center;gap:10px;}
+#smartyng-lp .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 44px -8px rgba(123,58,237,.8);}
+#smartyng-lp .btn-primary:hover::before{opacity:1;}
+#smartyng-lp .btn-ghost{background:var(--card);color:#fff;border:1px solid var(--line);backdrop-filter:blur(8px);}
+#smartyng-lp .btn-ghost:hover{border-color:var(--glow);background:rgba(109,91,255,.12);transform:translateY(-3px);}
+#smartyng-lp .btn-wa{background:linear-gradient(100deg,#1faa53,#25d366);color:#fff;box-shadow:0 10px 30px -8px rgba(37,211,102,.6);}
+#smartyng-lp .btn-wa:hover{transform:translateY(-3px);box-shadow:0 16px 40px -8px rgba(37,211,102,.75);}
+
+/* ============ HERO ============ */
+#smartyng-lp .hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;position:relative;}
+#smartyng-lp .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;}
+#smartyng-lp .hero h1{font-size:clamp(2.5rem,6vw,4.4rem);font-weight:800;margin:22px 0 20px;}
+#smartyng-lp .hero p.sub{font-size:clamp(1.02rem,2.2vw,1.22rem);color:var(--muted);max-width:540px;margin-bottom:34px;}
+#smartyng-lp .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:38px;}
+#smartyng-lp .hero-stats{display:flex;gap:34px;flex-wrap:wrap;}
+#smartyng-lp .hero-stats .st b{font-family:'Sora';font-size:1.9rem;font-weight:800;display:block;background:linear-gradient(120deg,#fff,var(--glow));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+#smartyng-lp .hero-stats .st span{font-size:.82rem;color:var(--muted);}
+
+/* Visual do hero (dashboard flutuante) */
+#smartyng-lp .hero-visual{position:relative;height:440px;perspective:1400px;}
+#smartyng-lp .dash{position:absolute;border-radius:20px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(28,22,70,.9),rgba(10,7,30,.85));backdrop-filter:blur(14px);box-shadow:0 30px 70px -20px rgba(0,0,0,.7);padding:18px;}
+#smartyng-lp .dash-main{inset:30px 10px 60px 30px;left:0;right:20px;top:20px;bottom:40px;position:absolute;animation:hover3d 7s ease-in-out infinite;}
+#smartyng-lp .dash-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+#smartyng-lp .dash-head i{width:11px;height:11px;border-radius:50%;display:block;}
+#smartyng-lp .dash-head .l{font-size:.78rem;color:var(--muted);margin-left:8px;}
+#smartyng-lp .bars{display:flex;align-items:flex-end;gap:10px;height:150px;padding:12px;border-radius:12px;background:rgba(0,0,0,.25);}
+#smartyng-lp .bars .bar{flex:1;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--glow),var(--blue));animation:grow 2.2s ease infinite alternate;}
+#smartyng-lp .bars .bar:nth-child(2){background:linear-gradient(180deg,var(--cyan),#1b9e94);animation-delay:.3s;}
+#smartyng-lp .bars .bar:nth-child(3){animation-delay:.6s;}
+#smartyng-lp .bars .bar:nth-child(4){background:linear-gradient(180deg,var(--purple),var(--purple-2));animation-delay:.9s;}
+#smartyng-lp .bars .bar:nth-child(5){animation-delay:1.2s;}
+#smartyng-lp .bars .bar:nth-child(6){background:linear-gradient(180deg,var(--cyan),#1b9e94);animation-delay:1.5s;}
+@keyframes grow{from{transform:scaleY(.45);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+#smartyng-lp .dash-row{display:flex;gap:10px;margin-top:14px;}
+#smartyng-lp .dash-kpi{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:12px;padding:12px;}
+#smartyng-lp .dash-kpi b{font-family:'Sora';font-size:1.1rem;color:#fff;}
+#smartyng-lp .dash-kpi span{font-size:.68rem;color:var(--muted);display:block;}
+#smartyng-lp .dash-kpi em{font-style:normal;font-size:.7rem;color:var(--cyan);}
+#smartyng-lp .chip-float{position:absolute;background:rgba(12,9,38,.92);border:1px solid var(--line);border-radius:14px;padding:12px 16px;display:flex;align-items:center;gap:10px;backdrop-filter:blur(10px);box-shadow:0 16px 40px -14px rgba(0,0,0,.8);z-index:5;}
+#smartyng-lp .chip-float .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;}
+#smartyng-lp .chip-float b{font-size:.82rem;}
+#smartyng-lp .chip-float span{font-size:.68rem;color:var(--muted);}
+#smartyng-lp .cf1{top:8px;right:-6px;animation:hover3d 6s ease-in-out infinite;}
+#smartyng-lp .cf2{bottom:20px;left:-14px;animation:hover3d 6s ease-in-out infinite .8s;}
+@keyframes hover3d{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+/* logos-marquee */
+#smartyng-lp .marquee{border-block:1px solid var(--line);padding:20px 0;overflow:hidden;background:rgba(255,255,255,.015);position:relative;}
+#smartyng-lp .marquee .track{display:flex;gap:60px;width:max-content;animation:scroll 26s linear infinite;}
+#smartyng-lp .marquee .track span{font-family:'Sora';font-weight:600;font-size:1.05rem;color:#6b6fa0;display:inline-flex;align-items:center;gap:12px;white-space:nowrap;}
+#smartyng-lp .marquee .track span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--glow);}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ============ SEÇÕES ============ */
+#smartyng-lp section{padding:100px 0;position:relative;}
+#smartyng-lp .sec-head{text-align:center;max-width:720px;margin:0 auto 60px;}
+#smartyng-lp .sec-head h2{font-size:clamp(2rem,4.5vw,3.1rem);font-weight:800;margin:18px 0 16px;}
+#smartyng-lp .sec-head p{color:var(--muted);font-size:1.08rem;}
+
+/* SERVIÇOS */
+#smartyng-lp .services{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+#smartyng-lp .svc{position:relative;padding:32px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card);overflow:hidden;transition:.4s;isolation:isolate;}
+#smartyng-lp .svc::before{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(109,91,255,.16),transparent 40%);opacity:0;transition:.4s;z-index:-1;}
+#smartyng-lp .svc:hover{transform:translateY(-8px);border-color:rgba(109,91,255,.5);box-shadow:0 26px 60px -24px rgba(91,75,255,.55);}
+#smartyng-lp .svc:hover::before{opacity:1;}
+#smartyng-lp .svc .ic{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;margin-bottom:22px;background:linear-gradient(140deg,rgba(91,75,255,.25),rgba(155,92,246,.15));border:1px solid var(--line);}
+#smartyng-lp .svc .ic svg{width:28px;height:28px;stroke:#c9ccff;}
+#smartyng-lp .svc h3{font-size:1.32rem;margin-bottom:10px;}
+#smartyng-lp .svc p{color:var(--muted);font-size:.96rem;margin-bottom:18px;}
+#smartyng-lp .svc ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:22px;}
+#smartyng-lp .svc li{font-size:.9rem;color:#c6c9e6;display:flex;align-items:center;gap:9px;}
+#smartyng-lp .svc li svg{width:16px;height:16px;flex:none;stroke:var(--cyan);}
+#smartyng-lp .svc .lnk{font-weight:600;font-size:.92rem;color:#fff;display:inline-flex;align-items:center;gap:7px;transition:.3s;}
+#smartyng-lp .svc .lnk svg{width:16px;height:16px;transition:.3s;stroke:var(--glow);}
+#smartyng-lp .svc:hover .lnk svg{transform:translateX(5px);}
+#smartyng-lp .svc .num{position:absolute;top:24px;right:28px;font-family:'Sora';font-weight:800;font-size:2.4rem;color:rgba(255,255,255,.05);}
+
+/* ============ KAY CRM ============ */
+#smartyng-lp .crm{background:linear-gradient(180deg,transparent,rgba(124,58,237,.06),transparent);}
+#smartyng-lp .crm-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;}
+#smartyng-lp .crm-visual{position:relative;display:grid;place-items:center;min-height:380px;}
+#smartyng-lp .crm-ring{position:absolute;border:1px solid rgba(155,92,246,.3);border-radius:50%;}
+#smartyng-lp .crm-ring.r1{width:340px;height:340px;animation:spin 24s linear infinite;}
+#smartyng-lp .crm-ring.r2{width:250px;height:250px;border-color:rgba(37,230,211,.25);animation:spin 16s linear infinite reverse;}
+#smartyng-lp .crm-ring.r1::before,#smartyng-lp .crm-ring.r2::before{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;border-radius:50%;background:var(--purple);box-shadow:0 0 16px var(--purple);}
+#smartyng-lp .crm-ring.r2::before{background:var(--cyan);box-shadow:0 0 16px var(--cyan);}
+@keyframes spin{to{transform:rotate(360deg)}}
+#smartyng-lp .crm-badge{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#d9c7ff;padding:7px 14px;border-radius:100px;background:rgba(124,58,237,.16);border:1px solid rgba(155,92,246,.4);display:inline-block;}
+#smartyng-lp .crm-grid h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin:18px 0 16px;}
+#smartyng-lp .crm-grid h2 .k{background:linear-gradient(100deg,#fff,var(--purple));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+#smartyng-lp .crm-grid > div p.lead{color:var(--muted);font-size:1.06rem;margin-bottom:26px;}
+#smartyng-lp .crm-feats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:30px;}
+#smartyng-lp .crm-feat{display:flex;gap:12px;align-items:flex-start;}
+#smartyng-lp .crm-feat .fic{width:38px;height:38px;flex:none;border-radius:11px;display:grid;place-items:center;background:rgba(155,92,246,.14);border:1px solid rgba(155,92,246,.3);}
+#smartyng-lp .crm-feat .fic svg{width:20px;height:20px;stroke:var(--purple);}
+#smartyng-lp .crm-feat b{font-size:.98rem;display:block;}
+#smartyng-lp .crm-feat span{font-size:.85rem;color:var(--muted);}
+
+/* ============ SOBRE / FUNDADOR ============ */
+#smartyng-lp .about{background:linear-gradient(180deg,transparent,rgba(59,47,230,.05),transparent);}
+#smartyng-lp .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;}
+#smartyng-lp .about-photo{position:relative;}
+#smartyng-lp .about-photo .frame{position:relative;border-radius:26px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 70px -24px rgba(0,0,0,.7);aspect-ratio:1/1;background:linear-gradient(160deg,rgba(28,22,70,.9),rgba(10,7,30,.85));}
+#smartyng-lp .about-photo .frame img{width:100%;height:100%;object-fit:cover;}
+#smartyng-lp .about-photo .frame .ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:.85rem;text-align:center;padding:24px;}
+#smartyng-lp .about-photo .frame .ph svg{width:54px;height:54px;stroke:var(--glow);margin:0 auto 14px;display:block;}
+#smartyng-lp .about-photo .glow{position:absolute;inset:-20px;border-radius:34px;background:radial-gradient(circle at 30% 20%,rgba(109,91,255,.35),transparent 60%);filter:blur(30px);z-index:-1;}
+#smartyng-lp .about-grid h2{font-size:clamp(1.9rem,4vw,2.9rem);font-weight:800;margin:18px 0 16px;}
+#smartyng-lp .about-grid p.lead{color:var(--muted);font-size:1.06rem;margin-bottom:20px;}
+#smartyng-lp .about-sign{display:flex;align-items:center;gap:14px;margin-top:26px;}
+#smartyng-lp .about-sign .av{width:52px;height:52px;border-radius:14px;overflow:hidden;border:1px solid var(--line);flex:none;background:rgba(255,255,255,.05);}
+#smartyng-lp .about-sign .av img{width:100%;height:100%;object-fit:cover;}
+#smartyng-lp .about-sign b{font-family:'Sora';font-size:1rem;display:block;}
+#smartyng-lp .about-sign span{font-size:.85rem;color:var(--muted);}
+
+/* ============ AUTOMAÇÃO / PROCESSO ============ */
+#smartyng-lp .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:step;}
+#smartyng-lp .step{position:relative;padding:28px 24px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card);transition:.35s;}
+#smartyng-lp .step:hover{transform:translateY(-6px);border-color:var(--cyan);box-shadow:0 22px 50px -22px rgba(37,230,211,.4);}
+#smartyng-lp .step .n{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;font-family:'Sora';font-weight:800;font-size:1.15rem;background:linear-gradient(140deg,var(--blue),var(--purple));margin-bottom:18px;box-shadow:0 8px 24px -8px rgba(91,75,255,.6);}
+#smartyng-lp .step h3{font-size:1.12rem;margin-bottom:8px;}
+#smartyng-lp .step p{font-size:.9rem;color:var(--muted);}
+#smartyng-lp .step .conn{position:absolute;top:50px;right:-14px;color:var(--glow);z-index:3;}
+
+/* ============ RESULTADOS ============ */
+#smartyng-lp .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+#smartyng-lp .stat{text-align:center;padding:34px 20px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.05),transparent);}
+#smartyng-lp .stat b{font-family:'Sora';font-weight:800;font-size:clamp(2.2rem,5vw,3.2rem);display:block;background:linear-gradient(120deg,#fff,var(--glow),var(--cyan));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+#smartyng-lp .stat span{color:var(--muted);font-size:.94rem;}
+
+/* ============ CTA FINAL ============ */
+#smartyng-lp .cta-final{padding:0 0 110px;}
+#smartyng-lp .cta-box{position:relative;overflow:hidden;border-radius:34px;padding:70px 40px;text-align:center;border:1px solid rgba(109,91,255,.4);background:linear-gradient(140deg,rgba(59,47,230,.28),rgba(124,58,237,.2),rgba(9,7,26,.6));}
+#smartyng-lp .cta-box::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at 50% 0%,rgba(37,230,211,.18),transparent 60%);}
+#smartyng-lp .cta-box h2{font-size:clamp(2rem,5vw,3.3rem);font-weight:800;margin-bottom:18px;position:relative;}
+#smartyng-lp .cta-box p{color:#d3d6f5;font-size:1.12rem;max-width:560px;margin:0 auto 34px;position:relative;}
+#smartyng-lp .cta-box .hero-ctas{justify-content:center;position:relative;}
+
+/* ============ FOOTER ============ */
+#smartyng-lp footer{border-top:1px solid var(--line);padding:56px 0 34px;background:rgba(4,3,14,.6);}
+#smartyng-lp .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+#smartyng-lp footer .brand{margin-bottom:16px;}
+#smartyng-lp footer p.desc{color:var(--muted);font-size:.94rem;max-width:320px;}
+#smartyng-lp .foot-col h4{font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:16px;}
+#smartyng-lp .foot-col a{display:block;color:var(--muted);font-size:.94rem;margin-bottom:11px;transition:.25s;}
+#smartyng-lp .foot-col a:hover{color:#fff;padding-left:4px;}
+#smartyng-lp .socials{display:flex;gap:12px;margin-top:20px;}
+#smartyng-lp .socials a{width:42px;height:42px;border-radius:12px;border:1px solid var(--line);display:grid;place-items:center;transition:.3s;}
+#smartyng-lp .socials a:hover{background:var(--glow);border-color:var(--glow);transform:translateY(-3px);}
+#smartyng-lp .socials a svg{width:20px;height:20px;}
+#smartyng-lp .foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:.86rem;}
+
+/* WhatsApp flutuante */
+#smartyng-lp .wa-float{position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:linear-gradient(140deg,#1faa53,#25d366);display:grid;place-items:center;z-index:60;box-shadow:0 12px 34px -8px rgba(37,211,102,.7);animation:pulseWa 2.4s infinite;transition:.3s;}
+#smartyng-lp .wa-float:hover{transform:scale(1.08);}
+#smartyng-lp .wa-float svg{width:32px;height:32px;}
+@keyframes pulseWa{0%{box-shadow:0 12px 34px -8px rgba(37,211,102,.7),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 12px 34px -8px rgba(37,211,102,.7),0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 12px 34px -8px rgba(37,211,102,.7),0 0 0 0 rgba(37,211,102,0)}}
+
+/* ============ REVEAL ============ */
+#smartyng-lp .reveal{opacity:0;transform:translateY(38px);transition:.8s cubic-bezier(.22,1,.36,1);}
+#smartyng-lp .reveal.in{opacity:1;transform:none;}
+#smartyng-lp .reveal.d1{transition-delay:.1s}#smartyng-lp .reveal.d2{transition-delay:.2s}#smartyng-lp .reveal.d3{transition-delay:.3s}#smartyng-lp .reveal.d4{transition-delay:.4s}
+
+/* ============ RESPONSIVO (MOBILE FIRST FEEL) ============ */
+@media(max-width:960px){
+  #smartyng-lp .hero-grid,#smartyng-lp .crm-grid,#smartyng-lp .about-grid{grid-template-columns:1fr;gap:44px;}
+  #smartyng-lp .hero-visual{height:400px;order:-1;}
+  #smartyng-lp .about-photo{max-width:380px;margin-inline:auto;}
+  #smartyng-lp .services{grid-template-columns:1fr 1fr;}
+  #smartyng-lp .flow{grid-template-columns:1fr 1fr;}
+  #smartyng-lp .stats{grid-template-columns:1fr 1fr;}
+  #smartyng-lp .step .conn{display:none;}
+  #smartyng-lp .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:720px){
+  #smartyng-lp .nav-links{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;flex-direction:column;justify-content:center;gap:26px;background:rgba(7,5,21,.97);backdrop-filter:blur(20px);padding:40px;transform:translateX(105%);transition:.4s cubic-bezier(.22,1,.36,1);border-left:1px solid var(--line);z-index:55;}
+  #smartyng-lp .nav-links.open{transform:none;}
+  #smartyng-lp .nav-links a{font-size:1.15rem;}
+  #smartyng-lp .nav-links .btn{width:100%;justify-content:center;}
+  #smartyng-lp .burger{display:flex;}
+  #smartyng-lp section{padding:70px 0;}
+  #smartyng-lp .hero{padding:110px 0 50px;}
+  #smartyng-lp .hero-ctas .btn,#smartyng-lp .cta-box .btn{flex:1;justify-content:center;min-width:150px;}
+  #smartyng-lp .services,#smartyng-lp .crm-feats,#smartyng-lp .foot-grid{grid-template-columns:1fr;}
+  #smartyng-lp .flow,#smartyng-lp .stats{grid-template-columns:1fr;}
+  #smartyng-lp .hero-stats{gap:24px;}
+  #smartyng-lp .cta-box{padding:50px 24px;}
+  #smartyng-lp .foot-bottom{flex-direction:column;text-align:center;}
+  #smartyng-lp .chip-float{transform:scale(.9);}
+  #smartyng-lp .brand .name{font-size:1.2rem;}
+}
+@media(max-width:420px){
+  #smartyng-lp .hero-visual{height:340px;}
+  #smartyng-lp .dash-row{flex-direction:column;}
+}
+@media(prefers-reduced-motion:reduce){#smartyng-lp *{animation:none!important;transition:none!important;}}
+</style>
+
+<!-- ===================== FUNDO ===================== -->
+<div class="bg-fx">
+  <div class="orb a"></div><div class="orb b"></div><div class="orb c"></div>
+  <div class="grid-overlay"></div>
+</div>
+<canvas id="sty-particles"></canvas>
+
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="styNav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="Smartyng — início">
+      <!-- LOGO SMARTYNG · usa o PNG em assets/ quando existir; senão, cai no SVG vetorial abaixo -->
+      <img class="mark" src="assets/smartyng-logo.png" alt="Smartyng"
+           onload="var s=this.nextElementSibling; if(s) s.style.display='none';"
+           onerror="this.style.display='none';">
+      <svg class="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="sm-g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#eef0ff"/><stop offset="1" stop-color="#8ea0ff"/>
+          </linearGradient>
+          <linearGradient id="sm-bg" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stop-color="#070417"/><stop offset=".55" stop-color="#1a1170"/><stop offset="1" stop-color="#3b2fe6"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#sm-bg)" stroke="rgba(140,140,255,.3)"/>
+        <g stroke="url(#sm-g)" stroke-width="4" stroke-linecap="round" fill="none">
+          <ellipse cx="50" cy="50" rx="35" ry="15" transform="rotate(-30 50 50)"/>
+          <ellipse cx="50" cy="50" rx="35" ry="15" transform="rotate(30 50 50)"/>
+          <path d="M20 60 Q50 26 80 46"/>
+        </g>
+        <circle cx="50" cy="50" r="4.4" fill="#fff"/>
+      </svg>
+      <span class="name">Smartyng</span>
+    </a>
+    <div class="nav-links" id="styLinks">
+      <a href="#servicos">Serviços</a>
+      <a href="#crm">KAY CRM</a>
+      <a href="#automacao">Automação</a>
+      <a href="#resultados">Resultados</a>
+      <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Smartyng!%20Quero%20uma%20proposta." target="_blank" rel="noopener"><span>Fale Conosco</span></a>
+    </div>
+    <button class="burger" id="styBurger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow reveal"><span class="dot"></span> Agência de Marketing &amp; Tecnologia</span>
+      <h1 class="reveal d1">Marketing que <span class="grad-txt">gera resultado</span> com o poder da tecnologia</h1>
+      <p class="sub reveal d2">Tráfego pago, social media, sites de alta conversão, CRM com I.A. e automações inteligentes. Tudo o que sua empresa precisa para vender mais — em um só lugar.</p>
+      <div class="hero-ctas reveal d3">
+        <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Smartyng!%20Quero%20escalar%20minha%20empresa." target="_blank" rel="noopener"><span>Solicitar Proposta
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+        <a class="btn btn-ghost" href="https://smartyng.my.canva.site/portfolio" target="_blank" rel="noopener">Ver Portfólio
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H8M17 7v9" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="hero-stats reveal d4">
+        <div class="st"><b data-count="120">+120</b><span>Projetos entregues</span></div>
+        <div class="st"><b data-count="8">+8x</b><span>ROI médio em tráfego</span></div>
+        <div class="st"><b data-count="24">24/7</b><span>Automação com I.A.</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal d2">
+      <div class="dash dash-main">
+        <div class="dash-head"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="l">smartyng · painel de resultados</span></div>
+        <div class="bars"><div class="bar" style="height:55%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:95%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:88%"></div></div>
+        <div class="dash-row">
+          <div class="dash-kpi"><span>Leads / mês</span><b>1.284</b><em>▲ 32%</em></div>
+          <div class="dash-kpi"><span>CPL médio</span><b>R$ 4,90</b><em>▼ 21%</em></div>
+          <div class="dash-kpi"><span>Conversão</span><b>7,8%</b><em>▲ 15%</em></div>
+        </div>
+      </div>
+      <div class="chip-float cf1"><div class="ic" style="background:linear-gradient(140deg,#25d366,#1b9e94)"><svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg></div><div><b>Novo lead 🎯</b><span>via WhatsApp</span></div></div>
+      <div class="chip-float cf2"><div class="ic" style="background:linear-gradient(140deg,#9b5cf6,#7c3aed)"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#fff" stroke-width="2"><path d="M12 3v4M12 17v4M3 12h4M17 12h4" stroke-linecap="round"/><circle cx="12" cy="12" r="3"/></svg></div><div><b>I.A. respondeu</b><span>em 3 segundos</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee">
+  <div class="track">
+    <span>Meta Ads</span><span>Google Ads</span><span>Social Media</span><span>Landing Pages</span><span>KAY CRM</span><span>Automação I.A.</span><span>WhatsApp Business</span><span>SEO</span>
+    <span>Meta Ads</span><span>Google Ads</span><span>Social Media</span><span>Landing Pages</span><span>KAY CRM</span><span>Automação I.A.</span><span>WhatsApp Business</span><span>SEO</span>
+  </div>
+</div>
+
+<!-- ===================== SERVIÇOS ===================== -->
+<section id="servicos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Nossos Serviços</span>
+      <h2>Tudo para <span class="grad-txt">escalar</span> sua marca</h2>
+      <p>Estratégia, criatividade e tecnologia trabalhando juntas para transformar cliques em clientes.</p>
+    </div>
+    <div class="services">
+
+      <div class="svc reveal d1">
+        <span class="num">01</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+        <h3>Tráfego Pago</h3>
+        <p>Campanhas em Meta e Google Ads focadas em ROI, com otimização diária e escala inteligente.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Meta &amp; Google Ads</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Redução de custo por lead</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Relatórios transparentes</li>
+        </ul>
+        <a class="lnk" href="https://wa.me/5511999999999?text=Quero%20escalar%20com%20tr%C3%A1fego%20pago" target="_blank" rel="noopener">Escalar agora <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div class="svc reveal d2">
+        <span class="num">02</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.3" fill="currentColor"/></svg></div>
+        <h3>Social Media</h3>
+        <p>Gestão completa de redes sociais: conteúdo estratégico, design e crescimento orgânico da sua marca.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Planejamento de conteúdo</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Design e copy que engaja</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Gestão de comunidade</li>
+        </ul>
+        <a class="lnk" href="https://wa.me/5511999999999?text=Quero%20gest%C3%A3o%20de%20social%20media" target="_blank" rel="noopener">Quero crescer <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div class="svc reveal d3">
+        <span class="num">03</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M6 8h5M6 11h8"/></svg></div>
+        <h3>Sites &amp; Landing Pages</h3>
+        <p>Sites rápidos, modernos e otimizados para conversão. Do institucional à página de vendas.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Design responsivo premium</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Alta performance e SEO</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Foco em conversão</li>
+        </ul>
+        <a class="lnk" href="https://wa.me/5511999999999?text=Quero%20um%20site%20de%20alta%20convers%C3%A3o" target="_blank" rel="noopener">Criar meu site <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div class="svc reveal d1">
+        <span class="num">04</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 013 3c1.7 0 3 1.3 3 3a3 3 0 011 5.8V17a3 3 0 01-3 3H8a3 3 0 01-3-3v-.2A3 3 0 016 11c0-1.7 1.3-3 3-3a3 3 0 013-3z"/><path d="M9 12h6M12 8v8"/></svg></div>
+        <h3>KAY CRM</h3>
+        <p>CRM autônomo com Inteligência Artificial que atende, qualifica e converte seus leads 24 horas por dia.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Atendimento com I.A.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Funil de vendas visual</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Integração com WhatsApp</li>
+        </ul>
+        <a class="lnk" href="#crm">Conhecer o KAY <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div class="svc reveal d2">
+        <span class="num">05</span>
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <h3>Automação</h3>
+        <p>Fluxos automáticos que eliminam tarefas manuais: follow-up, disparos, integrações e muito mais.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Follow-up automático</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Integrações inteligentes</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Escala sem esforço</li>
+        </ul>
+        <a class="lnk" href="https://wa.me/5511999999999?text=Quero%20automatizar%20meus%20processos" target="_blank" rel="noopener">Automatizar <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+
+      <div class="svc reveal d3" style="display:grid;place-items:center;text-align:center;background:linear-gradient(150deg,rgba(59,47,230,.18),rgba(124,58,237,.12));">
+        <div>
+          <div class="ic" style="margin-inline:auto;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2L12 16.6 5.7 21l2.3-7.2-6-4.4h7.6z"/></svg></div>
+          <h3>Combo Completo</h3>
+          <p>Quer tudo isso trabalhando junto pela sua empresa? Monte seu pacote personalizado.</p>
+          <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Quero%20o%20combo%20completo%20da%20Smartyng" target="_blank" rel="noopener"><span>Montar meu plano</span></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== KAY CRM ===================== -->
+<section id="crm" class="crm">
+  <div class="wrap crm-grid">
+    <div class="crm-visual reveal">
+      <div class="crm-ring r1"></div>
+      <div class="crm-ring r2"></div>
+      <!-- LOGO KAY CRM (SVG) -->
+      <svg width="230" height="230" viewBox="0 0 200 200" fill="none" aria-label="KAY CRM">
+        <defs>
+          <linearGradient id="kay-g" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#c99bff"/><stop offset="1" stop-color="#7c3aed"/>
+          </linearGradient>
+          <radialGradient id="kay-glow" cx="50%" cy="45%" r="60%">
+            <stop offset="0" stop-color="rgba(155,92,246,.45)"/><stop offset="1" stop-color="transparent"/>
+          </radialGradient>
+          <filter id="kayblur"><feGaussianBlur stdDeviation="1.4"/></filter>
+        </defs>
+        <circle cx="100" cy="92" r="82" fill="url(#kay-glow)"/>
+        <!-- escudo -->
+        <path d="M100 24 L150 42 V96 C150 128 128 150 100 162 C72 150 50 128 50 96 V42 Z" stroke="url(#kay-g)" stroke-width="3" fill="rgba(124,58,237,.05)"/>
+        <!-- cérebro/circuito -->
+        <g stroke="url(#kay-g)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M78 58 C60 58 52 72 58 84 C48 90 50 106 62 110 C60 122 72 132 84 126"/>
+          <path d="M78 58 C88 52 96 58 96 68 L96 120"/>
+          <path d="M62 84 L82 84 M70 110 L88 100 M96 96 L112 88"/>
+        </g>
+        <!-- seta de crescimento -->
+        <path d="M96 120 C104 100 118 96 130 92 M130 92 L120 86 M130 92 L124 102" stroke="#e9ddff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- nós -->
+        <g fill="#fff" filter="url(#kayblur)">
+          <circle cx="78" cy="58" r="4"/><circle cx="62" cy="84" r="3.4"/><circle cx="70" cy="110" r="3.4"/>
+          <circle cx="96" cy="96" r="4.6"/><circle cx="112" cy="88" r="3.4"/><circle cx="88" cy="100" r="3"/>
+        </g>
+      </svg>
+    </div>
+    <div class="reveal d1">
+      <span class="crm-badge">Produto Exclusivo Smartyng</span>
+      <h2><span class="k">KAY CRM</span> — seu vendedor com Inteligência Artificial</h2>
+      <p class="lead">O CRM autônomo que atende, qualifica e faz follow-up dos seus leads sozinho. Enquanto você dorme, o KAY vende por você — direto no WhatsApp, com respostas humanas e inteligentes.</p>
+      <div class="crm-feats">
+        <div class="crm-feat"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 8V4M8 12H4M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg></div><div><b>Atende sozinho</b><span>I.A. responde 24/7 em segundos</span></div></div>
+        <div class="crm-feat"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div><div><b>Qualifica leads</b><span>separa quem está pronto pra comprar</span></div></div>
+        <div class="crm-feat"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></div><div><b>Follow-up automático</b><span>nenhum lead esfria ou é esquecido</span></div></div>
+        <div class="crm-feat"><div class="fic"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg></div><div><b>Funil visual</b><span>acompanhe cada venda em tempo real</span></div></div>
+      </div>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20KAY%20CRM" target="_blank" rel="noopener"><span>Quero uma demonstração
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE / FUNDADOR ===================== -->
+<section id="sobre" class="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <div class="glow"></div>
+      <div class="frame">
+        <!-- FOTO DO FUNDADOR · adicione o arquivo em assets/founder.jpg -->
+        <img src="assets/founder.jpg" alt="Fundador da Smartyng"
+             onload="var p=this.nextElementSibling; if(p) p.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="ph">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 100-8 4 4 0 000 8z"/><path d="M4 20a8 8 0 0116 0"/></svg>
+          Adicione sua foto em<br><b>assets/founder.jpg</b>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow"><span class="dot"></span> Quem faz acontecer</span>
+      <h2>Tecnologia com <span class="grad-txt">olhar humano</span></h2>
+      <p class="lead">Por trás da Smartyng existe gente obcecada por resultado. Unimos estratégia, criatividade e inteligência artificial para que sua empresa cresça de forma previsível — sem depender de sorte ou achismo.</p>
+      <p class="lead">Cada projeto é tratado como se fosse nosso próprio negócio: dados na mão, processos automatizados e foco total em transformar investimento em vendas.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Smartyng!%20Quero%20conversar%20com%20o%20time." target="_blank" rel="noopener"><span>Falar com o time
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AUTOMAÇÃO / PROCESSO ===================== -->
+<section id="automacao">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Como funciona</span>
+      <h2>Da <span class="grad-txt">estratégia</span> ao resultado</h2>
+      <p>Um método claro e automatizado que transforma investimento em vendas previsíveis.</p>
+    </div>
+    <div class="flow">
+      <div class="step reveal d1">
+        <div class="n">1</div><h3>Diagnóstico</h3><p>Entendemos seu negócio, público e metas para desenhar a estratégia certa.</p>
+        <svg class="conn" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal d2">
+        <div class="n">2</div><h3>Estrutura</h3><p>Criamos campanhas, site, conteúdo e configuramos o KAY CRM com automações.</p>
+        <svg class="conn" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal d3">
+        <div class="n">3</div><h3>Execução</h3><p>Colocamos tudo no ar e a máquina de leads começa a rodar automaticamente.</p>
+        <svg class="conn" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="step reveal d4">
+        <div class="n">4</div><h3>Escala</h3><p>Analisamos dados, otimizamos e escalamos o que dá mais resultado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RESULTADOS ===================== -->
+<section id="resultados">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><span class="dot"></span> Resultados</span>
+      <h2>Números que <span class="grad-txt">falam por nós</span></h2>
+    </div>
+    <div class="stats">
+      <div class="stat reveal d1"><b data-count="120" data-suffix="+">0</b><span>Projetos entregues</span></div>
+      <div class="stat reveal d2"><b data-count="8" data-suffix="x">0</b><span>ROI médio em tráfego</span></div>
+      <div class="stat reveal d3"><b data-count="1200" data-suffix="+">0</b><span>Leads gerados / mês</span></div>
+      <div class="stat reveal d4"><b data-count="98" data-suffix="%">0</b><span>Clientes satisfeitos</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta-final">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>Pronto para <span class="grad-txt">vender mais</span>?</h2>
+      <p>Fale agora com a Smartyng e receba um plano personalizado para escalar sua empresa com tecnologia.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-wa" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Smartyng!%20Quero%20come%C3%A7ar%20agora." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1-.7-.3-1.4-.7-2-1.4-.5-.5-.8-1.1-1.1-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.2-.5v-.4c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1 2-.6 3.2.4 1.2 1.2 2.3 2.3 3.3 1.5 1.4 3 2 4.6 2.1 1 0 1.8-.4 2.3-1 .3-.4.4-.9.3-1.3-.1-.2-.2-.2-.4-.3z"/></svg>
+          Chamar no WhatsApp</a>
+        <a class="btn btn-ghost" href="https://smartyng.my.canva.site/portfolio" target="_blank" rel="noopener">Ver Portfólio Completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="brand" aria-label="Smartyng — início">
+          <img class="mark" src="assets/smartyng-logo.png" alt="Smartyng"
+               onload="var s=this.nextElementSibling; if(s) s.style.display='none';"
+               onerror="this.style.display='none';">
+          <svg class="mark" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="96" height="96" rx="24" fill="url(#sm-bg)" stroke="rgba(140,140,255,.3)"/>
+            <g stroke="url(#sm-g)" stroke-width="4" stroke-linecap="round" fill="none">
+              <ellipse cx="50" cy="50" rx="35" ry="15" transform="rotate(-30 50 50)"/>
+              <ellipse cx="50" cy="50" rx="35" ry="15" transform="rotate(30 50 50)"/>
+              <path d="M20 60 Q50 26 80 46"/>
+            </g>
+            <circle cx="50" cy="50" r="4.4" fill="#fff"/>
+          </svg>
+          <span class="name">Smartyng</span>
+        </a>
+        <p class="desc">Agência de marketing e tecnologia. Unimos tráfego, criatividade, sites e inteligência artificial para fazer sua empresa crescer.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg></a>
+          <a href="https://wa.me/5511999999999" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2z"/></svg></a>
+          <a href="https://smartyng.my.canva.site/portfolio" target="_blank" rel="noopener" aria-label="Portfólio"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16" stroke-linecap="round"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Serviços</h4>
+        <a href="#servicos">Tráfego Pago</a>
+        <a href="#servicos">Social Media</a>
+        <a href="#servicos">Sites &amp; Landing Pages</a>
+        <a href="#crm">KAY CRM</a>
+        <a href="#automacao">Automação</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contato</h4>
+        <a href="https://wa.me/5511999999999" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://smartyng.my.canva.site/portfolio" target="_blank" rel="noopener">Portfólio</a>
+        <a href="https://wa.me/5511999999999?text=Quero%20uma%20proposta" target="_blank" rel="noopener">Solicitar Proposta</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Smartyng · Todos os direitos reservados.</span>
+      <span>Marketing &amp; Tecnologia que gera resultado.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flutuante -->
+<a class="wa-float" href="https://wa.me/5511999999999?text=Ol%C3%A1%20Smartyng!" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1012 2zm4.4 12c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1-.7-.3-1.4-.7-2-1.4-.5-.5-.8-1.1-1.1-1.6-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.2-.5v-.4c0-.1-.6-1.4-.8-1.9-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1 2-.6 3.2.4 1.2 1.2 2.3 2.3 3.3 1.5 1.4 3 2 4.6 2.1 1 0 1.8-.4 2.3-1 .3-.4.4-.9.3-1.3-.1-.2-.2-.2-.4-.3z"/></svg>
+</a>
+
+<script>
+(function(){
+  var root=document.getElementById('smartyng-lp');
+  if(!root)return;
+
+  /* Nav scroll */
+  var nav=document.getElementById('styNav');
+  window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>30);});
+
+  /* Menu mobile */
+  var burger=document.getElementById('styBurger'),links=document.getElementById('styLinks');
+  burger.addEventListener('click',function(){burger.classList.toggle('open');links.classList.toggle('open');});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){burger.classList.remove('open');links.classList.remove('open');});});
+
+  /* Smooth scroll */
+  root.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=a.getAttribute('href');if(id.length<2)return;
+      var t=root.querySelector(id);if(t){e.preventDefault();window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70,behavior:'smooth'});}
+    });
+  });
+
+  /* Reveal on scroll */
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}});},{threshold:.14});
+  root.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* Contador animado */
+  function animate(el){
+    var end=parseFloat(el.getAttribute('data-count')),suf=el.getAttribute('data-suffix')||'',cur=0,step=end/60;
+    var t=setInterval(function(){cur+=step;if(cur>=end){cur=end;clearInterval(t);}el.textContent=Math.floor(cur).toLocaleString('pt-BR')+suf;},22);
+  }
+  var co=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){animate(x.target);co.unobserve(x.target);}});},{threshold:.5});
+  root.querySelectorAll('[data-count]').forEach(function(el){if(el.hasAttribute('data-suffix'))co.observe(el);});
+
+  /* Glow que segue o mouse nos cards */
+  root.querySelectorAll('.svc').forEach(function(c){
+    c.addEventListener('mousemove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  });
+
+  /* Partículas (constelação) */
+  var cv=document.getElementById('sty-particles'),ctx=cv.getContext('2d'),W,H,pts=[];
+  function resize(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  var N=Math.min(70,Math.floor(window.innerWidth/22));
+  for(var i=0;i<N;i++)pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*1.8+.6});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){
+      var p=pts[i];p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,6.28);ctx.fillStyle='rgba(150,150,255,.6)';ctx.fill();
+      for(var j=i+1;j<pts.length;j++){
+        var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=Math.sqrt(dx*dx+dy*dy);
+        if(d<120){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle='rgba(109,91,255,'+(.14*(1-d/120))+')';ctx.lineWidth=1;ctx.stroke();}
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches)draw();
+})();
+</script>
+</div>
+<!-- ===================== FIM · SMARTYNG LP ===================== -->
+</body>
+</html>
