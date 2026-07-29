@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Rezende Engenharia">
+  <defs>
+    <radialGradient id="rz-esfera" cx="38%" cy="58%" r="78%">
+      <stop offset="0%" stop-color="#B9E23F"/>
+      <stop offset="42%" stop-color="#4FA82A"/>
+      <stop offset="100%" stop-color="#0A6B2E"/>
+    </radialGradient>
+  </defs>
+  <circle cx="60" cy="60" r="55" fill="url(#rz-esfera)" stroke="#D3EE2E" stroke-width="5"/>
+  <g fill="#FFFFFF">
+    <path d="M40 34h13a9 9 0 0 1 9 9v13a9 9 0 0 1-9 9H40Z"/>
+    <rect x="40" y="70" width="17" height="17" rx="6"/>
+    <rect x="63" y="70" width="17" height="17" rx="6" opacity=".82"/>
+  </g>
+</svg>
