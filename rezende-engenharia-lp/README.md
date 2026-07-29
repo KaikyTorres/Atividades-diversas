@@ -76,10 +76,24 @@ saber que a mensagem passa pela infraestrutura do WhatsApp.
 
 ## Marca
 
-O `assets/img/logo-marca.svg` é uma reconstrução do selo circular da Rezende
-(esfera verde com anel lima). Para usar o arquivo oficial, troque o SVG por
-`logo-marca.png` na pasta `assets/img/` e atualize os dois `<img>` do
-`index.html` — as dimensões já estão no CSS.
+O selo no topo da página é uma **reconstrução** do logo da Rezende, montado em
+HTML e CSS: círculo com degradê verde, anel lima, o ícone de blocos, a palavra
+"rezende" e a linha "engenharia & consultoria". Chega perto do original, mas não
+é o arquivo oficial.
+
+**Para usar o logo de verdade**, coloque o arquivo em `assets/img/` e troque o
+bloco `<div class="selo">` do `index.html` por:
+
+```html
+<img class="selo" src="assets/img/logo-rezende.png"
+     alt="Rezende Engenharia &amp; Consultoria">
+```
+
+O CSS da classe `.selo` já cuida do tamanho e da centralização; num `<img>`,
+apague de `.selo` as propriedades `border`, `background`, `display`,
+`flex-direction`, `align-items`, `justify-content` e `text-shadow` — o resto
+serve para os dois casos. Vale trocar também o `assets/img/logo-marca.svg`, que
+é o favicon e a imagem de compartilhamento.
 
 Paleta usada, tirada da marca:
 

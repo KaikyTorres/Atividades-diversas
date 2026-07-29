@@ -19,6 +19,15 @@
   font-display: swap;
 }
 
+/* Wordmark da Rezende: geométrica leve, no espírito da logo original. */
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost-latin.woff2") format("woff2");
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "Azeret Mono";
   src: url("../fonts/azeret-mono-latin.woff2") format("woff2");
@@ -31,6 +40,7 @@
   --verde-fundo: #063f1d;
   --verde-cerrado: #0a6b2e;
   --lima: #c7e534;
+  --anel: #d3ee2e;
   --osso: #f1f4e6;
   --grafite: #12200f;
   --alerta: #ff6a3d;
@@ -38,6 +48,7 @@
   --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
   --corpo: "Instrument Sans", system-ui, -apple-system, sans-serif;
   --mono: "Azeret Mono", ui-monospace, monospace;
+  --marca: "Jost", "Century Gothic", "Futura", sans-serif;
 }
 
 *,
@@ -72,35 +83,52 @@ img { display: block; max-width: 100%; }
   padding: 40px 20px 48px;
 }
 
-/* ---------- marca ---------- */
+/* ---------- selo ---------- */
 
-.marca {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  margin-bottom: 34px;
-}
-
-.marca__texto {
+.selo {
+  width: 172px;
+  height: 172px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  border: 5px solid var(--anel);
+  background: radial-gradient(circle at 36% 56%, #c2e63f 0%, #6cb62c 34%, #2a8a2c 66%, #0a6b2e 100%);
+  color: #fff;
   display: flex;
   flex-direction: column;
-  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(4, 45, 20, 0.28);
 }
 
-.marca__nome {
-  font-family: var(--display);
+.selo__lockup {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.selo__icone {
+  width: 18px;
+  height: 21px;
+  filter: drop-shadow(0 1px 2px rgba(4, 45, 20, 0.28));
+}
+
+.selo__nome {
+  font-family: var(--marca);
   font-weight: 300;
   font-size: 32px;
-  letter-spacing: 0.02em;
+  line-height: 1;
+  letter-spacing: 0.005em;
 }
 
-.marca__linha {
-  font-family: var(--mono);
-  font-size: 8.5px;
-  letter-spacing: 0.26em;
+.selo__linha {
+  font-family: var(--marca);
+  font-weight: 500;
+  font-size: 7px;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(241, 244, 230, 0.7);
-  margin-top: 6px;
+  white-space: nowrap;
+  margin-top: 8px;
+  padding-left: 0.24em;
 }
 
 /* ---------- chamada ---------- */
