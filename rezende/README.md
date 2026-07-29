@@ -8,7 +8,7 @@ Site estático — HTML, CSS e um arquivo JavaScript. Sem build, sem framework,
 sem dependência externa em tempo de execução.
 
 ```
-rezende-engenharia-lp/
+rezende/
 ├── index.html            formulário
 ├── obrigado.html         confirmação, depois do envio
 └── assets/
@@ -61,8 +61,11 @@ no fluxo.
 
 ## Publicação
 
-Suba a pasta em qualquer hospedagem estática (Vercel, Netlify, GitHub Pages,
-S3, cPanel). Duas coisas são obrigatórias:
+O repositório publica esta pasta no GitHub Pages a cada push na `main`, pelo
+workflow `.github/workflows/pages.yml`. A LP fica em `/rezende`.
+
+Para hospedar em outro lugar (Vercel, Netlify, S3, cPanel), suba a pasta como
+está. Duas coisas são obrigatórias:
 
 - **HTTPS.** A página trafega CPF; sem TLS o dado vai em claro.
 - **Endpoint no seu domínio ou com CORS liberado** para o domínio da LP.
