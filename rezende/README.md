@@ -125,3 +125,21 @@ Paleta usada, tirada da marca:
 Tipografia: Bricolage Grotesque (títulos), Instrument Sans (texto), Azeret Mono
 (rótulos dos campos). As três estão em `assets/fonts/` sob licença SIL Open
 Font License 1.1.
+
+## Versão para Elementor / WordPress
+
+`elementor/1-formulario.html` e `elementor/2-obrigado.html` são a mesma página
+em bloco único, para colar num widget **HTML** do Elementor. Diferenças em
+relação aos arquivos da raiz:
+
+- CSS e JavaScript embutidos; nada de `assets/`.
+- Fontes vêm do Google Fonts por `@import`, em vez dos arquivos locais.
+- Tudo isolado na classe `.rz-lp`, com um reset na frente para o CSS do tema não
+  vazar para dentro da página (fonte, cor, caixa alta, letter-spacing).
+- Sem `<!DOCTYPE>`, `<head>` ou `<body>`: o widget do Elementor descarta essas
+  tags e o CSS junto com elas.
+- `paginaObrigado` aponta para `/obrigado`. Ajuste para a URL real da página de
+  confirmação no WordPress.
+
+Os dois blocos carregam o mesmo `CONFIG`, então o número do WhatsApp precisa ser
+trocado nos dois arquivos.

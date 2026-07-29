@@ -1,0 +1,585 @@
+<!-- LP Rezende — página 1, o formulário
+     Cole este bloco inteiro num widget HTML do Elementor. Nada de arquivo externo. -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400..600&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,85..100,300..800&family=Instrument+Sans:wght@400..600&family=Jost:wght@300..500&display=swap');
+
+.rz-lp, .rz-lp *, .rz-lp *::before, .rz-lp *::after { box-sizing: border-box; }
+.rz-lp {
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  font-style: normal;
+}
+.rz-lp h1, .rz-lp h2, .rz-lp p, .rz-lp figure { margin: 0; padding: 0; }
+.rz-lp h1, .rz-lp h2, .rz-lp p, .rz-lp span, .rz-lp label,
+.rz-lp strong, .rz-lp em, .rz-lp a, .rz-lp div {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: normal;
+  color: inherit;
+  text-transform: none;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  background: none;
+}
+.rz-lp input, .rz-lp button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.rz-lp svg { display: inline-block; vertical-align: middle; max-width: 100%; }
+
+.rz-lp {
+  --verde-fundo: #063f1d;
+  --verde-cerrado: #0a6b2e;
+  --lima: #c7e534;
+  --anel: #d3ee2e;
+  --osso: #f1f4e6;
+  --grafite: #12200f;
+  --alerta: #ff6a3d;
+
+  --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --corpo: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --mono: "Azeret Mono", ui-monospace, monospace;
+  --marca: "Jost", "Century Gothic", "Futura", sans-serif;
+}
+
+.rz-lp *, .rz-lp *::before, .rz-lp *::after { box-sizing: border-box; }
+
+.rz-lp {
+  margin: 0;
+  background: var(--verde-fundo);
+  background-image: radial-gradient(110% 70% at 50% 0%, rgba(10, 107, 46, 0.85), transparent 65%);
+  color: var(--osso);
+  font-family: var(--corpo);
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.rz-lp img { display: block; max-width: 100%; }
+
+.rz-lp :focus-visible {
+  outline: 3px solid var(--lima);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.rz-lp .tela {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 40px 20px 48px;
+}
+
+.rz-lp .selo {
+  width: 172px;
+  height: 172px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  border: 5px solid var(--anel);
+  background: radial-gradient(circle at 36% 56%, #c2e63f 0%, #6cb62c 34%, #2a8a2c 66%, #0a6b2e 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(4, 45, 20, 0.28);
+}
+
+.rz-lp .selo__lockup {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.rz-lp .selo__icone {
+  width: 18px;
+  height: 21px;
+  filter: drop-shadow(0 1px 2px rgba(4, 45, 20, 0.28));
+}
+
+.rz-lp .selo__nome {
+  font-family: var(--marca);
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+.rz-lp .selo__linha {
+  font-family: var(--marca);
+  font-weight: 500;
+  font-size: 7px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 8px;
+  padding-left: 0.24em;
+}
+
+.rz-lp .titulo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 8vw, 2.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+
+.rz-lp .titulo em {
+  font-style: normal;
+  color: var(--alerta);
+}
+
+.rz-lp .chamada {
+  font-size: 1.05rem;
+  color: rgba(241, 244, 230, 0.76);
+  margin: 0 0 26px;
+}
+
+.rz-lp .cartao {
+  background: var(--osso);
+  color: var(--grafite);
+  border-radius: 18px;
+  padding: 24px 22px 22px;
+  box-shadow: 0 22px 50px rgba(2, 26, 12, 0.4);
+}
+
+.rz-lp .campo { margin-bottom: 15px; }
+
+.rz-lp .campo label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(18, 32, 15, 0.72);
+  margin-bottom: 7px;
+}
+
+.rz-lp .campo input {
+  width: 100%;
+  font-family: var(--corpo);
+  font-size: 16px;
+  color: var(--grafite);
+  background: #fff;
+  border: 1.5px solid rgba(18, 32, 15, 0.16);
+  border-radius: 10px;
+  padding: 13px 14px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.rz-lp .campo input::placeholder { color: rgba(18, 32, 15, 0.34); }
+
+.rz-lp .campo input:focus {
+  outline: none;
+  border-color: var(--verde-cerrado);
+  box-shadow: 0 0 0 3px rgba(10, 107, 46, 0.18);
+}
+
+.rz-lp .campo input[aria-invalid="true"] {
+  border-color: #c4351a;
+  box-shadow: 0 0 0 3px rgba(196, 53, 26, 0.14);
+}
+
+.rz-lp .campo__erro {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #a92c12;
+}
+.rz-lp .campo__erro:empty { display: none; }
+
+.rz-lp .isca {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.rz-lp .botao {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--verde-cerrado);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+.rz-lp .botao:hover { background: #0c7d36; }
+.rz-lp .botao:active { transform: translateY(1px); }
+.rz-lp .botao[disabled] { opacity: 0.6; cursor: progress; }
+
+.rz-lp .botao--claro {
+  background: var(--lima);
+  color: var(--grafite);
+  text-align: center;
+  text-decoration: none;
+}
+.rz-lp .botao--claro:hover { background: #d3ef4a; }
+
+.rz-lp .form__rodape {
+  margin: 13px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(18, 32, 15, 0.6);
+}
+
+.rz-lp .falha { margin-top: 14px; }
+
+.rz-lp .falha__texto {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: #a92c12;
+}
+
+.rz-lp .falha .botao { margin-top: 0; }
+
+.rz-lp .tela--centro { text-align: center; }
+
+.rz-lp .obrigado__selo {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lima);
+  margin: 0 0 12px;
+}
+
+.rz-lp .tela--centro .chamada { margin-bottom: 30px; }
+
+.rz-lp .tela--centro .chamada strong {
+  color: var(--osso);
+  font-weight: 600;
+}
+
+.rz-lp .obrigado__volta {
+  margin: 18px 0 0;
+  font-size: 13.5px;
+}
+
+.rz-lp .obrigado__volta a { color: rgba(241, 244, 230, 0.66); }
+
+.rz-lp .rodape {
+  margin: 26px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: rgba(241, 244, 230, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rz-lp * { transition-duration: 0.01ms !important; }
+}
+</style>
+
+<div class="rz-lp">
+  <div class="tela">
+  <div class="selo" role="img" aria-label="Rezende Engenharia e Consultoria">
+    <span class="selo__lockup">
+      <svg class="selo__icone" viewBox="0 0 30 34" width="18" height="21" aria-hidden="true" fill="currentColor">
+        <rect x="0" y="0" width="12" height="34" rx="5"/>
+        <rect x="15" y="0" width="15" height="15" rx="6"/>
+        <rect x="15" y="19" width="15" height="15" rx="6"/>
+      </svg>
+      <span class="selo__nome">rezende</span>
+    </span>
+    <span class="selo__linha">Engenharia &amp; Consultoria</span>
+  </div>
+
+  <h1 class="titulo">Saiba se o CAR da sua fazenda foi <em>rejeitado</em></h1>
+  <p class="chamada">Consulta gratuita. O resultado chega no seu WhatsApp.</p>
+
+  <div class="cartao">
+    <form class="form" novalidate data-form>
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input id="nome" name="nome" type="text" autocomplete="name"
+               placeholder="Como está no documento" aria-describedby="erro-nome" required>
+        <p class="campo__erro" id="erro-nome" data-erro="nome"></p>
+      </div>
+
+      <div class="campo">
+        <label for="telefone">WhatsApp com DDD</label>
+        <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
+               placeholder="(65) 99999-9999" maxlength="15" aria-describedby="erro-telefone" required>
+        <p class="campo__erro" id="erro-telefone" data-erro="telefone"></p>
+      </div>
+
+      <div class="campo">
+        <label for="cpf">CPF</label>
+        <input id="cpf" name="cpf" type="text" autocomplete="off" inputmode="numeric"
+               placeholder="000.000.000-00" maxlength="14" aria-describedby="erro-cpf" required>
+        <p class="campo__erro" id="erro-cpf" data-erro="cpf"></p>
+      </div>
+
+      <p class="isca" aria-hidden="true">
+        <label for="empresa">Não preencha este campo</label>
+        <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+      </p>
+
+      <button class="botao" type="submit" data-enviar>
+        <span data-botao-texto>Consultar meu CAR</span>
+      </button>
+
+      <p class="form__rodape">
+        Ao enviar, você autoriza a Rezende Engenharia a consultar seu CAR e responder
+        pelo WhatsApp informado. Resposta em até 24 horas úteis.
+      </p>
+      <div class="falha" data-falha hidden>
+        <p class="falha__texto" data-falha-texto></p>
+        <a class="botao botao--claro" href="#" data-whatsapp-link>Enviar pelo WhatsApp</a>
+      </div>
+    </form>
+  </div>
+
+  <p class="rodape">Rezende Engenharia &amp; Consultoria · Consulta baseada em dados públicos do SICAR</p>
+  </div>
+</div>
+
+<script>
+/* Rezende Engenharia — formulário de consulta do CAR
+ * Máscaras, validação de CPF/telefone e envio do lead.
+ * Ajuste o bloco CONFIG antes de publicar.
+ */
+(function () {
+  'use strict';
+
+  var CONFIG = {
+    // Webhook do n8n que recebe o lead e dispara a consulta do CAR.
+    // Vazio = a página cai no envio manual pelo WhatsApp.
+    endpoint: 'https://n8n.usekaycrm.com/webhook/cc26a8d1-ea4d-440c-ac27-22b3e6117626',
+
+    // Para onde o visitante vai depois do envio.
+    paginaObrigado: '/obrigado',
+
+    // Número oficial da Rezende, só dígitos, com DDI 55. TROQUE ANTES DE PUBLICAR.
+    whatsapp: '5500000000000',
+
+    // Origem gravada junto com o lead, útil quando houver mais de uma campanha.
+    origem: 'lp-car'
+  };
+
+  /* ---------- WhatsApp (vale para a LP e para a página de obrigado) ---------- */
+
+  function atualizarLinksWhatsApp(texto) {
+    var alvos = document.querySelectorAll('[data-whatsapp-link]');
+    Array.prototype.forEach.call(alvos, function (alvo) {
+      alvo.setAttribute('href', 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto));
+      alvo.setAttribute('target', '_blank');
+      alvo.setAttribute('rel', 'noopener');
+    });
+  }
+
+  atualizarLinksWhatsApp('Olá! Quero saber a situação do CAR da minha fazenda.');
+
+  var form = document.querySelector('[data-form]');
+  if (!form) return; // página de obrigado: não tem formulário
+
+  var botao = document.querySelector('[data-enviar]');
+  var botaoTexto = document.querySelector('[data-botao-texto]');
+  var falha = document.querySelector('[data-falha]');
+  var falhaTexto = document.querySelector('[data-falha-texto]');
+
+  var campoNome = document.getElementById('nome');
+  var campoTelefone = document.getElementById('telefone');
+  var campoCpf = document.getElementById('cpf');
+  var campoIsca = document.getElementById('empresa');
+
+  /* ---------- utilidades ---------- */
+
+  function digitos(valor) {
+    return (valor || '').replace(/\D/g, '');
+  }
+
+  function mascaraTelefone(valor) {
+    var d = digitos(valor).slice(0, 11);
+    if (d.length <= 2) return d.length ? '(' + d : '';
+    if (d.length <= 6) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length <= 10) return '(' + d.slice(0, 2) + ') ' + d.slice(2, 6) + '-' + d.slice(6);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
+  }
+
+  function mascaraCpf(valor) {
+    var d = digitos(valor).slice(0, 11);
+    var saida = d.slice(0, 3);
+    if (d.length > 3) saida += '.' + d.slice(3, 6);
+    if (d.length > 6) saida += '.' + d.slice(6, 9);
+    if (d.length > 9) saida += '-' + d.slice(9);
+    return saida;
+  }
+
+  function cpfValido(valor) {
+    var d = digitos(valor);
+    if (d.length !== 11) return false;
+    if (/^(\d)\1{10}$/.test(d)) return false;
+
+    var soma = 0;
+    var i;
+    for (i = 0; i < 9; i++) soma += parseInt(d.charAt(i), 10) * (10 - i);
+    var primeiro = (soma * 10) % 11;
+    if (primeiro === 10) primeiro = 0;
+    if (primeiro !== parseInt(d.charAt(9), 10)) return false;
+
+    soma = 0;
+    for (i = 0; i < 10; i++) soma += parseInt(d.charAt(i), 10) * (11 - i);
+    var segundo = (soma * 10) % 11;
+    if (segundo === 10) segundo = 0;
+    return segundo === parseInt(d.charAt(10), 10);
+  }
+
+  function telefoneValido(valor) {
+    var d = digitos(valor);
+    if (d.length !== 10 && d.length !== 11) return false;
+    if (parseInt(d.slice(0, 2), 10) < 11) return false;
+    if (d.length === 11 && d.charAt(2) !== '9') return false;
+    return true;
+  }
+
+  function nomeValido(valor) {
+    return (valor || '').trim().split(/\s+/).length >= 2;
+  }
+
+  function mostrarErro(campo, mensagem) {
+    var alvo = document.querySelector('[data-erro="' + campo + '"]');
+    if (alvo) alvo.textContent = mensagem || '';
+
+    var entrada = document.getElementById(campo);
+    if (!entrada) return;
+    if (mensagem) entrada.setAttribute('aria-invalid', 'true');
+    else entrada.removeAttribute('aria-invalid');
+  }
+
+  function limparErros() {
+    ['nome', 'telefone', 'cpf'].forEach(function (campo) {
+      mostrarErro(campo, '');
+    });
+    if (falha) falha.hidden = true;
+  }
+
+  /* ---------- máscaras ---------- */
+
+  function ligarMascara(campo, formatador) {
+    campo.addEventListener('input', function () {
+      campo.value = formatador(campo.value);
+    });
+  }
+
+  ligarMascara(campoTelefone, mascaraTelefone);
+  ligarMascara(campoCpf, mascaraCpf);
+
+  [campoNome, campoTelefone, campoCpf].forEach(function (campo) {
+    campo.addEventListener('blur', function () {
+      if (campo.value.trim()) validar(campo.id);
+    });
+  });
+
+  function validar(campo) {
+    if (campo === 'nome') {
+      if (!campoNome.value.trim()) return mostrarErro('nome', 'Informe seu nome.'), false;
+      if (!nomeValido(campoNome.value)) return mostrarErro('nome', 'Informe o nome completo, com sobrenome.'), false;
+      mostrarErro('nome', '');
+      return true;
+    }
+    if (campo === 'telefone') {
+      if (!campoTelefone.value.trim()) return mostrarErro('telefone', 'Informe seu WhatsApp.'), false;
+      if (!telefoneValido(campoTelefone.value)) return mostrarErro('telefone', 'Número incompleto. Use DDD + número.'), false;
+      mostrarErro('telefone', '');
+      return true;
+    }
+    if (campo === 'cpf') {
+      if (!campoCpf.value.trim()) return mostrarErro('cpf', 'Informe o CPF.'), false;
+      if (!cpfValido(campoCpf.value)) return mostrarErro('cpf', 'Esse CPF não confere. Confira os números.'), false;
+      mostrarErro('cpf', '');
+      return true;
+    }
+    return true;
+  }
+
+  /* ---------- envio ---------- */
+
+  function mensagemDaConsulta(dados) {
+    return [
+      'Olá! Quero consultar a situação do meu CAR.',
+      'Nome: ' + dados.nome,
+      'Telefone: ' + dados.telefoneFormatado,
+      'CPF: ' + dados.cpfFormatado
+    ].join('\n');
+  }
+
+  // replace() em vez de href: o botão "voltar" não volta para o formulário
+  // preenchido, então ninguém reenvia o mesmo cadastro sem querer.
+  function irParaObrigado() {
+    window.location.replace(CONFIG.paginaObrigado);
+  }
+
+  form.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    limparErros();
+
+    if (campoIsca && campoIsca.value) return; // armadilha de robô
+
+    var ok = ['nome', 'telefone', 'cpf'].map(validar).every(Boolean);
+    if (!ok) {
+      var primeiro = form.querySelector('[aria-invalid="true"]');
+      if (primeiro) primeiro.focus();
+      return;
+    }
+
+    var dados = {
+      nome: campoNome.value.trim().replace(/\s+/g, ' '),
+      telefone: digitos(campoTelefone.value),
+      telefoneFormatado: mascaraTelefone(campoTelefone.value),
+      cpf: digitos(campoCpf.value),
+      cpfFormatado: mascaraCpf(campoCpf.value),
+      origem: CONFIG.origem
+    };
+
+    if (!CONFIG.endpoint) {
+      irParaObrigado();
+      return;
+    }
+
+    botao.disabled = true;
+    botaoTexto.textContent = 'Enviando…';
+
+    fetch(CONFIG.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    })
+      .then(function (resposta) {
+        if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
+        irParaObrigado();
+      })
+      .catch(function () {
+        botao.disabled = false;
+        botaoTexto.textContent = 'Consultar meu CAR';
+        falhaTexto.textContent = 'Não conseguimos enviar agora. Tente de novo ou mande os dados direto pelo WhatsApp.';
+        atualizarLinksWhatsApp(mensagemDaConsulta(dados));
+        falha.hidden = false;
+      });
+  });
+})();
+</script>
