@@ -27,7 +27,6 @@
   var campoNome = document.getElementById('nome');
   var campoTelefone = document.getElementById('telefone');
   var campoCpf = document.getElementById('cpf');
-  var campoConsentimento = document.getElementById('consentimento');
   var campoIsca = document.getElementById('empresa');
 
   /* ---------- utilidades ---------- */
@@ -81,25 +80,21 @@
   }
 
   function nomeValido(valor) {
-    var partes = (valor || '').trim().split(/\s+/);
-    if (partes.length < 2) return false;
-    return partes.every(function (parte) {
-      return /^[A-Za-zÀ-ÖØ-öø-ÿ'’.-]{2,}$/.test(parte) || parte.length > 1;
-    });
+    return (valor || '').trim().split(/\s+/).length >= 2;
   }
 
   function mostrarErro(campo, mensagem) {
     var alvo = document.querySelector('[data-erro="' + campo + '"]');
     if (alvo) alvo.textContent = mensagem || '';
-    var entrada = document.getElementById(campo === 'consentimento' ? 'consentimento' : campo);
-    if (entrada && entrada.type !== 'checkbox') {
-      if (mensagem) entrada.setAttribute('aria-invalid', 'true');
-      else entrada.removeAttribute('aria-invalid');
-    }
+
+    var entrada = document.getElementById(campo);
+    if (!entrada) return;
+    if (mensagem) entrada.setAttribute('aria-invalid', 'true');
+    else entrada.removeAttribute('aria-invalid');
   }
 
   function limparErros() {
-    ['nome', 'telefone', 'cpf', 'consentimento'].forEach(function (campo) {
+    ['nome', 'telefone', 'cpf'].forEach(function (campo) {
       mostrarErro(campo, '');
     });
     if (falha) {
@@ -111,7 +106,6 @@
   /* ---------- máscaras ---------- */
 
   function ligarMascara(campo, formatador) {
-    if (!campo) return;
     campo.addEventListener('input', function () {
       campo.value = formatador(campo.value);
     });
@@ -121,17 +115,10 @@
   ligarMascara(campoCpf, mascaraCpf);
 
   [campoNome, campoTelefone, campoCpf].forEach(function (campo) {
-    if (!campo) return;
     campo.addEventListener('blur', function () {
       if (campo.value.trim()) validar(campo.id);
     });
   });
-
-  if (campoConsentimento) {
-    campoConsentimento.addEventListener('change', function () {
-      if (campoConsentimento.checked) mostrarErro('consentimento', '');
-    });
-  }
 
   function validar(campo) {
     if (campo === 'nome') {
@@ -147,17 +134,9 @@
       return true;
     }
     if (campo === 'cpf') {
-      if (!campoCpf.value.trim()) return mostrarErro('cpf', 'Informe o CPF do proprietário.'), false;
+      if (!campoCpf.value.trim()) return mostrarErro('cpf', 'Informe o CPF.'), false;
       if (!cpfValido(campoCpf.value)) return mostrarErro('cpf', 'Esse CPF não confere. Confira os números.'), false;
       mostrarErro('cpf', '');
-      return true;
-    }
-    if (campo === 'consentimento') {
-      if (!campoConsentimento.checked) {
-        mostrarErro('consentimento', 'Precisamos da sua autorização para consultar e responder.');
-        return false;
-      }
-      mostrarErro('consentimento', '');
       return true;
     }
     return true;
@@ -165,138 +144,91 @@
 
   /* ---------- WhatsApp ---------- */
 
-  function linkWhatsApp(texto) {
-    var base = 'https://wa.me/' + CONFIG.whatsapp;
-    return texto ? base + '?text=' + encodeURIComponent(texto) : base;
-  }
-
   function atualizarLinksWhatsApp(texto) {
     var alvos = document.querySelectorAll('[data-whatsapp-link]');
     Array.prototype.forEach.call(alvos, function (alvo) {
-      alvo.setAttribute('href', linkWhatsApp(texto));
+      alvo.setAttribute('href', 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto));
       alvo.setAttribute('target', '_blank');
       alvo.setAttribute('rel', 'noopener');
     });
   }
 
-  atualizarLinksWhatsApp('Olá! Quero saber a situação do CAR da minha fazenda.');
-
   function mensagemDaConsulta(dados) {
     return [
       'Olá! Quero consultar a situação do meu CAR.',
       'Nome: ' + dados.nome,
-      'Telefone: ' + dados.telefone,
-      'CPF: ' + dados.cpf
+      'Telefone: ' + dados.telefoneFormatado,
+      'CPF: ' + dados.cpfFormatado
     ].join('\n');
   }
 
-  /* ---------- envio ---------- */
+  atualizarLinksWhatsApp('Olá! Quero saber a situação do CAR da minha fazenda.');
 
-  function enviarParaEndpoint(dados) {
-    return fetch(CONFIG.endpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados)
-    }).then(function (resposta) {
-      if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
-      return resposta;
-    });
-  }
+  /* ---------- envio ---------- */
 
   function mostrarRecibo(dados) {
     if (ecoTelefone) ecoTelefone.textContent = dados.telefoneFormatado;
-    atualizarLinksWhatsApp(mensagemDaConsulta({
-      nome: dados.nome,
-      telefone: dados.telefoneFormatado,
-      cpf: dados.cpfFormatado
-    }));
-    var cartao = document.querySelector('.cartao');
-    if (cartao) cartao.classList.add('cartao--recibo');
+    atualizarLinksWhatsApp(mensagemDaConsulta(dados));
     form.hidden = true;
     recibo.hidden = false;
     recibo.focus();
   }
 
-  if (form) {
-    form.addEventListener('submit', function (evento) {
-      evento.preventDefault();
-      limparErros();
+  form.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    limparErros();
 
-      if (campoIsca && campoIsca.value) return; // armadilha de robô
+    if (campoIsca && campoIsca.value) return; // armadilha de robô
 
-      var ok = ['nome', 'telefone', 'cpf', 'consentimento']
-        .map(validar)
-        .every(Boolean);
+    var ok = ['nome', 'telefone', 'cpf'].map(validar).every(Boolean);
+    if (!ok) {
+      var primeiro = form.querySelector('[aria-invalid="true"]');
+      if (primeiro) primeiro.focus();
+      return;
+    }
 
-      if (!ok) {
-        var primeiro = form.querySelector('[aria-invalid="true"]');
-        if (!primeiro && !campoConsentimento.checked) primeiro = campoConsentimento;
-        if (primeiro) primeiro.focus();
-        return;
-      }
-
-      var dados = {
-        nome: campoNome.value.trim().replace(/\s+/g, ' '),
-        telefone: digitos(campoTelefone.value),
-        telefoneFormatado: mascaraTelefone(campoTelefone.value),
-        cpf: digitos(campoCpf.value),
-        cpfFormatado: mascaraCpf(campoCpf.value),
-        consentimento: true,
-        origem: CONFIG.origem
-      };
-
-      if (!CONFIG.endpoint) {
-        mostrarRecibo(dados);
-        return;
-      }
-
-      botao.disabled = true;
-      botaoTexto.textContent = 'Enviando…';
-
-      enviarParaEndpoint(dados)
-        .then(function () {
-          mostrarRecibo(dados);
-        })
-        .catch(function () {
-          falha.hidden = false;
-          falha.textContent = 'Não conseguimos enviar agora. Tente de novo ou fale com a equipe no WhatsApp.';
-          atualizarLinksWhatsApp(mensagemDaConsulta({
-            nome: dados.nome,
-            telefone: dados.telefoneFormatado,
-            cpf: dados.cpfFormatado
-          }));
-        })
-        .then(function () {
-          botao.disabled = false;
-          botaoTexto.textContent = 'Consultar meu CAR';
-        });
-    });
-  }
-
-  var novaConsulta = document.querySelector('[data-nova-consulta]');
-  if (novaConsulta) {
-    novaConsulta.addEventListener('click', function () {
-      var cartao = document.querySelector('.cartao');
-      if (cartao) cartao.classList.remove('cartao--recibo');
-      form.reset();
-      limparErros();
-      recibo.hidden = true;
-      form.hidden = false;
-      campoNome.focus();
-    });
-  }
-
-  /* ---------- status do imóvel de exemplo ---------- */
-
-  var status = document.querySelector('[data-status]');
-  var statusTexto = document.querySelector('[data-status-texto]');
-  if (status && statusTexto) {
-    var semMovimento = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var marcar = function () {
-      status.setAttribute('data-status', 'rejeitado');
-      statusTexto.textContent = 'Cadastro rejeitado';
+    var dados = {
+      nome: campoNome.value.trim().replace(/\s+/g, ' '),
+      telefone: digitos(campoTelefone.value),
+      telefoneFormatado: mascaraTelefone(campoTelefone.value),
+      cpf: digitos(campoCpf.value),
+      cpfFormatado: mascaraCpf(campoCpf.value),
+      origem: CONFIG.origem
     };
-    if (semMovimento) marcar();
-    else window.setTimeout(marcar, 2600);
-  }
+
+    if (!CONFIG.endpoint) {
+      mostrarRecibo(dados);
+      return;
+    }
+
+    botao.disabled = true;
+    botaoTexto.textContent = 'Enviando…';
+
+    fetch(CONFIG.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    })
+      .then(function (resposta) {
+        if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
+        mostrarRecibo(dados);
+      })
+      .catch(function () {
+        falha.hidden = false;
+        falha.textContent = 'Não conseguimos enviar agora. Tente de novo ou fale com a equipe no WhatsApp.';
+        atualizarLinksWhatsApp(mensagemDaConsulta(dados));
+      })
+      .then(function () {
+        botao.disabled = false;
+        botaoTexto.textContent = 'Consultar meu CAR';
+      });
+  });
+
+  document.querySelector('[data-nova-consulta]').addEventListener('click', function () {
+    form.reset();
+    limparErros();
+    recibo.hidden = true;
+    form.hidden = false;
+    campoNome.focus();
+  });
 })();

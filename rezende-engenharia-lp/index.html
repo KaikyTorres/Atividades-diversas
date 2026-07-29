@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Consulta de CAR — Rezende Engenharia &amp; Consultoria</title>
-<meta name="description" content="Consulte gratuitamente a situação do CAR da sua fazenda no SICAR. A Rezende Engenharia analisa o cadastro e envia o resultado no seu WhatsApp.">
+<meta name="description" content="Consulta gratuita da situação do CAR da sua fazenda. O resultado chega no seu WhatsApp.">
 <meta name="theme-color" content="#04381A">
 <link rel="icon" href="assets/img/logo-marca.svg" type="image/svg+xml">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Saiba se o CAR da sua fazenda foi rejeitado">
-<meta property="og:description" content="Consulta gratuita no SICAR. O resultado chega no seu WhatsApp.">
+<meta property="og:description" content="Consulta gratuita. O resultado chega no seu WhatsApp.">
 <meta property="og:image" content="assets/img/logo-marca.svg">
 <meta property="og:locale" content="pt_BR">
 
@@ -19,168 +19,71 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<a class="pular" href="#formulario">Ir direto para o formulário</a>
+<main class="tela">
 
-<header class="topo">
-  <a class="marca" href="#" aria-label="Rezende Engenharia e Consultoria — início">
-    <img class="marca__selo" src="assets/img/logo-marca.svg" alt="" width="52" height="52">
+  <div class="marca">
+    <img src="assets/img/logo-marca.svg" alt="" width="60" height="60">
     <span class="marca__texto">
       <span class="marca__nome">rezende</span>
       <span class="marca__linha">Engenharia &amp; Consultoria</span>
     </span>
-  </a>
-  <a class="topo__zap" href="#" aria-label="Falar no WhatsApp" data-whatsapp-link>
-    <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.16c-.24.68-1.41 1.3-1.95 1.34-.5.04-.98.22-3.3-.69-2.78-1.1-4.54-3.95-4.68-4.13-.13-.18-1.11-1.48-1.11-2.82s.7-2 .95-2.28c.25-.27.54-.34.72-.34l.52.01c.17 0 .39-.06.61.47.24.56.8 1.95.87 2.09.07.14.12.3.02.48-.09.18-.14.29-.28.45l-.42.48c-.14.14-.28.29-.12.57.16.27.72 1.19 1.55 1.93 1.07.95 1.97 1.25 2.25 1.39.27.14.43.12.59-.07.16-.18.68-.79.86-1.07.18-.27.36-.22.61-.13.25.09 1.6.76 1.87.9.27.13.45.2.52.31.07.11.07.64-.17 1.31Z"/></svg>
-    <span>Falar no WhatsApp</span>
-  </a>
-</header>
-
-<main>
-  <section class="capa">
-    <div class="capa__grade">
-
-      <div class="argumento">
-        <p class="etiqueta">Consulta gratuita · Base SICAR</p>
-        <h1 class="titulo">Saiba se o CAR da sua fazenda foi <em>rejeitado</em></h1>
-        <p class="chamada">
-          A gente consulta a situação do Cadastro Ambiental Rural e devolve o diagnóstico
-          no seu WhatsApp. Você informa três dados; o resto é com a engenharia.
-        </p>
-      </div>
-
-      <figure class="lote">
-          <svg class="lote__mapa" viewBox="0 0 400 300" role="img" aria-label="Ilustração de um perímetro de imóvel rural com área sobreposta e reserva legal">
-            <defs>
-              <clipPath id="rz-recorte">
-                <polygon points="46,58 168,32 262,74 330,52 356,148 300,236 196,286 92,254 38,168"/>
-              </clipPath>
-              <pattern id="rz-hachura" width="9" height="9" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
-                <line x1="0" y1="0" x2="0" y2="9" stroke="#C7E534" stroke-width="2" opacity=".55"/>
-              </pattern>
-            </defs>
-
-            <g clip-path="url(#rz-recorte)">
-              <rect width="400" height="300" fill="#0A6B2E" opacity=".38"/>
-              <ellipse class="lote__conflito" cx="368" cy="128" rx="96" ry="118" fill="#FF6A3D" opacity=".62"/>
-              <rect class="lote__reserva" x="30" y="176" width="150" height="130" fill="url(#rz-hachura)"/>
-            </g>
-
-            <polygon class="lote__perimetro" points="46,58 168,32 262,74 330,52 356,148 300,236 196,286 92,254 38,168"
-                     fill="none" stroke="#C7E534" stroke-width="2.5" stroke-linejoin="round"/>
-            <g class="lote__vertices" fill="#04381A" stroke="#C7E534" stroke-width="2">
-              <circle cx="46" cy="58" r="4"/><circle cx="168" cy="32" r="4"/><circle cx="262" cy="74" r="4"/>
-              <circle cx="330" cy="52" r="4"/><circle cx="356" cy="148" r="4"/><circle cx="300" cy="236" r="4"/>
-              <circle cx="196" cy="286" r="4"/><circle cx="92" cy="254" r="4"/><circle cx="38" cy="168" r="4"/>
-            </g>
-          </svg>
-
-          <figcaption class="lote__ficha">
-            <span class="lote__dado">Imóvel de exemplo · 412,6 ha</span>
-            <span class="lote__status" data-status>
-              <span class="lote__pulso" aria-hidden="true"></span>
-              <span data-status-texto>Analisando cadastro</span>
-            </span>
-        </figcaption>
-      </figure>
-
-      <div class="cartao" id="formulario">
-        <div class="cartao__cabeca">
-          <h2 class="cartao__titulo">Consultar meu CAR</h2>
-          <p class="cartao__apoio">Leva menos de um minuto. Não cobramos nada pela consulta.</p>
-        </div>
-
-        <form class="form" novalidate data-form>
-          <div class="campo">
-            <label for="nome">Nome completo</label>
-            <input id="nome" name="nome" type="text" autocomplete="name" inputmode="text"
-                   placeholder="Como está no documento" aria-describedby="erro-nome" required>
-            <p class="campo__erro" id="erro-nome" data-erro="nome"></p>
-          </div>
-
-          <div class="campo">
-            <label for="telefone">WhatsApp com DDD</label>
-            <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
-                   placeholder="(65) 99999-9999" maxlength="15" aria-describedby="erro-telefone" required>
-            <p class="campo__erro" id="erro-telefone" data-erro="telefone"></p>
-          </div>
-
-          <div class="campo">
-            <label for="cpf">CPF do proprietário</label>
-            <input id="cpf" name="cpf" type="text" autocomplete="off" inputmode="numeric"
-                   placeholder="000.000.000-00" maxlength="14" aria-describedby="erro-cpf" required>
-            <p class="campo__erro" id="erro-cpf" data-erro="cpf"></p>
-          </div>
-
-          <div class="campo campo--consentimento">
-            <label class="consent">
-              <input type="checkbox" id="consentimento" name="consentimento" aria-describedby="erro-consentimento">
-              <span>Autorizo a Rezende Engenharia a consultar meu CAR e a responder pelo WhatsApp informado.</span>
-            </label>
-            <p class="campo__erro" id="erro-consentimento" data-erro="consentimento"></p>
-          </div>
-
-          <p class="isca" aria-hidden="true">
-            <label for="empresa">Não preencha este campo</label>
-            <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
-          </p>
-
-          <button class="botao" type="submit" data-enviar>
-            <span data-botao-texto>Consultar meu CAR</span>
-          </button>
-
-          <p class="form__rodape">Resposta em até 24 horas úteis, no número informado. Seus dados servem só para essa consulta.</p>
-          <p class="form__falha" data-falha hidden></p>
-        </form>
-
-        <div class="recibo" data-sucesso hidden tabindex="-1">
-          <p class="recibo__selo">Consulta registrada</p>
-          <h2 class="recibo__titulo">Recebemos seus dados</h2>
-          <p class="recibo__texto">
-            Vamos verificar a situação do cadastro e responder no WhatsApp
-            <strong data-eco-telefone></strong>. Se quiser adiantar, fale com a equipe agora.
-          </p>
-          <a class="botao botao--claro" href="#" data-whatsapp-link>Abrir conversa no WhatsApp</a>
-          <button class="recibo__voltar" type="button" data-nova-consulta>Consultar outro CPF</button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="motivos">
-    <h2 class="motivos__titulo">Por que um cadastro é rejeitado</h2>
-    <p class="motivos__intro">
-      O CAR rejeitado não avisa ninguém. O produtor costuma descobrir na hora de pedir crédito rural,
-      emitir CRA ou vender a área — quando o prazo já aperta.
-    </p>
-    <ul class="motivos__lista">
-      <li class="motivo">
-        <p class="motivo__rotulo">Sobreposição</p>
-        <p class="motivo__texto">O perímetro declarado avança sobre unidade de conservação, terra indígena, área pública ou o imóvel do vizinho.</p>
-      </li>
-      <li class="motivo">
-        <p class="motivo__rotulo">Área divergente</p>
-        <p class="motivo__texto">A área informada no cadastro não fecha com a matrícula do imóvel nem com o que a imagem de satélite mostra.</p>
-      </li>
-      <li class="motivo">
-        <p class="motivo__rotulo">Reserva legal</p>
-        <p class="motivo__texto">A Reserva Legal aparece abaixo do percentual exigido, fora do imóvel ou sem a averbação correspondente.</p>
-      </li>
-    </ul>
-    <p class="motivos__acao"><a href="#formulario">Consultar a situação do meu CAR</a></p>
-  </section>
-</main>
-
-<footer class="rodape">
-  <div class="rodape__marca">
-    <img src="assets/img/logo-marca.svg" alt="" width="34" height="34">
-    <span>Rezende Engenharia &amp; Consultoria</span>
   </div>
-  <p class="rodape__nota">
-    Consulta baseada em dados públicos do Sistema Nacional de Cadastro Ambiental Rural.
-    Tratamos CPF e telefone apenas para retornar esta consulta, conforme a LGPD.
-  </p>
-</footer>
+
+  <h1 class="titulo">Saiba se o CAR da sua fazenda foi <em>rejeitado</em></h1>
+  <p class="chamada">Consulta gratuita. O resultado chega no seu WhatsApp.</p>
+
+  <div class="cartao">
+    <form class="form" novalidate data-form>
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input id="nome" name="nome" type="text" autocomplete="name"
+               placeholder="Como está no documento" aria-describedby="erro-nome" required>
+        <p class="campo__erro" id="erro-nome" data-erro="nome"></p>
+      </div>
+
+      <div class="campo">
+        <label for="telefone">WhatsApp com DDD</label>
+        <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
+               placeholder="(65) 99999-9999" maxlength="15" aria-describedby="erro-telefone" required>
+        <p class="campo__erro" id="erro-telefone" data-erro="telefone"></p>
+      </div>
+
+      <div class="campo">
+        <label for="cpf">CPF</label>
+        <input id="cpf" name="cpf" type="text" autocomplete="off" inputmode="numeric"
+               placeholder="000.000.000-00" maxlength="14" aria-describedby="erro-cpf" required>
+        <p class="campo__erro" id="erro-cpf" data-erro="cpf"></p>
+      </div>
+
+      <p class="isca" aria-hidden="true">
+        <label for="empresa">Não preencha este campo</label>
+        <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+      </p>
+
+      <button class="botao" type="submit" data-enviar>
+        <span data-botao-texto>Consultar meu CAR</span>
+      </button>
+
+      <p class="form__rodape">
+        Ao enviar, você autoriza a Rezende Engenharia a consultar seu CAR e responder
+        pelo WhatsApp informado. Resposta em até 24 horas úteis.
+      </p>
+      <p class="form__falha" data-falha hidden></p>
+    </form>
+
+    <div class="recibo" data-sucesso hidden tabindex="-1">
+      <h2 class="recibo__titulo">Recebemos seus dados</h2>
+      <p class="recibo__texto">
+        Vamos verificar o cadastro e responder no WhatsApp <strong data-eco-telefone></strong>.
+      </p>
+      <a class="botao botao--claro" href="#" data-whatsapp-link>Falar com a equipe agora</a>
+      <button class="recibo__voltar" type="button" data-nova-consulta>Consultar outro CPF</button>
+    </div>
+  </div>
+
+  <p class="rodape">Rezende Engenharia &amp; Consultoria · Consulta baseada em dados públicos do SICAR</p>
+
+</main>
 
 <script src="assets/js/app.js" defer></script>
 </body>
