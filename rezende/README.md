@@ -138,8 +138,8 @@ relação aos arquivos da raiz:
   vazar para dentro da página (fonte, cor, caixa alta, letter-spacing).
 - Sem `<!DOCTYPE>`, `<head>` ou `<body>`: o widget do Elementor descarta essas
   tags e o CSS junto com elas.
-- `paginaObrigado` aponta para `/obrigado`. Ajuste para a URL real da página de
-  confirmação no WordPress.
+- `paginaObrigado` aponta para `https://smartyng.com/lp-rezende-form-obg`, a
+  página de confirmação no WordPress.
 
 Os dois blocos carregam o mesmo `CONFIG`, então o número do WhatsApp precisa ser
 trocado nos dois arquivos.
