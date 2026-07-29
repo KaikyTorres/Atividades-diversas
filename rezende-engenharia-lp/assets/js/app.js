@@ -6,9 +6,12 @@
   'use strict';
 
   var CONFIG = {
-    // Endpoint que recebe o lead e dispara a consulta do CAR.
+    // Webhook do n8n que recebe o lead e dispara a consulta do CAR.
     // Vazio = a página cai no envio manual pelo WhatsApp.
-    endpoint: '',
+    endpoint: 'https://n8n.usekaycrm.com/webhook/cc26a8d1-ea4d-440c-ac27-22b3e6117626',
+
+    // Para onde o visitante vai depois do envio.
+    paginaObrigado: 'obrigado.html',
 
     // Número oficial da Rezende, só dígitos, com DDI 55. TROQUE ANTES DE PUBLICAR.
     whatsapp: '5500000000000',
@@ -17,12 +20,26 @@
     origem: 'lp-car'
   };
 
+  /* ---------- WhatsApp (vale para a LP e para a página de obrigado) ---------- */
+
+  function atualizarLinksWhatsApp(texto) {
+    var alvos = document.querySelectorAll('[data-whatsapp-link]');
+    Array.prototype.forEach.call(alvos, function (alvo) {
+      alvo.setAttribute('href', 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto));
+      alvo.setAttribute('target', '_blank');
+      alvo.setAttribute('rel', 'noopener');
+    });
+  }
+
+  atualizarLinksWhatsApp('Olá! Quero saber a situação do CAR da minha fazenda.');
+
   var form = document.querySelector('[data-form]');
-  var recibo = document.querySelector('[data-sucesso]');
+  if (!form) return; // página de obrigado: não tem formulário
+
   var botao = document.querySelector('[data-enviar]');
   var botaoTexto = document.querySelector('[data-botao-texto]');
   var falha = document.querySelector('[data-falha]');
-  var ecoTelefone = document.querySelector('[data-eco-telefone]');
+  var falhaTexto = document.querySelector('[data-falha-texto]');
 
   var campoNome = document.getElementById('nome');
   var campoTelefone = document.getElementById('telefone');
@@ -97,10 +114,7 @@
     ['nome', 'telefone', 'cpf'].forEach(function (campo) {
       mostrarErro(campo, '');
     });
-    if (falha) {
-      falha.hidden = true;
-      falha.textContent = '';
-    }
+    if (falha) falha.hidden = true;
   }
 
   /* ---------- máscaras ---------- */
@@ -142,16 +156,7 @@
     return true;
   }
 
-  /* ---------- WhatsApp ---------- */
-
-  function atualizarLinksWhatsApp(texto) {
-    var alvos = document.querySelectorAll('[data-whatsapp-link]');
-    Array.prototype.forEach.call(alvos, function (alvo) {
-      alvo.setAttribute('href', 'https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(texto));
-      alvo.setAttribute('target', '_blank');
-      alvo.setAttribute('rel', 'noopener');
-    });
-  }
+  /* ---------- envio ---------- */
 
   function mensagemDaConsulta(dados) {
     return [
@@ -162,16 +167,10 @@
     ].join('\n');
   }
 
-  atualizarLinksWhatsApp('Olá! Quero saber a situação do CAR da minha fazenda.');
-
-  /* ---------- envio ---------- */
-
-  function mostrarRecibo(dados) {
-    if (ecoTelefone) ecoTelefone.textContent = dados.telefoneFormatado;
-    atualizarLinksWhatsApp(mensagemDaConsulta(dados));
-    form.hidden = true;
-    recibo.hidden = false;
-    recibo.focus();
+  // replace() em vez de href: o botão "voltar" não volta para o formulário
+  // preenchido, então ninguém reenvia o mesmo cadastro sem querer.
+  function irParaObrigado() {
+    window.location.replace(CONFIG.paginaObrigado);
   }
 
   form.addEventListener('submit', function (evento) {
@@ -197,7 +196,7 @@
     };
 
     if (!CONFIG.endpoint) {
-      mostrarRecibo(dados);
+      irParaObrigado();
       return;
     }
 
@@ -211,24 +210,14 @@
     })
       .then(function (resposta) {
         if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
-        mostrarRecibo(dados);
+        irParaObrigado();
       })
       .catch(function () {
-        falha.hidden = false;
-        falha.textContent = 'Não conseguimos enviar agora. Tente de novo ou fale com a equipe no WhatsApp.';
-        atualizarLinksWhatsApp(mensagemDaConsulta(dados));
-      })
-      .then(function () {
         botao.disabled = false;
         botaoTexto.textContent = 'Consultar meu CAR';
+        falhaTexto.textContent = 'Não conseguimos enviar agora. Tente de novo ou mande os dados direto pelo WhatsApp.';
+        atualizarLinksWhatsApp(mensagemDaConsulta(dados));
+        falha.hidden = false;
       });
-  });
-
-  document.querySelector('[data-nova-consulta]').addEventListener('click', function () {
-    form.reset();
-    limparErros();
-    recibo.hidden = true;
-    form.hidden = false;
-    campoNome.focus();
   });
 })();

@@ -74,17 +74,11 @@
         Ao enviar, você autoriza a Rezende Engenharia a consultar seu CAR e responder
         pelo WhatsApp informado. Resposta em até 24 horas úteis.
       </p>
-      <p class="form__falha" data-falha hidden></p>
+      <div class="falha" data-falha hidden>
+        <p class="falha__texto" data-falha-texto></p>
+        <a class="botao botao--claro" href="#" data-whatsapp-link>Enviar pelo WhatsApp</a>
+      </div>
     </form>
-
-    <div class="recibo" data-sucesso hidden tabindex="-1">
-      <h2 class="recibo__titulo">Recebemos seus dados</h2>
-      <p class="recibo__texto">
-        Vamos verificar o cadastro e responder no WhatsApp <strong data-eco-telefone></strong>.
-      </p>
-      <a class="botao botao--claro" href="#" data-whatsapp-link>Falar com a equipe agora</a>
-      <button class="recibo__voltar" type="button" data-nova-consulta>Consultar outro CPF</button>
-    </div>
   </div>
 
   <p class="rodape">Rezende Engenharia &amp; Consultoria · Consulta baseada em dados públicos do SICAR</p>

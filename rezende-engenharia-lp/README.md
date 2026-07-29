@@ -9,7 +9,8 @@ sem dependência externa em tempo de execução.
 
 ```
 rezende-engenharia-lp/
-├── index.html
+├── index.html            formulário
+├── obrigado.html         confirmação, depois do envio
 └── assets/
     ├── css/style.css
     ├── js/app.js
@@ -21,13 +22,16 @@ rezende-engenharia-lp/
 
 Abra `assets/js/app.js` e ajuste o bloco `CONFIG` no topo do arquivo:
 
-| Campo      | O que é                                                                 |
-| ---------- | ----------------------------------------------------------------------- |
-| `endpoint` | URL que recebe o lead (POST JSON). Vazio = a página cai no envio manual pelo WhatsApp. |
-| `whatsapp` | Número oficial da Rezende, só dígitos, com DDI 55. **Hoje está com um valor de exemplo (`5500000000000`) e precisa ser trocado.** |
-| `origem`   | Rótulo gravado junto com o lead, útil para separar campanhas.            |
+| Campo            | O que é                                                                 |
+| ---------------- | ----------------------------------------------------------------------- |
+| `endpoint`       | Webhook que recebe o lead (POST JSON). Já aponta para o n8n. Vazio = a página vai direto para a confirmação, sem enviar nada. |
+| `paginaObrigado` | Para onde o visitante vai depois do envio. Padrão: `obrigado.html`.      |
+| `whatsapp`       | Número oficial da Rezende, só dígitos, com DDI 55. **Hoje está com um valor de exemplo (`5500000000000`) e precisa ser trocado.** |
+| `origem`         | Rótulo gravado junto com o lead, útil para separar campanhas.            |
 
-### Formato enviado ao `endpoint`
+### Formato enviado ao webhook
+
+`POST` com `Content-Type: application/json`:
 
 ```json
 {
@@ -40,13 +44,20 @@ Abra `assets/js/app.js` e ajuste o bloco `CONFIG` no topo do arquivo:
 }
 ```
 
-Qualquer resposta HTTP 2xx conta como sucesso e mostra a tela de confirmação.
-Erro de rede ou status fora da faixa 2xx mostra o aviso de falha e oferece o
-WhatsApp como saída.
+Qualquer resposta HTTP 2xx leva o visitante para `obrigado.html`. Erro de rede
+ou status fora da faixa 2xx mantém o visitante no formulário, com os dados
+preenchidos, e mostra um botão para mandar os mesmos dados pelo WhatsApp.
 
-Serve qualquer coisa que aceite um POST JSON: uma rota própria, um webhook do
-n8n/Make/Zapier, ou uma função serverless que grava o lead e dispara a consulta
-no SICAR.
+### CORS no n8n
+
+O navegador chama o webhook a partir do domínio da LP, então o **nó Webhook do
+n8n precisa liberar essa origem**: abra o nó, vá em *Options* → *Allowed Origins
+(CORS)* e coloque o domínio da landing page (ou `*` para testar). Sem isso o
+navegador barra a resposta, o envio aparece como falha e o visitante não chega
+na página de obrigado — mesmo que o n8n tenha recebido o lead.
+
+Vale disparar um cadastro de teste depois de publicar e conferir se ele chegou
+no fluxo.
 
 ## Publicação
 
@@ -63,9 +74,12 @@ finalidade e a autorização no texto abaixo do botão e não guarda nada no
 navegador (sem `localStorage`, sem cookie). O resto depende do backend: guarde
 o mínimo, pelo tempo necessário, e não registre CPF em log de acesso.
 
-Quando não há `endpoint` configurado, o envio abre o WhatsApp com os dados na
-mensagem. É o próprio visitante mandando os dados para a Rezende, mas vale
-saber que a mensagem passa pela infraestrutura do WhatsApp.
+Quando o envio ao webhook falha, a página oferece o WhatsApp com os dados já na
+mensagem. É o próprio visitante mandando os dados para a Rezende, mas vale saber
+que a mensagem passa pela infraestrutura do WhatsApp.
+
+A página de obrigado não recebe nome, telefone nem CPF pela URL — nada de dado
+pessoal em histórico de navegador, log de servidor ou `Referer`.
 
 ## Validações do formulário
 
