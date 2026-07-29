@@ -1,0 +1,301 @@
+/* Rezende Engenharia & Consultoria — LP de consulta do CAR
+   Paleta tirada da marca: verde mata, verde cerrado, lima do anel, osso e laranja de alerta. */
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-latin.woff2") format("woff2");
+  font-weight: 300 800;
+  font-stretch: 85% 100%;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Sans";
+  src: url("../fonts/instrument-sans-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-stretch: 100%;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Wordmark da Rezende: geométrica leve, no espírito da logo original. */
+@font-face {
+  font-family: "Jost";
+  src: url("../fonts/jost-latin.woff2") format("woff2");
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Azeret Mono";
+  src: url("../fonts/azeret-mono-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --verde-fundo: #063f1d;
+  --verde-cerrado: #0a6b2e;
+  --lima: #c7e534;
+  --anel: #d3ee2e;
+  --osso: #f1f4e6;
+  --grafite: #12200f;
+  --alerta: #ff6a3d;
+
+  --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --corpo: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --mono: "Azeret Mono", ui-monospace, monospace;
+  --marca: "Jost", "Century Gothic", "Futura", sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--verde-fundo);
+  background-image: radial-gradient(110% 70% at 50% 0%, rgba(10, 107, 46, 0.85), transparent 65%);
+  color: var(--osso);
+  font-family: var(--corpo);
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+}
+
+img { display: block; max-width: 100%; }
+
+:focus-visible {
+  outline: 3px solid var(--lima);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* margin: auto centraliza nos dois eixos sem cortar o topo em tela baixa */
+.tela {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 40px 20px 48px;
+}
+
+/* ---------- selo ---------- */
+
+.selo {
+  width: 172px;
+  height: 172px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  border: 5px solid var(--anel);
+  background: radial-gradient(circle at 36% 56%, #c2e63f 0%, #6cb62c 34%, #2a8a2c 66%, #0a6b2e 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-shadow: 0 1px 2px rgba(4, 45, 20, 0.28);
+}
+
+.selo__lockup {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.selo__icone {
+  width: 18px;
+  height: 21px;
+  filter: drop-shadow(0 1px 2px rgba(4, 45, 20, 0.28));
+}
+
+.selo__nome {
+  font-family: var(--marca);
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0.005em;
+}
+
+.selo__linha {
+  font-family: var(--marca);
+  font-weight: 500;
+  font-size: 7px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-top: 8px;
+  padding-left: 0.24em;
+}
+
+/* ---------- chamada ---------- */
+
+.titulo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 8vw, 2.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+
+.titulo em {
+  font-style: normal;
+  color: var(--alerta);
+}
+
+.chamada {
+  font-size: 1.05rem;
+  color: rgba(241, 244, 230, 0.76);
+  margin: 0 0 26px;
+}
+
+/* ---------- cartão ---------- */
+
+.cartao {
+  background: var(--osso);
+  color: var(--grafite);
+  border-radius: 18px;
+  padding: 24px 22px 22px;
+  box-shadow: 0 22px 50px rgba(2, 26, 12, 0.4);
+}
+
+.campo { margin-bottom: 15px; }
+
+.campo label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(18, 32, 15, 0.72);
+  margin-bottom: 7px;
+}
+
+.campo input {
+  width: 100%;
+  font-family: var(--corpo);
+  font-size: 16px;
+  color: var(--grafite);
+  background: #fff;
+  border: 1.5px solid rgba(18, 32, 15, 0.16);
+  border-radius: 10px;
+  padding: 13px 14px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.campo input::placeholder { color: rgba(18, 32, 15, 0.34); }
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--verde-cerrado);
+  box-shadow: 0 0 0 3px rgba(10, 107, 46, 0.18);
+}
+
+.campo input[aria-invalid="true"] {
+  border-color: #c4351a;
+  box-shadow: 0 0 0 3px rgba(196, 53, 26, 0.14);
+}
+
+.campo__erro {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #a92c12;
+}
+.campo__erro:empty { display: none; }
+
+.isca {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.botao {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--verde-cerrado);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+.botao:hover { background: #0c7d36; }
+.botao:active { transform: translateY(1px); }
+.botao[disabled] { opacity: 0.6; cursor: progress; }
+
+.botao--claro {
+  background: var(--lima);
+  color: var(--grafite);
+  text-align: center;
+  text-decoration: none;
+}
+.botao--claro:hover { background: #d3ef4a; }
+
+.form__rodape {
+  margin: 13px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(18, 32, 15, 0.6);
+}
+
+.falha { margin-top: 14px; }
+
+.falha__texto {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: #a92c12;
+}
+
+.falha .botao { margin-top: 0; }
+
+/* ---------- página de obrigado ---------- */
+
+.tela--centro { text-align: center; }
+
+.obrigado__selo {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lima);
+  margin: 0 0 12px;
+}
+
+.tela--centro .chamada { margin-bottom: 30px; }
+
+.tela--centro .chamada strong {
+  color: var(--osso);
+  font-weight: 600;
+}
+
+.obrigado__volta {
+  margin: 18px 0 0;
+  font-size: 13.5px;
+}
+
+.obrigado__volta a { color: rgba(241, 244, 230, 0.66); }
+
+/* ---------- rodapé ---------- */
+
+.rodape {
+  margin: 26px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: rgba(241, 244, 230, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 0.01ms !important; }
+}

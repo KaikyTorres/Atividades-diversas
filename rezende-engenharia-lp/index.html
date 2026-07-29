@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Consulta de CAR — Rezende Engenharia &amp; Consultoria</title>
+<meta name="description" content="Consulta gratuita da situação do CAR da sua fazenda. O resultado chega no seu WhatsApp.">
+<meta name="theme-color" content="#04381A">
+<link rel="icon" href="assets/img/logo-marca.svg" type="image/svg+xml">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Saiba se o CAR da sua fazenda foi rejeitado">
+<meta property="og:description" content="Consulta gratuita. O resultado chega no seu WhatsApp.">
+<meta property="og:image" content="assets/img/logo-marca.svg">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<main class="tela">
+
+  <!-- Selo da Rezende. Para usar o arquivo oficial, troque este bloco por
+       <img class="selo" src="assets/img/logo-rezende.png" alt="Rezende Engenharia & Consultoria"> -->
+  <div class="selo" role="img" aria-label="Rezende Engenharia e Consultoria">
+    <span class="selo__lockup">
+      <svg class="selo__icone" viewBox="0 0 30 34" aria-hidden="true" fill="currentColor">
+        <rect x="0" y="0" width="12" height="34" rx="5"/>
+        <rect x="15" y="0" width="15" height="15" rx="6"/>
+        <rect x="15" y="19" width="15" height="15" rx="6"/>
+      </svg>
+      <span class="selo__nome">rezende</span>
+    </span>
+    <span class="selo__linha">Engenharia &amp; Consultoria</span>
+  </div>
+
+  <h1 class="titulo">Saiba se o CAR da sua fazenda foi <em>rejeitado</em></h1>
+  <p class="chamada">Consulta gratuita. O resultado chega no seu WhatsApp.</p>
+
+  <div class="cartao">
+    <form class="form" novalidate data-form>
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input id="nome" name="nome" type="text" autocomplete="name"
+               placeholder="Como está no documento" aria-describedby="erro-nome" required>
+        <p class="campo__erro" id="erro-nome" data-erro="nome"></p>
+      </div>
+
+      <div class="campo">
+        <label for="telefone">WhatsApp com DDD</label>
+        <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
+               placeholder="(65) 99999-9999" maxlength="15" aria-describedby="erro-telefone" required>
+        <p class="campo__erro" id="erro-telefone" data-erro="telefone"></p>
+      </div>
+
+      <div class="campo">
+        <label for="cpf">CPF</label>
+        <input id="cpf" name="cpf" type="text" autocomplete="off" inputmode="numeric"
+               placeholder="000.000.000-00" maxlength="14" aria-describedby="erro-cpf" required>
+        <p class="campo__erro" id="erro-cpf" data-erro="cpf"></p>
+      </div>
+
+      <p class="isca" aria-hidden="true">
+        <label for="empresa">Não preencha este campo</label>
+        <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+      </p>
+
+      <button class="botao" type="submit" data-enviar>
+        <span data-botao-texto>Consultar meu CAR</span>
+      </button>
+
+      <p class="form__rodape">
+        Ao enviar, você autoriza a Rezende Engenharia a consultar seu CAR e responder
+        pelo WhatsApp informado. Resposta em até 24 horas úteis.
+      </p>
+      <div class="falha" data-falha hidden>
+        <p class="falha__texto" data-falha-texto></p>
+        <a class="botao botao--claro" href="#" data-whatsapp-link>Enviar pelo WhatsApp</a>
+      </div>
+    </form>
+  </div>
+
+  <p class="rodape">Rezende Engenharia &amp; Consultoria · Consulta baseada em dados públicos do SICAR</p>
+
+</main>
+
+<script src="assets/js/app.js" defer></script>
+</body>
+</html>
