@@ -1,0 +1,319 @@
+<!-- LP Rezende — página 2, a confirmação (sem JavaScript)
+     Cole este bloco inteiro num widget HTML do Elementor. Nada de arquivo externo.
+     Para usar o arquivo oficial da logo, troque o <div class="marca"> por:
+     <img class="marca" src="URL_DA_LOGO" alt="Rezende Engenharia & Agronegócio"> -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@400..600&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,85..100,300..800&family=Instrument+Sans:wght@400..600&family=Jost:wght@300..500&display=swap');
+
+.rz-lp, .rz-lp *, .rz-lp *::before, .rz-lp *::after { box-sizing: border-box; }
+.rz-lp {
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-align: left;
+  text-indent: 0;
+  text-transform: none;
+  font-style: normal;
+}
+.rz-lp h1, .rz-lp h2, .rz-lp p, .rz-lp figure { margin: 0; padding: 0; }
+.rz-lp h1, .rz-lp h2, .rz-lp p, .rz-lp span, .rz-lp label,
+.rz-lp strong, .rz-lp em, .rz-lp a, .rz-lp div {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  font-style: normal;
+  color: inherit;
+  text-transform: none;
+  letter-spacing: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  background: none;
+}
+.rz-lp input, .rz-lp button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.rz-lp svg { display: inline-block; vertical-align: middle; max-width: 100%; }
+
+.rz-lp {
+  --verde-fundo: #063f1d;
+  --verde-cerrado: #0a6b2e;
+  --lima: #c7e534;
+  --anel: #d3ee2e;
+  --osso: #f1f4e6;
+  --grafite: #12200f;
+  --alerta: #ff6a3d;
+
+  --display: "Bricolage Grotesque", "Trebuchet MS", sans-serif;
+  --corpo: "Instrument Sans", system-ui, -apple-system, sans-serif;
+  --mono: "Azeret Mono", ui-monospace, monospace;
+  --marca: "Jost", "Century Gothic", "Futura", sans-serif;
+}
+
+.rz-lp *, .rz-lp *::before, .rz-lp *::after { box-sizing: border-box; }
+
+.rz-lp {
+  margin: 0;
+  background: var(--verde-fundo);
+  background-image: radial-gradient(110% 70% at 50% 0%, rgba(10, 107, 46, 0.85), transparent 65%);
+  color: var(--osso);
+  font-family: var(--corpo);
+  font-size: 17px;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.rz-lp img { display: block; max-width: 100%; }
+
+.rz-lp :focus-visible {
+  outline: 3px solid var(--lima);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.rz-lp .tela {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding: 40px 20px 48px;
+}
+
+.rz-lp .marca {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 30px;
+}
+
+.rz-lp .marca__icone {
+  width: 54px;
+  height: auto;
+  flex: 0 0 auto;
+}
+
+.rz-lp .marca__texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.rz-lp .marca__linha {
+  font-family: var(--marca);
+  font-weight: 500;
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--lima);
+}
+
+.rz-lp .marca__nome {
+  font-family: var(--marca);
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--osso);
+  margin-top: 3px;
+}
+
+.rz-lp .titulo {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.1rem, 8vw, 2.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+
+.rz-lp .titulo em {
+  font-style: normal;
+  color: var(--alerta);
+}
+
+.rz-lp .chamada {
+  font-size: 1.05rem;
+  color: rgba(241, 244, 230, 0.76);
+  margin: 0 0 26px;
+}
+
+.rz-lp .cartao {
+  background: var(--osso);
+  color: var(--grafite);
+  border-radius: 18px;
+  padding: 24px 22px 22px;
+  box-shadow: 0 22px 50px rgba(2, 26, 12, 0.4);
+}
+
+.rz-lp .campo { margin-bottom: 15px; }
+
+.rz-lp .campo label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(18, 32, 15, 0.72);
+  margin-bottom: 7px;
+}
+
+.rz-lp .campo input {
+  width: 100%;
+  font-family: var(--corpo);
+  font-size: 16px;
+  color: var(--grafite);
+  background: #fff;
+  border: 1.5px solid rgba(18, 32, 15, 0.16);
+  border-radius: 10px;
+  padding: 13px 14px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.rz-lp .campo input::placeholder { color: rgba(18, 32, 15, 0.34); }
+
+.rz-lp .campo input:focus {
+  outline: none;
+  border-color: var(--verde-cerrado);
+  box-shadow: 0 0 0 3px rgba(10, 107, 46, 0.18);
+}
+
+.rz-lp .campo input[aria-invalid="true"] {
+  border-color: #c4351a;
+  box-shadow: 0 0 0 3px rgba(196, 53, 26, 0.14);
+}
+
+.rz-lp .campo__erro {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: #a92c12;
+}
+.rz-lp .campo__erro:empty { display: none; }
+
+.rz-lp .isca {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.rz-lp .botao {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--verde-cerrado);
+  color: #fff;
+  font-family: var(--display);
+  font-size: 1.06rem;
+  font-weight: 600;
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background-color 0.18s ease, transform 0.18s ease;
+}
+.rz-lp .botao:hover { background: #0c7d36; }
+.rz-lp .botao:active { transform: translateY(1px); }
+.rz-lp .botao[disabled] { opacity: 0.6; cursor: progress; }
+
+.rz-lp .botao--claro {
+  background: var(--lima);
+  color: var(--grafite);
+  text-align: center;
+  text-decoration: none;
+}
+.rz-lp .botao--claro:hover { background: #d3ef4a; }
+
+.rz-lp .form__rodape {
+  margin: 13px 0 0;
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(18, 32, 15, 0.6);
+}
+
+.rz-lp .falha { margin-top: 14px; }
+
+.rz-lp .falha__texto {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  color: #a92c12;
+}
+
+.rz-lp .falha .botao { margin-top: 0; }
+
+.rz-lp .tela--centro { text-align: center; }
+
+.rz-lp .tela--centro .marca { margin-left: auto; margin-right: auto; }
+
+.rz-lp .obrigado__selo {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lima);
+  margin: 0 0 12px;
+}
+
+.rz-lp .tela--centro .chamada { margin-bottom: 30px; }
+
+.rz-lp .tela--centro .chamada strong {
+  color: var(--osso);
+  font-weight: 600;
+}
+
+.rz-lp .obrigado__volta {
+  margin: 18px 0 0;
+  font-size: 13.5px;
+}
+
+.rz-lp .obrigado__volta a { color: rgba(241, 244, 230, 0.66); }
+
+.rz-lp .rodape {
+  margin: 26px 0 0;
+  font-size: 12px;
+  text-align: center;
+  color: rgba(241, 244, 230, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rz-lp * { transition-duration: 0.01ms !important; }
+}
+</style>
+
+<div class="rz-lp">
+  <div class="tela tela--centro">
+  <div class="marca" role="img" aria-label="Rezende Engenharia e Agronegócio">
+    <svg class="marca__icone" viewBox="0 0 230 310" aria-hidden="true">
+      <path fill="#7BBE60" d="M48 0h77v115a40 40 0 0 1-40 40H0V48A48 48 0 0 1 48 0Z"/>
+      <path fill="#D8DF22" d="M138 47h48a44 44 0 0 1 44 44v64h-56a36 36 0 0 1-36-36Z"/>
+      <path fill="#4E9B55" d="M28 183h65a32 32 0 0 1 32 32v95H68a40 40 0 0 1-40-40Z"/>
+    </svg>
+    <span class="marca__texto">
+      <span class="marca__linha">Engenharia &amp; Agronegócio</span>
+      <span class="marca__nome">rezende</span>
+    </span>
+  </div>
+
+  <p class="obrigado__selo">Cadastro recebido</p>
+  <h1 class="titulo">Vamos consultar o CAR da sua fazenda</h1>
+  <p class="chamada">
+    <strong>O resultado da consulta chega pelo WhatsApp</strong>, no número que você
+    informou. Prazo de até 24 horas úteis.
+  </p>
+
+  <p class="obrigado__volta"><a href="https://smartyng.com/lp-rezende-form">Consultar outro CPF</a></p>
+
+  <p class="rodape">Rezende Engenharia &amp; Agronegócio · Consulta baseada em dados públicos do SICAR</p>
+  </div>
+</div>
