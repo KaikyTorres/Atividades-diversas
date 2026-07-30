@@ -1,4 +1,4 @@
-# LP de consulta do CAR — Rezende Engenharia & Consultoria
+# LP de consulta do CAR — Rezende Engenharia & Agronegócio
 
 Landing page de cadastro: uma tela só, com a chamada e o formulário de **nome,
 telefone e CPF**. A equipe faz a consulta do CAR e devolve o resultado pelo
@@ -93,24 +93,26 @@ pessoal em histórico de navegador, log de servidor ou `Referer`.
 
 ## Marca
 
-O selo no topo da página é uma **reconstrução** do logo da Rezende, montado em
-HTML e CSS: círculo com degradê verde, anel lima, o ícone de blocos, a palavra
-"rezende" e a linha "engenharia & consultoria". Chega perto do original, mas não
-é o arquivo oficial.
+A logo no topo é uma **reconstrução** do lockup horizontal da Rezende: as três
+formas arredondadas em SVG, o nome e a assinatura "Engenharia & Agronegócio" em
+texto. Não é o arquivo oficial.
 
-**Para usar o logo de verdade**, coloque o arquivo em `assets/img/` e troque o
-bloco `<div class="selo">` do `index.html` por:
+Duas cores fogem do original de propósito. A logo foi desenhada para fundo claro
+— o nome em verde-oliva e a assinatura em verde médio desaparecem no fundo escuro
+da LP. Aqui o nome vai em osso, a assinatura em lima, e os três verdes do ícone
+sobem de tom mantendo a hierarquia entre eles.
+
+**Para usar o arquivo oficial**, coloque-o em `assets/img/` e troque o bloco
+`<div class="marca">` por:
 
 ```html
-<img class="selo" src="assets/img/logo-rezende.png"
-     alt="Rezende Engenharia &amp; Consultoria">
+<img class="marca" src="assets/img/logo-rezende.png"
+     alt="Rezende Engenharia &amp; Agronegócio">
 ```
 
-O CSS da classe `.selo` já cuida do tamanho e da centralização; num `<img>`,
-apague de `.selo` as propriedades `border`, `background`, `display`,
-`flex-direction`, `align-items`, `justify-content` e `text-shadow` — o resto
-serve para os dois casos. Vale trocar também o `assets/img/logo-marca.svg`, que
-é o favicon e a imagem de compartilhamento.
+Nesse caso, apague de `.marca` as propriedades `display`, `align-items` e `gap`,
+e defina a largura. Vale trocar também o `assets/img/logo-marca.svg`, que é o
+favicon.
 
 Paleta usada, tirada da marca:
 
@@ -118,7 +120,7 @@ Paleta usada, tirada da marca:
 | ------------- | --------- | -------------------------------- |
 | Verde fundo   | `#063F1D` | fundo da página                  |
 | Verde cerrado | `#0A6B2E` | botão principal, foco de campo   |
-| Lima          | `#C7E534` | anel do selo, botão do WhatsApp  |
+| Lima          | `#C7E534` | assinatura da marca, etiquetas   |
 | Osso          | `#F1F4E6` | cartão do formulário, texto      |
 | Alerta        | `#FF6A3D` | a palavra "rejeitado" no título  |
 
@@ -141,5 +143,6 @@ relação aos arquivos da raiz:
 - `paginaObrigado` aponta para `https://smartyng.com/lp-rezende-form-obg`, a
   página de confirmação no WordPress.
 
-Os dois blocos carregam o mesmo `CONFIG`, então o número do WhatsApp precisa ser
-trocado nos dois arquivos.
+O bloco 2 não tem JavaScript: a página de confirmação é só HTML e CSS. O número
+do WhatsApp aparece apenas no `CONFIG` do bloco 1, usado no caminho de falha do
+envio.

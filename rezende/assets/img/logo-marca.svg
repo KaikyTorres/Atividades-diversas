@@ -1,16 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Rezende Engenharia">
-  <defs>
-    <radialGradient id="rz-esfera" cx="36%" cy="56%" r="76%">
-      <stop offset="0%" stop-color="#C2E63F"/>
-      <stop offset="34%" stop-color="#6CB62C"/>
-      <stop offset="66%" stop-color="#2A8A2C"/>
-      <stop offset="100%" stop-color="#0A6B2E"/>
-    </radialGradient>
-  </defs>
-  <circle cx="60" cy="60" r="55" fill="url(#rz-esfera)" stroke="#D3EE2E" stroke-width="5"/>
-  <g fill="#FFFFFF" transform="translate(39 38)">
-    <rect x="0" y="0" width="16" height="45" rx="7"/>
-    <rect x="20" y="0" width="20" height="20" rx="8"/>
-    <rect x="20" y="25" width="20" height="20" rx="8"/>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 310" role="img" aria-label="Rezende Engenharia e Agronegócio">
+  <path fill="#7BBE60" d="M48 0h77v115a40 40 0 0 1-40 40H0V48A48 48 0 0 1 48 0Z"/>
+  <path fill="#D8DF22" d="M138 47h48a44 44 0 0 1 44 44v64h-56a36 36 0 0 1-36-36Z"/>
+  <path fill="#4E9B55" d="M28 183h65a32 32 0 0 1 32 32v95H68a40 40 0 0 1-40-40Z"/>
 </svg>
