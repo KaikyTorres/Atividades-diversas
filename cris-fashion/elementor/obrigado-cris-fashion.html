@@ -35,8 +35,9 @@
 
 .cfo .obrigado{width:100%;max-width:560px}
 
-.cfo .marca{display:inline-flex;align-items:center;justify-content:center;width:132px;height:132px;
-  border-radius:50%;background:var(--branco);box-shadow:0 12px 34px rgba(77,7,41,.22);margin-bottom:22px}
+/* display:flex (e não inline-flex) para o selo abaixo não subir para o lado da logo */
+.cfo .marca{display:flex;align-items:center;justify-content:center;width:132px;height:132px;
+  border-radius:50%;background:var(--branco);box-shadow:0 12px 34px rgba(77,7,41,.22);margin:0 auto 22px}
 .cfo .marca__lockup{position:relative;display:block;text-align:center;line-height:1;padding-bottom:12px}
 .cfo .marca__nome{display:block;font-family:var(--display);font-weight:800;font-size:46px;
   letter-spacing:-.02em;color:var(--magenta)}

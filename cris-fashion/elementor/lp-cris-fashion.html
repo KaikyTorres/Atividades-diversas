@@ -1,6 +1,6 @@
 <!-- ============================================================
      LP Cris Fashion — colar num widget HTML do Elementor
-     Página do formulário. A página de obrigado é o outro arquivo.
+     Uma tela só: marca, duas frases e o formulário.
      Antes de publicar, ajuste o bloco CONFIG lá embaixo.
      ============================================================ -->
 
@@ -14,121 +14,55 @@
 .cf{
   --magenta:#b81b66; --magenta-vivo:#d4297d; --vinho:#6d0d3e; --vinho-fundo:#4d0729;
   --rosa:#f7d7e6; --rosa-claro:#fdf2f7; --branco:#fff;
-  --tinta:#2b0c1c; --tinta-suave:#6c5462; --ouro:#e8b33c;
+  --tinta:#2b0c1c; --tinta-suave:#6c5462;
   --display:"Playfair Display",Didot,Georgia,serif;
   --corpo:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
   --assinatura:"Parisienne","Brush Script MT",cursive;
-  --raio:18px; --raio-g:28px;
-  font-family:var(--corpo); font-size:17px; line-height:1.6;
-  color:var(--tinta); background:var(--rosa-claro);
+  --raio:16px;
+  font-family:var(--corpo); font-size:17px; line-height:1.6; color:var(--tinta);
   -webkit-font-smoothing:antialiased;
+  display:grid; place-items:center; text-align:center;
+  min-height:82vh; padding:44px 20px;
+  background:radial-gradient(95% 110% at 50% 0%,var(--magenta-vivo) 0%,var(--magenta) 45%,var(--vinho) 100%);
 }
 .cf *,.cf *::before,.cf *::after{box-sizing:border-box}
 /* color/font-size explícitos: um seletor de elemento do tema (p{color:...})
    vence a herança, então o reset devolve tudo para dentro do bloco. */
-.cf p,.cf h1,.cf h2,.cf h3,.cf ul,.cf ol,.cf li,.cf label,.cf summary,.cf strong,.cf em,.cf span{
+.cf p,.cf h1,.cf label,.cf strong,.cf em,.cf span{
   margin:0;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit}
-.cf ul,.cf ol{list-style:none}
-.cf img,.cf svg{max-width:100%}
-.cf a{color:var(--magenta)}
 
 /* Descomente se a LP ficar espremida na largura do tema.
 .cf{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw)}
 */
 
-.cf .limite{width:100%;max-width:1080px;margin-inline:auto;padding-inline:22px}
+/* ---------- cartão ---------- */
+.cf .cartao{width:100%;max-width:470px;background:var(--branco);border-radius:30px;
+  padding:34px 28px 28px;box-shadow:0 26px 70px rgba(77,7,41,.3)}
 
 /* ---------- marca ---------- */
-.cf .marca{display:inline-flex;align-items:center;justify-content:center;width:132px;height:132px;
-  border-radius:50%;background:var(--branco);box-shadow:0 12px 34px rgba(77,7,41,.22)}
-.cf .marca--pequena{width:84px;height:84px}
-.cf .marca__lockup{position:relative;display:block;text-align:center;line-height:1;padding-bottom:12px}
-.cf .marca--pequena .marca__lockup{padding-bottom:8px}
-.cf .marca__nome{display:block;font-family:var(--display);font-weight:800;font-size:46px;
+.cf .marca{display:inline-flex;align-items:center;justify-content:center;width:112px;height:112px;
+  border-radius:50%;background:var(--branco);box-shadow:0 6px 22px rgba(77,7,41,.14);margin-bottom:14px}
+.cf .marca__lockup{position:relative;display:block;text-align:center;line-height:1;padding-bottom:10px}
+.cf .marca__nome{display:block;font-family:var(--display);font-weight:800;font-size:40px;
   letter-spacing:-.02em;color:var(--magenta)}
-.cf .marca--pequena .marca__nome{font-size:30px}
 .cf .marca__linha{display:block;height:2px;margin-top:4px;background:var(--magenta);border-radius:2px}
-.cf .marca--pequena .marca__linha{height:1.5px;margin-top:3px}
-.cf .marca__assinatura{position:absolute;right:-2px;bottom:-4px;font-family:var(--assinatura);
-  font-size:21px;color:var(--magenta);line-height:1}
-.cf .marca--pequena .marca__assinatura{font-size:14px;bottom:-2px}
+.cf .marca__assinatura{position:absolute;right:-2px;bottom:-3px;font-family:var(--assinatura);
+  font-size:18px;color:var(--magenta);line-height:1}
 
-/* ---------- topo e hero ---------- */
-.cf .aviso{background:var(--vinho);color:var(--rosa);font-size:14px;letter-spacing:.08em;
-  text-transform:uppercase;font-weight:500;text-align:center;padding:11px 18px}
-.cf .aviso strong{color:var(--branco)}
+.cf .nome{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:.01em}
+.cf .tagline{margin-bottom:20px;font-size:14px;font-weight:300;color:var(--tinta-suave)}
 
-.cf .hero{position:relative;overflow:hidden;color:var(--branco);text-align:center;padding:54px 0 68px;
-  background:radial-gradient(105% 135% at 50% -5%,var(--magenta-vivo) 0%,var(--magenta) 42%,var(--vinho) 100%)}
-.cf .hero::after{content:"";position:absolute;inset:auto 0 -1px 0;height:34px;background:var(--rosa-claro);
-  border-radius:50% 50% 0 0/100% 100% 0 0}
-.cf .hero__conteudo{position:relative;z-index:1}
-.cf .hero__nome{margin:20px 0 2px;font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:.01em}
-.cf .hero__tagline{margin-bottom:26px;color:var(--rosa);font-size:16px;font-weight:300;letter-spacing:.03em}
-
-.cf .titulo{margin:0 auto 16px;max-width:16ch;font-family:var(--display);font-weight:800;
-  font-size:clamp(38px,9vw,62px);line-height:1.06;letter-spacing:-.02em;color:var(--branco)}
-.cf .titulo em{font-style:normal;color:var(--ouro);white-space:nowrap}
-.cf .hero__chamada{margin:0 auto 28px;max-width:46ch;color:var(--rosa);font-size:18px;font-weight:300}
-.cf .hero__chamada strong{color:var(--branco);font-weight:600}
-
-.cf .selos{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
-.cf .selos li{border:1px solid rgba(255,255,255,.32);border-radius:999px;padding:7px 16px;
-  font-size:14px;color:var(--branco)}
-
-/* ---------- botões ---------- */
-.cf .botao{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:58px;
-  padding:16px 34px;border:0;border-radius:999px;background:var(--magenta);color:var(--branco);
-  font-family:var(--corpo);font-size:17px;font-weight:600;letter-spacing:.02em;text-decoration:none;
-  cursor:pointer;box-shadow:0 12px 26px rgba(184,27,102,.32);
-  transition:transform .15s ease,box-shadow .15s ease,background-color .15s ease}
-.cf .botao:hover{background:var(--magenta-vivo);transform:translateY(-2px);color:var(--branco)}
-.cf .botao:active{transform:translateY(0)}
-.cf .botao:disabled{opacity:.62;cursor:progress;transform:none;box-shadow:none}
-.cf .botao--claro{background:var(--branco);color:var(--magenta);box-shadow:0 12px 26px rgba(77,7,41,.22)}
-.cf .botao--claro:hover{background:var(--rosa);color:var(--vinho)}
-.cf .botao--largo{width:100%}
-
-/* ---------- blocos ---------- */
-.cf .bloco{padding:62px 0}
-.cf .bloco--rosa{background:var(--rosa-claro)}
-.cf .bloco--branco{background:var(--branco)}
-.cf .bloco__topo{text-align:center;margin-bottom:38px}
-.cf .olho{margin-bottom:10px;font-size:13px;font-weight:600;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--magenta)}
-.cf .subtitulo{margin:0 auto 10px;max-width:20ch;font-family:var(--display);font-weight:700;
-  font-size:clamp(28px,5.5vw,40px);line-height:1.15;letter-spacing:-.01em;color:var(--tinta)}
-.cf .linha-apoio{margin-inline:auto;max-width:50ch;color:var(--tinta-suave);font-weight:300}
-
-.cf .vantagens{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.cf .vantagem{background:var(--branco);border:1px solid var(--rosa);border-radius:var(--raio);
-  padding:26px 24px;box-shadow:0 18px 45px rgba(77,7,41,.16)}
-.cf .bloco--branco .vantagem{background:var(--rosa-claro);box-shadow:none}
-.cf .vantagem__icone{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
-  border-radius:12px;background:var(--magenta);color:var(--branco);margin-bottom:14px}
-.cf .vantagem__icone svg{width:22px;height:22px}
-.cf .vantagem h3{margin-bottom:6px;font-family:var(--display);font-size:20px;font-weight:700;color:var(--tinta)}
-.cf .vantagem p{color:var(--tinta-suave);font-size:15.5px;font-weight:300}
-
-.cf .passos{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;counter-reset:passo}
-.cf .passo{position:relative;background:var(--branco);border:1px solid var(--rosa);
-  border-radius:var(--raio);padding:30px 24px 26px}
-.cf .passo::before{counter-increment:passo;content:counter(passo);position:absolute;top:-18px;left:24px;
-  display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--magenta);
-  color:var(--branco);font-family:var(--display);font-weight:700;font-size:18px}
-.cf .passo h3{margin:6px 0;font-family:var(--display);font-size:19px;font-weight:700;color:var(--tinta)}
-.cf .passo p{color:var(--tinta-suave);font-size:15.5px;font-weight:300}
+/* ---------- as duas frases ---------- */
+.cf .titulo{margin-bottom:10px;font-family:var(--display);font-weight:800;
+  font-size:clamp(27px,6.6vw,34px);line-height:1.15;letter-spacing:-.01em}
+.cf .titulo em{font-style:normal;color:var(--magenta);white-space:nowrap}
+.cf .chamada{margin-bottom:22px;font-size:15.5px;font-weight:300;color:var(--tinta-suave)}
+.cf .chamada strong{color:var(--tinta);font-weight:600}
 
 /* ---------- formulário ---------- */
-.cf .bloco--form{background:linear-gradient(180deg,var(--vinho) 0%,var(--magenta) 55%,var(--vinho) 100%)}
-.cf .bloco--form .subtitulo{color:var(--branco)}
-.cf .bloco--form .olho,.cf .bloco--form .linha-apoio{color:var(--rosa)}
-
-.cf .cartao{max-width:520px;margin-inline:auto;background:var(--branco);color:var(--tinta);
-  border-radius:var(--raio-g);padding:30px 26px 26px;box-shadow:0 26px 70px rgba(77,7,41,.28)}
-.cf .form{display:grid;gap:16px}
-.cf .campo{display:grid;gap:6px;text-align:left}
-.cf .campo label{font-size:14px;font-weight:600;color:var(--vinho)}
+.cf .form{display:grid;gap:14px;text-align:left}
+.cf .campo{display:grid;gap:5px}
+.cf .campo label{font-size:13.5px;font-weight:600;color:var(--vinho)}
 .cf .campo input{width:100%;min-height:54px;padding:14px 16px;border:1.5px solid #e6cdd9;
   border-radius:var(--raio);background:var(--rosa-claro);color:var(--tinta);
   font-family:var(--corpo);font-size:16px;
@@ -137,247 +71,93 @@
 .cf .campo input:focus{outline:none;background:var(--branco);border-color:var(--magenta);
   box-shadow:0 0 0 4px rgba(184,27,102,.14)}
 .cf .campo input[aria-invalid="true"]{border-color:#d13b3b;background:#fff6f6}
-.cf .campo__erro{min-height:17px;font-size:13.5px;color:#c02b2b}
+.cf .campo__erro{min-height:16px;font-size:13px;color:#c02b2b}
 .cf .campo__erro:empty{min-height:0}
 
 /* armadilha de robô */
 .cf .isca{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
-.cf .form__rodape{margin-top:4px;font-size:13px;line-height:1.5;color:var(--tinta-suave);
-  text-align:center;font-weight:300}
+.cf .botao{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:58px;
+  padding:16px 28px;border:0;border-radius:999px;background:var(--magenta);color:var(--branco);
+  font-family:var(--corpo);font-size:17px;font-weight:600;letter-spacing:.02em;text-decoration:none;
+  cursor:pointer;box-shadow:0 12px 26px rgba(184,27,102,.32);
+  transition:transform .15s ease,background-color .15s ease}
+.cf .botao:hover{background:var(--magenta-vivo);transform:translateY(-2px);color:var(--branco)}
+.cf .botao:disabled{opacity:.62;cursor:progress;transform:none;box-shadow:none}
+
+.cf .selos{margin-top:2px;font-size:13px;font-weight:300;color:var(--tinta-suave);text-align:center}
+.cf .aviso-legal{font-size:11.5px;line-height:1.45;font-weight:300;color:#9a8391;text-align:center}
+
 .cf .falha[hidden]{display:none}
-.cf .falha{display:grid;gap:12px;padding:16px;border-radius:var(--raio);
+.cf .falha{display:grid;gap:10px;padding:14px;border-radius:var(--raio);
   background:#fff3f3;border:1px solid #f0c9c9}
-.cf .falha__texto{font-size:14.5px;color:#8d2020}
-
-/* ---------- dúvidas e rodapé ---------- */
-.cf .perguntas{max-width:720px;margin-inline:auto;display:grid;gap:12px}
-.cf .pergunta{background:var(--branco);border:1px solid var(--rosa);border-radius:var(--raio);padding:4px 20px}
-.cf .pergunta summary{cursor:pointer;list-style:none;padding:16px 0;font-weight:600;font-size:16.5px;
-  color:var(--vinho);display:flex;justify-content:space-between;gap:14px;align-items:center}
-.cf .pergunta summary::-webkit-details-marker{display:none}
-.cf .pergunta summary::after{content:"+";font-family:var(--corpo);font-size:24px;font-weight:300;
-  color:var(--magenta);line-height:1}
-.cf .pergunta[open] summary::after{content:"–"}
-.cf .pergunta p{margin-bottom:18px;color:var(--tinta-suave);font-size:15.5px;font-weight:300}
-
-.cf .rodape{background:var(--vinho-fundo);color:var(--rosa);text-align:center;
-  padding:34px 0 40px;font-size:14px;font-weight:300}
-.cf .rodape__marca{margin-bottom:14px}
-.cf .rodape p{margin:4px 0}
+.cf .falha__texto{font-size:14px;color:#8d2020}
 
 @media (prefers-reduced-motion:reduce){.cf *{animation:none!important;transition:none!important}}
-@media (max-width:600px){
-  .cf .bloco{padding:48px 0}
-  .cf .hero{padding:40px 0 56px}
-  .cf .cartao{padding:24px 20px 22px}
-  .cf .botao{width:100%}
-}
 </style>
 
 
 <div class="cf">
+  <div class="cartao">
 
-  <p class="aviso">Promoção da temporada · <strong>até 50% OFF</strong> em peças selecionadas</p>
+    <!-- Logo montada em HTML/CSS. Com o arquivo oficial, troque este bloco por:
+         <img class="marca" src="URL-DA-LOGO.png" alt="Cris Fashion"> -->
+    <div class="marca" role="img" aria-label="Cris Fashion">
+      <span class="marca__lockup">
+        <span class="marca__nome">Cris</span>
+        <span class="marca__linha"></span>
+        <span class="marca__assinatura">fashion</span>
+      </span>
+    </div>
 
-  <header class="hero">
-    <div class="limite hero__conteudo">
+    <p class="nome">Cris Fashion</p>
+    <p class="tagline">Sua melhor versão em toda ocasião.</p>
 
-      <!-- Logo montada em HTML/CSS. Com o arquivo oficial, troque este bloco por:
-           <img class="marca" src="URL-DA-LOGO.png" alt="Cris Fashion"> -->
-      <div class="marca" role="img" aria-label="Cris Fashion">
-        <span class="marca__lockup">
-          <span class="marca__nome">Cris</span>
-          <span class="marca__linha"></span>
-          <span class="marca__assinatura">fashion</span>
-        </span>
+    <h1 class="titulo">Peças com até <em>50% OFF</em></h1>
+    <p class="chamada">
+      Entre no grupo <strong>Achadinhos da Cris Fashion</strong> e receba os
+      descontos do dia antes de todo mundo.
+    </p>
+
+    <form class="form" novalidate data-cf-form>
+      <div class="campo">
+        <label for="cf-nome">Seu nome</label>
+        <input id="cf-nome" name="nome" type="text" autocomplete="name"
+               placeholder="Nome e sobrenome" aria-describedby="cf-erro-nome" required>
+        <p class="campo__erro" id="cf-erro-nome" data-cf-erro="cf-nome"></p>
       </div>
 
-      <p class="hero__nome">Cris Fashion</p>
-      <p class="hero__tagline">Sua melhor versão em toda ocasião.</p>
+      <div class="campo">
+        <label for="cf-telefone">WhatsApp com DDD</label>
+        <input id="cf-telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
+               placeholder="(11) 99999-9999" maxlength="15" aria-describedby="cf-erro-telefone" required>
+        <p class="campo__erro" id="cf-erro-telefone" data-cf-erro="cf-telefone"></p>
+      </div>
 
-      <h1 class="titulo">Peças com até <em>50% OFF</em> avisadas primeiro</h1>
-      <p class="hero__chamada">
-        No grupo <strong>Achadinhos da Cris Fashion</strong> você vê os descontos do dia
-        antes de todo mundo — e garante a peça antes de acabar a grade.
+      <p class="isca" aria-hidden="true">
+        <label for="cf-empresa">Não preencha este campo</label>
+        <input id="cf-empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
       </p>
 
-      <a class="botao botao--claro" href="#cf-cadastro">Quero entrar no grupo</a>
+      <button class="botao" type="submit" data-cf-enviar>
+        <span data-cf-botao-texto>Quero entrar no grupo</span>
+      </button>
 
-      <ul class="selos">
-        <li>Entrada gratuita</li>
-        <li>Achadinhos toda semana</li>
-        <li>Saia quando quiser</li>
-      </ul>
+      <p class="selos">Entrada gratuita · Saia quando quiser</p>
 
-    </div>
-  </header>
+      <p class="aviso-legal">
+        Ao enviar, você autoriza a Cris Fashion a mandar novidades e promoções
+        pelo WhatsApp informado.
+      </p>
 
-  <section class="bloco bloco--rosa">
-    <div class="limite">
-      <div class="bloco__topo">
-        <p class="olho">Dentro do grupo</p>
-        <h2 class="subtitulo">O que você recebe no Achadinhos</h2>
-        <p class="linha-apoio">Um grupo só de novidade e desconto. Sem conversa paralela, sem bagunça na sua tela.</p>
+      <div class="falha" data-cf-falha hidden>
+        <p class="falha__texto" data-cf-falha-texto></p>
+        <a class="botao" href="#" data-cf-grupo-link>Entrar no grupo mesmo assim</a>
       </div>
+    </form>
 
-      <ul class="vantagens">
-        <li class="vantagem">
-          <span class="vantagem__icone" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 12V22H4V12"></path><path d="M2 7h20v5H2z"></path><path d="M12 22V7"></path>
-              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
-            </svg>
-          </span>
-          <h3>Até 50% de desconto</h3>
-          <p>Peças selecionadas com preço de promoção, divulgadas primeiro para quem está no grupo.</p>
-        </li>
-        <li class="vantagem">
-          <span class="vantagem__icone" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>
-            </svg>
-          </span>
-          <h3>Achadinhos do dia</h3>
-          <p>Todo dia uma seleção nova de peças que valem a pena, com foto, tamanho e valor.</p>
-        </li>
-        <li class="vantagem">
-          <span class="vantagem__icone" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6.1L12 16.8 6.6 19.7l1.2-6.1L3.3 9.4l6.1-.8z"></path>
-            </svg>
-          </span>
-          <h3>Prioridade nas novidades</h3>
-          <p>Coleção nova chegou? O grupo vê antes da vitrine, com a grade completa de tamanhos.</p>
-        </li>
-        <li class="vantagem">
-          <span class="vantagem__icone" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-          </span>
-          <h3>Atendimento direto</h3>
-          <p>Dúvida de tamanho, caimento ou pagamento? É só chamar — a resposta vem pelo WhatsApp.</p>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="bloco bloco--branco">
-    <div class="limite">
-      <div class="bloco__topo">
-        <p class="olho">Simples assim</p>
-        <h2 class="subtitulo">Como entrar no grupo</h2>
-      </div>
-      <ol class="passos">
-        <li class="passo">
-          <h3>Preencha o formulário</h3>
-          <p>Só o seu nome e o seu WhatsApp. Leva menos de um minuto.</p>
-        </li>
-        <li class="passo">
-          <h3>Confirme o cadastro</h3>
-          <p>Ao enviar, você já cai na página de confirmação com o link do grupo.</p>
-        </li>
-        <li class="passo">
-          <h3>Aproveite os achadinhos</h3>
-          <p>Pronto: você passa a receber os descontos de até 50% em primeira mão.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="bloco bloco--form" id="cf-cadastro">
-    <div class="limite">
-      <div class="bloco__topo">
-        <p class="olho">Cadastro</p>
-        <h2 class="subtitulo">Entre no Achadinhos da Cris Fashion</h2>
-        <p class="linha-apoio">Preencha nome e WhatsApp para receber o link do grupo.</p>
-      </div>
-
-      <div class="cartao">
-        <form class="form" novalidate data-cf-form>
-          <div class="campo">
-            <label for="cf-nome">Seu nome</label>
-            <input id="cf-nome" name="nome" type="text" autocomplete="name"
-                   placeholder="Nome e sobrenome" aria-describedby="cf-erro-nome" required>
-            <p class="campo__erro" id="cf-erro-nome" data-cf-erro="cf-nome"></p>
-          </div>
-
-          <div class="campo">
-            <label for="cf-telefone">WhatsApp com DDD</label>
-            <input id="cf-telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
-                   placeholder="(11) 99999-9999" maxlength="15" aria-describedby="cf-erro-telefone" required>
-            <p class="campo__erro" id="cf-erro-telefone" data-cf-erro="cf-telefone"></p>
-          </div>
-
-          <p class="isca" aria-hidden="true">
-            <label for="cf-empresa">Não preencha este campo</label>
-            <input id="cf-empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
-          </p>
-
-          <button class="botao botao--largo" type="submit" data-cf-enviar>
-            <span data-cf-botao-texto>Quero entrar no grupo</span>
-          </button>
-
-          <p class="form__rodape">
-            Ao enviar, você autoriza a Cris Fashion a mandar novidades e promoções pelo
-            WhatsApp informado. Você pode sair do grupo quando quiser.
-          </p>
-
-          <div class="falha" data-cf-falha hidden>
-            <p class="falha__texto" data-cf-falha-texto></p>
-            <a class="botao" href="#" data-cf-grupo-link>Entrar no grupo mesmo assim</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <section class="bloco bloco--rosa">
-    <div class="limite">
-      <div class="bloco__topo">
-        <p class="olho">Dúvidas</p>
-        <h2 class="subtitulo">Antes de entrar</h2>
-      </div>
-      <div class="perguntas">
-        <details class="pergunta">
-          <summary>Entrar no grupo é gratuito?</summary>
-          <p>É, sim. Não tem custo nenhum para participar e você sai quando quiser.</p>
-        </details>
-        <details class="pergunta">
-          <summary>Vou conseguir ver as mensagens dos outros participantes?</summary>
-          <p>Não. Só a Cris Fashion publica no grupo, então a sua tela fica limpa: entra só novidade e desconto.</p>
-        </details>
-        <details class="pergunta">
-          <summary>O desconto de 50% vale para todas as peças?</summary>
-          <p>O desconto chega a 50% em peças selecionadas, que mudam a cada campanha. As condições de cada achadinho são avisadas no grupo.</p>
-        </details>
-        <details class="pergunta">
-          <summary>O que vocês fazem com o meu WhatsApp?</summary>
-          <p>Usamos só para te adicionar às novidades da Cris Fashion e responder o que você perguntar. Não repassamos seus dados para ninguém.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <footer class="rodape">
-    <div class="limite">
-      <div class="rodape__marca">
-        <div class="marca marca--pequena" role="img" aria-label="Cris Fashion">
-          <span class="marca__lockup">
-            <span class="marca__nome">Cris</span>
-            <span class="marca__linha"></span>
-            <span class="marca__assinatura">fashion</span>
-          </span>
-        </div>
-      </div>
-      <p>Cris Fashion · Sua melhor versão em toda ocasião.</p>
-      <p>Descontos de até 50% em peças selecionadas, enquanto durar o estoque.</p>
-    </div>
-  </footer>
-
+  </div>
 </div>
 
 

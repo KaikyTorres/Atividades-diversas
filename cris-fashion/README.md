@@ -1,10 +1,12 @@
 # LP do grupo "Achadinhos da Cris Fashion"
 
 Landing page de captação para o grupo de WhatsApp da Cris Fashion, com a
-promessa de **descontos de até 50%** em peças selecionadas. A visitante
-preenche **nome e WhatsApp**, o cadastro vai para o webhook do n8n e ela cai
-na página de obrigado, que mostra uma barra de carregamento de **10 segundos**
-e então leva ao convite do grupo.
+promessa de **descontos de até 50%** em peças selecionadas.
+
+A LP é **uma tela só**, pensada para o cadastro ser rápido: marca, duas frases
+e o formulário de **nome e WhatsApp**. O cadastro vai para o webhook do n8n e a
+visitante cai na página de obrigado, que mostra uma barra de carregamento de
+**10 segundos** e então leva ao convite do grupo.
 
 Site estático — HTML, CSS e um arquivo JavaScript. Sem build, sem framework,
 sem dependência externa em tempo de execução.
