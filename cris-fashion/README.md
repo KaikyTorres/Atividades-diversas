@@ -116,5 +116,6 @@ Diferenças em relação à versão estática:
 - ids prefixados com `cf-` para não colidirem com outros formulários da página;
 - sem as tags `<html>`, `<head>` e `<body>`, que o Elementor já fornece.
 
-No `lp-cris-fashion.html`, ajuste `CONFIG.paginaObrigado` para o endereço real
-da sua página de obrigado no WordPress (o padrão é `/obrigado`).
+No `lp-cris-fashion.html`, `CONFIG.paginaObrigado` aponta para
+`https://smartyng.com/forms-cris-fashion-grupo-vip-obg`, a página de obrigado
+publicada. É lá que o `obrigado-cris-fashion.html` precisa estar colado.
