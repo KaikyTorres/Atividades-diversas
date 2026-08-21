@@ -1,0 +1,166 @@
+<!-- ============================================================
+     Página de OBRIGADO da Cris Fashion — widget HTML do Elementor
+     Mostra a barra de carregamento e leva ao grupo em 10 segundos.
+     ============================================================ -->
+
+<!-- Fontes da marca. Se o seu tema já carrega Playfair Display, Jost e
+     Parisienne, pode apagar estas duas linhas. -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300..700&amp;family=Parisienne&amp;family=Playfair+Display:wght@500..900&amp;display=swap">
+
+<style>
+.cfo{
+  --magenta:#b81b66; --magenta-vivo:#d4297d; --vinho:#6d0d3e; --vinho-fundo:#4d0729;
+  --rosa:#f7d7e6; --branco:#fff; --ouro:#e8b33c;
+  --display:"Playfair Display",Didot,Georgia,serif;
+  --corpo:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --assinatura:"Parisienne","Brush Script MT",cursive;
+  --raio-g:28px;
+  font-family:var(--corpo); font-size:17px; line-height:1.6; color:var(--branco);
+  -webkit-font-smoothing:antialiased;
+  display:grid; place-items:center; text-align:center;
+  min-height:78vh; padding:60px 22px;
+  background:radial-gradient(90% 100% at 50% 0%,var(--magenta) 0%,var(--vinho) 55%,var(--vinho-fundo) 100%);
+}
+.cfo *,.cfo *::before,.cfo *::after{box-sizing:border-box}
+/* color/font-size explícitos: um seletor de elemento do tema (p{color:...})
+   vence a herança, então o reset devolve tudo para dentro do bloco. */
+.cfo p,.cfo h1,.cfo strong,.cfo em,.cfo span{
+  margin:0;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit}
+.cfo svg{max-width:100%}
+
+/* Descomente se a página ficar espremida na largura do tema.
+.cfo{width:100vw;max-width:100vw;margin-left:calc(50% - 50vw)}
+*/
+
+.cfo .obrigado{width:100%;max-width:560px}
+
+/* display:flex (e não inline-flex) para o selo abaixo não subir para o lado da logo */
+.cfo .marca{display:flex;align-items:center;justify-content:center;width:132px;height:132px;
+  border-radius:50%;background:var(--branco);box-shadow:0 12px 34px rgba(77,7,41,.22);margin:0 auto 22px}
+.cfo .marca__lockup{position:relative;display:block;text-align:center;line-height:1;padding-bottom:12px}
+.cfo .marca__nome{display:block;font-family:var(--display);font-weight:800;font-size:46px;
+  letter-spacing:-.02em;color:var(--magenta)}
+.cfo .marca__linha{display:block;height:2px;margin-top:4px;background:var(--magenta);border-radius:2px}
+.cfo .marca__assinatura{position:absolute;right:-2px;bottom:-4px;font-family:var(--assinatura);
+  font-size:21px;color:var(--magenta);line-height:1}
+
+.cfo .confirmado{display:inline-flex;align-items:center;gap:9px;border-radius:999px;
+  padding:8px 18px 8px 12px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.3);
+  font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px}
+.cfo .confirmado svg{width:20px;height:20px}
+
+.cfo .titulo{margin:0 auto 14px;max-width:18ch;font-family:var(--display);font-weight:800;
+  font-size:clamp(32px,7.5vw,48px);line-height:1.06;letter-spacing:-.02em;color:var(--branco)}
+.cfo .titulo em{font-style:normal;color:var(--ouro);white-space:nowrap}
+.cfo .obrigado__texto{margin:0 auto 30px;max-width:42ch;color:var(--rosa);font-weight:300}
+.cfo .obrigado__texto strong{color:var(--branco);font-weight:600}
+
+.cfo .carregando{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+  border-radius:var(--raio-g);padding:24px;margin-bottom:24px}
+.cfo .carregando__texto{margin-bottom:14px;font-size:15.5px;font-weight:300;color:var(--rosa)}
+.cfo .carregando__texto strong{color:var(--branco);font-weight:600;font-variant-numeric:tabular-nums}
+.cfo .barra{height:10px;border-radius:999px;background:rgba(255,255,255,.18);overflow:hidden}
+.cfo .barra__preenchimento{display:block;height:100%;width:0%;border-radius:999px;
+  transition:width .2s linear;
+  background:linear-gradient(90deg,var(--rosa) 0%,var(--branco) 55%,var(--ouro) 100%)}
+
+.cfo .botao{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:58px;
+  padding:16px 34px;border:0;border-radius:999px;background:var(--branco);color:var(--magenta);
+  font-family:var(--corpo);font-size:17px;font-weight:600;letter-spacing:.02em;text-decoration:none;
+  cursor:pointer;box-shadow:0 12px 26px rgba(77,7,41,.22);
+  transition:transform .15s ease,background-color .15s ease}
+.cfo .botao:hover{background:var(--rosa);color:var(--vinho);transform:translateY(-2px)}
+
+.cfo .obrigado__volta{margin-top:18px;font-size:14px}
+.cfo .obrigado__volta a{color:var(--rosa)}
+
+@media (prefers-reduced-motion:reduce){.cfo *{animation:none!important;transition:none!important}}
+</style>
+
+
+<div class="cfo">
+  <div class="obrigado">
+
+    <!-- Logo montada em HTML/CSS. Com o arquivo oficial, troque este bloco por:
+         <img class="marca" src="URL-DA-LOGO.png" alt="Cris Fashion"> -->
+    <div class="marca" role="img" aria-label="Cris Fashion">
+      <span class="marca__lockup">
+        <span class="marca__nome">Cris</span>
+        <span class="marca__linha"></span>
+        <span class="marca__assinatura">fashion</span>
+      </span>
+    </div>
+
+    <p class="confirmado">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9"></circle><path d="M8 12.5l2.6 2.5L16 9.5"></path>
+      </svg>
+      Cadastro confirmado
+    </p>
+
+    <h1 class="titulo">Pronto! Você já é do <em>Achadinhos</em></h1>
+    <p class="obrigado__texto">
+      Falta só entrar no grupo do WhatsApp para começar a receber as peças com
+      <strong>até 50% de desconto</strong>. Estamos te levando para lá.
+    </p>
+
+    <div class="carregando">
+      <p class="carregando__texto">
+        Redirecionando para o grupo em <strong data-cfo-contador>10</strong> segundos…
+      </p>
+      <div class="barra" role="progressbar" aria-label="Redirecionando para o grupo"
+           aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-cfo-barra>
+        <span class="barra__preenchimento" data-cfo-preenchimento></span>
+      </div>
+    </div>
+
+    <a class="botao" href="https://chat.whatsapp.com/J15xI3EcaZ3Bx1p3YC168l"
+       target="_blank" rel="noopener">Entrar no grupo agora</a>
+
+    <p class="obrigado__volta"><a href="/">Voltar para a página inicial</a></p>
+
+  </div>
+</div>
+
+
+<script>
+(function () {
+  'use strict';
+
+  var CONFIG = {
+    // Convite do grupo no WhatsApp. Se trocar aqui, troque também no href
+    // do botão "Entrar no grupo agora" lá em cima.
+    grupo: 'https://chat.whatsapp.com/J15xI3EcaZ3Bx1p3YC168l',
+
+    // Segundos de espera antes do redirecionamento.
+    segundos: 10
+  };
+
+  var barra = document.querySelector('[data-cfo-barra]');
+  if (!barra) return;
+
+  var preenchimento = document.querySelector('[data-cfo-preenchimento]');
+  var contador = document.querySelector('[data-cfo-contador]');
+  var total = CONFIG.segundos * 1000;
+  var inicio = Date.now();
+
+  if (contador) contador.textContent = CONFIG.segundos;
+
+  var passo = setInterval(function () {
+    var decorrido = Date.now() - inicio;
+    var porcento = Math.min(100, (decorrido / total) * 100);
+
+    if (preenchimento) preenchimento.style.width = porcento.toFixed(1) + '%';
+    barra.setAttribute('aria-valuenow', Math.round(porcento));
+    if (contador) contador.textContent = Math.max(0, Math.ceil((total - decorrido) / 1000));
+
+    if (decorrido >= total) {
+      clearInterval(passo);
+      // replace() para o botão "voltar" não cair de novo na contagem
+      window.location.replace(CONFIG.grupo);
+    }
+  }, 100);
+})();
+</script>

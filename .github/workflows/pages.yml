@@ -23,11 +23,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Monta o site com a LP em /rezende
+      - name: Monta o site com as LPs em /rezende e /cris-fashion
         run: |
-          mkdir -p _site/rezende
+          mkdir -p _site/rezende _site/cris-fashion
           cp -r rezende/. _site/rezende/
-          rm -f _site/rezende/README.md
+          cp -r cris-fashion/. _site/cris-fashion/
+          rm -f _site/rezende/README.md _site/cris-fashion/README.md
 
       - uses: actions/configure-pages@v5
         with:
