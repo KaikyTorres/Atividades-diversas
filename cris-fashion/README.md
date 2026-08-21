@@ -92,3 +92,27 @@ python3 -m http.server 8000
 
 O workflow `.github/workflows/pages.yml` publica esta pasta em
 `/cris-fashion` do GitHub Pages a cada push na `main`.
+
+## Versão para o Elementor
+
+A pasta `elementor/` traz as mesmas duas páginas em arquivo único, prontas para
+colar num widget **HTML** do Elementor:
+
+| Arquivo                        | Onde vai                        |
+| ------------------------------ | ------------------------------- |
+| `lp-cris-fashion.html`         | página da LP                    |
+| `obrigado-cris-fashion.html`   | página de obrigado              |
+
+Diferenças em relação à versão estática:
+
+- CSS e JavaScript embutidos no próprio arquivo, sem caminhos relativos;
+- fontes carregadas do Google Fonts por `<link>`, já que não há como subir os
+  `.woff2` junto;
+- todo o CSS com escopo `.cf` (LP) e `.cfo` (obrigado), incluindo um reset de
+  `color`/`font-size`/`font-family`, para o tema do WordPress não vazar para
+  dentro do bloco nem o contrário;
+- ids prefixados com `cf-` para não colidirem com outros formulários da página;
+- sem as tags `<html>`, `<head>` e `<body>`, que o Elementor já fornece.
+
+No `lp-cris-fashion.html`, ajuste `CONFIG.paginaObrigado` para o endereço real
+da sua página de obrigado no WordPress (o padrão é `/obrigado`).
