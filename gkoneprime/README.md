@@ -7,6 +7,7 @@ grupo do WhatsApp depois de 10 segundos.
 gkoneprime/
 ├── index.html                       página 1 — formulário (arquivo completo)
 ├── obrigado.html                    página 2 — contagem de 10s (arquivo completo)
+├── assets/                          logo original e versão sem fundo
 └── wordpress/
     ├── pagina-formulario.html       página 1 — bloco pronto pro WordPress
     └── pagina-obrigado.html         página 2 — bloco pronto pro WordPress
@@ -17,8 +18,8 @@ navegador ou subir em qualquer servidor). Os de `wordpress/` são o mesmo conte�
 sem `<html>`/`<head>`/`<body>`, com todo o CSS preso ao container `.gk-palco` —
 nada vaza para o tema do site.
 
-Nenhum dos arquivos depende de plugin, biblioteca ou imagem externa: HTML, CSS e
-JavaScript embutidos, com a marca desenhada em SVG.
+Nenhum dos arquivos depende de plugin, biblioteca ou imagem externa: HTML, CSS,
+JavaScript e o logo estão todos embutidos.
 
 ## Publicar no WordPress
 
@@ -31,8 +32,8 @@ JavaScript embutidos, com a marca desenhada em SVG.
 3. **Confira o destino.** No bloco do formulário, dentro de `CONFIG`, o campo
    `paginaObrigado` está como `'/obrigado'`. Se o slug da sua página for outro,
    ajuste ali.
-4. **Coloque o logo oficial.** Suba o arquivo na Biblioteca de Mídia e cole a URL
-   no campo `logo` do `CONFIG`, nos dois blocos (veja "Identidade visual").
+4. **O logo já vai junto.** Está embutido no bloco, não precisa subir nada na
+   Biblioteca de Mídia (veja "Identidade visual" se preferir hospedar à parte).
 5. Use um template de página **em branco / largura total**, se o tema tiver. Não
    é obrigatório: o bloco já se estica para a largura da tela sozinho.
 
@@ -98,20 +99,28 @@ Azul-marinho profundo com gradientes prata e azul metálico, no mesmo tom da
 marca. A cor base fica nas variáveis do topo do CSS (`--azul-fundo`,
 `--azul-marca`, `--texto`…).
 
-A marca vem desenhada em SVG dentro das páginas, para nada depender de arquivo
-externo. Para usar o logo oficial, preencha `logo` no `CONFIG` das **duas**
-páginas com a URL da imagem:
+O logo oficial **já vem embutido** nas páginas, em base64 — nenhuma delas
+depende de arquivo hospedado, nem no WordPress.
 
-```js
-logo: 'https://seusite.com.br/wp-content/uploads/2026/08/gk-one-prime.png',
+```
+assets/
+├── logo-original.png        arquivo enviado, como veio
+└── logo-gk-one-prime.png    o mesmo logo com o fundo removido (transparente)
 ```
 
-Preenchido, o logo entra no lugar do SVG. Vazio, a marca desenhada continua
-valendo — nenhuma página quebra por falta do arquivo.
+O fundo azul chapado do arquivo original foi recortado, então o logo assenta
+sobre o degradê da página sem aparecer o retângulo. É essa versão transparente,
+reduzida para 296×280, que está dentro do HTML.
 
-No WordPress: Mídia → Adicionar nova, suba o PNG, copie a URL do arquivo e cole
-nos dois blocos. Use o PNG com fundo transparente, se tiver; o fundo do site já
-é azul-marinho.
+Para servir o logo de outro lugar (Biblioteca de Mídia, CDN), preencha `logo` no
+`CONFIG` das **duas** páginas — ele substitui a imagem embutida:
+
+```js
+logo: 'https://seusite.com.br/wp-content/uploads/2026/08/logo-gk-one-prime.png',
+```
+
+O arquivo `assets/logo-gk-one-prime.png` é o que você deve subir nesse caso: já
+está com fundo transparente.
 
 ## Alterar os textos
 
