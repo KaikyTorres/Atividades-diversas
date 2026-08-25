@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pronto! Entrando no grupo — GK One Prime</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#061428">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+
+<style>
+/* ============================================================
+   GK One Prime — página de obrigado
+   Contagem de 10s e redirecionamento para o grupo do WhatsApp.
+   ============================================================ */
+:root{
+  --azul-fundo:#061428;
+  --azul-fundo-2:#0a2246;
+  --texto:#e8eefa;
+  --texto-suave:#9db0c9;
+  --borda:rgba(147,178,222,.22);
+  --cartao:rgba(11,30,58,.72);
+  --verde:#25c26f;
+  --fonte:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--fonte);color:var(--texto);background:var(--azul-fundo);-webkit-font-smoothing:antialiased}
+.gk-palco{
+  position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;
+  padding:40px 20px 56px;overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 50% -10%, rgba(30,111,217,.38), transparent 60%),
+    radial-gradient(700px 480px at 12% 100%, rgba(37,194,111,.12), transparent 62%),
+    linear-gradient(180deg,var(--azul-fundo) 0%, var(--azul-fundo-2) 55%, var(--azul-fundo) 100%);
+}
+.gk-palco::after{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 30%,#000,transparent 72%);
+          mask-image:radial-gradient(circle at 50% 30%,#000,transparent 72%);
+  pointer-events:none;
+}
+.gk-conteudo{position:relative;z-index:1;width:100%;max-width:480px;text-align:center}
+
+.gk-marca{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:24px}
+.gk-marca__icone{width:82px;height:82px;filter:drop-shadow(0 10px 26px rgba(30,111,217,.5))}
+.gk-marca__nome{
+  font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;
+  background:linear-gradient(180deg,#fff 0%,#cfdcec 46%,#8fa6c2 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.gk-marca__nome span{
+  background:linear-gradient(180deg,#8ec5ff 0%,#2f7fe0 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+.gk-selo{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 15px;margin-bottom:16px;
+  border:1px solid rgba(37,194,111,.35);border-radius:999px;background:rgba(37,194,111,.12);
+  font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#7ff0b4;
+}
+.gk-selo svg{width:14px;height:14px}
+h1.gk-titulo{margin:0 0 12px;font-size:clamp(26px,6.4vw,36px);line-height:1.15;font-weight:800;letter-spacing:-.025em}
+h1.gk-titulo em{
+  font-style:normal;
+  background:linear-gradient(180deg,#fff 0%,#a9c7ee 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.gk-chamada{margin:0 auto 26px;max-width:400px;font-size:16px;line-height:1.6;color:var(--texto-suave)}
+.gk-chamada strong{color:#e8eefa;font-weight:700}
+
+/* contador */
+.gk-cartao{
+  padding:28px 22px 24px;border-radius:18px;border:1px solid var(--borda);background:var(--cartao);
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+}
+.gk-relogio{position:relative;width:132px;height:132px;margin:0 auto 18px}
+.gk-relogio svg{width:100%;height:100%;transform:rotate(-90deg)}
+.gk-relogio__trilha{fill:none;stroke:rgba(147,178,222,.18);stroke-width:8}
+.gk-relogio__arco{fill:none;stroke:url(#gkArco);stroke-width:8;stroke-linecap:round}
+.gk-relogio__marcador{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+}
+.gk-relogio__numero{font-size:42px;font-weight:800;line-height:1;letter-spacing:-.03em;color:#fff;font-variant-numeric:tabular-nums}
+.gk-relogio__unidade{font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#8ba1bd}
+
+.gk-aviso{margin:0 0 18px;font-size:14.5px;line-height:1.55;color:var(--texto-suave)}
+.gk-botao{
+  display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:16px 20px;
+  font-family:inherit;font-size:16.5px;font-weight:800;letter-spacing:-.01em;text-decoration:none;
+  color:#04241a;background:linear-gradient(180deg,#5ff0a5 0%,#25c26f 100%);
+  border:0;border-radius:13px;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(37,194,111,.7), inset 0 1px 0 rgba(255,255,255,.45);
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.gk-botao:hover{transform:translateY(-1px);box-shadow:0 18px 36px -12px rgba(37,194,111,.9)}
+.gk-botao:active{transform:translateY(0)}
+.gk-botao svg{width:20px;height:20px;flex:none}
+
+.gk-lista{list-style:none;margin:20px 0 0;padding:0;text-align:left}
+.gk-lista li{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:14px;line-height:1.5;color:#b9cbe3}
+.gk-lista svg{width:17px;height:17px;flex:none;margin-top:1px;color:#5ff0a5}
+.gk-rodape{margin:24px 0 0;font-size:12px;color:#6f8299;line-height:1.6}
+
+@media (max-width:420px){.gk-cartao{padding:22px 16px 20px}.gk-relogio{width:116px;height:116px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<main class="gk-palco">
+  <div class="gk-conteudo">
+
+    <div class="gk-marca">
+      <svg class="gk-marca__icone" viewBox="0 0 200 200" role="img" aria-label="GK One Prime">
+        <defs>
+          <linearGradient id="gkPrata" gradientUnits="userSpaceOnUse" x1="52" y1="28" x2="128" y2="168">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="38%" stop-color="#e6edf5"/>
+            <stop offset="62%" stop-color="#9db0c6"/>
+            <stop offset="82%" stop-color="#d8e3ee"/>
+            <stop offset="100%" stop-color="#f4f8fc"/>
+          </linearGradient>
+          <linearGradient id="gkAzul" gradientUnits="userSpaceOnUse" x1="22" y1="110" x2="176" y2="140">
+            <stop offset="0%" stop-color="#7cc0ff"/>
+            <stop offset="48%" stop-color="#2274d6"/>
+            <stop offset="100%" stop-color="#0a3d84"/>
+          </linearGradient>
+          <radialGradient id="gkBrilho" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".9"/>
+            <stop offset="45%" stop-color="#bcdcff" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+          <!-- recorte: o K passa por cima e abre um vão no G e na varredura -->
+          <mask id="gkCorte">
+            <rect x="0" y="0" width="200" height="200" fill="#fff"/>
+            <g fill="none" stroke="#000" stroke-linecap="butt">
+              <path d="M129 38 V154" stroke-width="30"/>
+              <path d="M138 100 L179 55" stroke-width="31"/>
+              <path d="M138 100 L188 152" stroke-width="31"/>
+            </g>
+          </mask>
+        </defs>
+
+        <g mask="url(#gkCorte)">
+          <!-- varredura azul (a esfera da marca) -->
+          <path d="M22 114 C 38 168, 116 180, 168 134" fill="none" stroke="url(#gkAzul)"
+                stroke-width="17" stroke-linecap="round"/>
+          <!-- arco do G -->
+          <path d="M106 141 A 52 52 0 1 1 121 72" fill="none" stroke="url(#gkPrata)"
+                stroke-width="19"/>
+          <!-- barra do G -->
+          <path d="M76 89 h64 v18 h-64 z" fill="url(#gkPrata)"/>
+        </g>
+
+        <!-- K -->
+        <g fill="none" stroke="url(#gkPrata)" stroke-linecap="butt">
+          <path d="M129 40 V152" stroke-width="18"/>
+          <path d="M138 100 L179 55" stroke-width="19"/>
+          <path d="M138 100 L188 152" stroke-width="19"/>
+        </g>
+
+        <!-- estrela -->
+        <circle cx="174" cy="26" r="26" fill="url(#gkBrilho)"/>
+        <path d="M174 2 L179 20 L197 26 L179 32 L174 50 L169 32 L151 26 L169 20 z" fill="#ffffff"/>
+      </svg>
+      <p class="gk-marca__nome">One <span>Prime</span></p>
+    </div>
+
+    <p class="gk-selo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      Cadastro confirmado
+    </p>
+
+    <h1 class="gk-titulo" data-titulo>Pronto! Agora é só <em>entrar no grupo</em></h1>
+    <p class="gk-chamada">
+      Você já está na lista da GK One Prime. <strong>Toque no botão abaixo</strong> para entrar
+      no grupo do WhatsApp e começar a receber as promoções de iPhone e Apple.
+    </p>
+
+    <div class="gk-cartao">
+      <div class="gk-relogio">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="gkArco" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#5ff0a5"/>
+              <stop offset="100%" stop-color="#25c26f"/>
+            </linearGradient>
+          </defs>
+          <circle class="gk-relogio__trilha" cx="60" cy="60" r="52"/>
+          <circle class="gk-relogio__arco" cx="60" cy="60" r="52" data-arco/>
+        </svg>
+        <div class="gk-relogio__marcador">
+          <span class="gk-relogio__numero" data-contador>10</span>
+          <span class="gk-relogio__unidade">segundos</span>
+        </div>
+      </div>
+
+      <p class="gk-aviso" data-aviso role="status" aria-live="polite">
+        Em <strong data-contador-texto>10</strong> segundos você é levado ao grupo automaticamente.
+      </p>
+
+      <a class="gk-botao" href="https://chat.whatsapp.com/BZwaulEmiiG0mT3qSnnvx3?s=sw&amp;p=i&amp;mlu=4"
+         target="_blank" rel="noopener" data-grupo-link>
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7Zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+        Entrar no grupo agora
+      </a>
+
+      <ul class="gk-lista">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Várias promoções de iPhone por dia</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> MacBook, iPad, Apple Watch e AirPods</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Link direto para comprar, sem intermediário</li>
+      </ul>
+    </div>
+
+    <p class="gk-rodape">GK One Prime · Promoções de iPhone e produtos Apple · Entrada gratuita</p>
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   GK One Prime — contagem regressiva e ida para o grupo
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var CONFIG = {
+    grupo: 'https://chat.whatsapp.com/BZwaulEmiiG0mT3qSnnvx3?s=sw&p=i&mlu=4',
+    segundos: 10
+  };
+
+  var links = document.querySelectorAll('[data-grupo-link]');
+  Array.prototype.forEach.call(links, function (alvo) {
+    alvo.setAttribute('href', CONFIG.grupo);
+  });
+
+  /* ---------- saudação com o nome de quem preencheu ---------- */
+
+  try {
+    var lead = JSON.parse(sessionStorage.getItem('gkLead') || '{}');
+    if (lead && lead.nome) {
+      var primeiroNome = lead.nome.split(' ')[0];
+      var titulo = document.querySelector('[data-titulo]');
+      if (titulo) {
+        titulo.innerHTML = 'Pronto, ' + primeiroNome.replace(/[<>&]/g, '') +
+                           '! Agora é só <em>entrar no grupo</em>';
+      }
+    }
+  } catch (e) { /* sem sessionStorage: mantém o título padrão */ }
+
+  /* ---------- contagem regressiva ---------- */
+
+  var numero = document.querySelector('[data-contador]');
+  var textoContador = document.querySelector('[data-contador-texto]');
+  var aviso = document.querySelector('[data-aviso]');
+  var arco = document.querySelector('[data-arco]');
+
+  var raio = arco ? arco.r.baseVal.value : 52;
+  var volta = 2 * Math.PI * raio;
+  if (arco) {
+    arco.style.strokeDasharray = volta;
+    arco.style.strokeDashoffset = 0;
+  }
+
+  var totalMs = CONFIG.segundos * 1000;
+  var inicio = Date.now();
+  var levado = false;
+
+  function irParaOGrupo() {
+    if (levado) return;
+    levado = true;
+    if (aviso) aviso.innerHTML = 'Abrindo o grupo… se nada acontecer, toque no botão verde.';
+    window.location.href = CONFIG.grupo;
+  }
+
+  function tique() {
+    var passado = Date.now() - inicio;
+    var restante = Math.max(0, totalMs - passado);
+    var segundos = Math.ceil(restante / 1000);
+
+    if (numero) numero.textContent = segundos;
+    if (textoContador) textoContador.textContent = segundos;
+    if (arco) arco.style.strokeDashoffset = volta * (1 - restante / totalMs);
+
+    if (restante <= 0) { irParaOGrupo(); return; }
+    requestAnimationFrame(tique);
+  }
+
+  requestAnimationFrame(tique);
+
+  // Quem clicar no botão antes do fim não é redirecionado por cima da aba nova.
+  Array.prototype.forEach.call(links, function (alvo) {
+    alvo.addEventListener('click', function () { levado = true; });
+  });
+})();
+</script>
+</body>
+</html>

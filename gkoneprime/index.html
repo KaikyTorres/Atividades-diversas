@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grupo de promoções de iPhone e Apple — GK One Prime</title>
+<meta name="description" content="Entre no grupo do WhatsApp da GK One Prime e receba todos os dias as promoções de iPhone, MacBook, iPad, Apple Watch e AirPods.">
+<meta name="theme-color" content="#061428">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Promoções de iPhone e produtos Apple todo dia">
+<meta property="og:description" content="Grupo exclusivo no WhatsApp da GK One Prime. Entrada gratuita.">
+<meta property="og:locale" content="pt_BR">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap">
+
+<style>
+/* ============================================================
+   GK One Prime — LP de captação para o grupo do WhatsApp
+   Tudo embutido de propósito: um arquivo só, sem dependências.
+   ============================================================ */
+:root{
+  --azul-fundo:#061428;
+  --azul-fundo-2:#0a2246;
+  --azul-marca:#1e6fd9;
+  --azul-claro:#4da3f5;
+  --prata-1:#ffffff;
+  --prata-2:#dbe4ee;
+  --prata-3:#93a5bb;
+  --texto:#e8eefa;
+  --texto-suave:#9db0c9;
+  --borda:rgba(147,178,222,.22);
+  --cartao:rgba(11,30,58,.72);
+  --erro:#ff8b8b;
+  --raio:18px;
+  --fonte:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--fonte);
+  color:var(--texto);
+  background:var(--azul-fundo);
+  -webkit-font-smoothing:antialiased;
+}
+/* brilhos de fundo */
+.gk-palco{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px 56px;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 520px at 50% -10%, rgba(30,111,217,.38), transparent 60%),
+    radial-gradient(700px 480px at 12% 100%, rgba(77,163,245,.16), transparent 62%),
+    linear-gradient(180deg,var(--azul-fundo) 0%, var(--azul-fundo-2) 55%, var(--azul-fundo) 100%);
+}
+.gk-palco::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle at 50% 30%,#000,transparent 72%);
+          mask-image:radial-gradient(circle at 50% 30%,#000,transparent 72%);
+  pointer-events:none;
+}
+.gk-conteudo{position:relative;z-index:1;width:100%;max-width:520px;text-align:center}
+
+/* logo */
+.gk-marca{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:26px}
+.gk-marca__icone{width:96px;height:96px;filter:drop-shadow(0 10px 26px rgba(30,111,217,.5))}
+.gk-marca__nome{
+  font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1;
+  background:linear-gradient(180deg,#fff 0%,#cfdcec 46%,#8fa6c2 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.gk-marca__nome span{
+  background:linear-gradient(180deg,#8ec5ff 0%,#2f7fe0 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+
+/* textos */
+.gk-selo{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 15px;margin-bottom:18px;
+  border:1px solid var(--borda);border-radius:999px;
+  background:rgba(30,111,217,.14);
+  font-size:12.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;
+  color:#bcd6f7;
+}
+.gk-selo__ponto{width:7px;height:7px;border-radius:50%;background:#39d98a;box-shadow:0 0 0 4px rgba(57,217,138,.18)}
+h1.gk-titulo{
+  margin:0 0 14px;font-size:clamp(28px,7vw,40px);line-height:1.12;
+  font-weight:800;letter-spacing:-.025em;
+}
+h1.gk-titulo em{
+  font-style:normal;
+  background:linear-gradient(180deg,#fff 0%,#a9c7ee 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.gk-chamada{margin:0 auto 22px;max-width:440px;font-size:16.5px;line-height:1.6;color:var(--texto-suave)}
+.gk-chamada strong{color:#e8eefa;font-weight:700}
+
+/* lista de produtos */
+.gk-itens{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  list-style:none;margin:0 0 26px;padding:0;
+}
+.gk-itens li{
+  padding:7px 13px;border:1px solid var(--borda);border-radius:999px;
+  background:rgba(255,255,255,.04);font-size:13.5px;font-weight:600;color:#c6d6ea;
+}
+
+/* cartão do formulário */
+.gk-cartao{
+  position:relative;
+  padding:26px 22px 22px;
+  border-radius:var(--raio);
+  border:1px solid var(--borda);
+  background:var(--cartao);
+  box-shadow:0 30px 60px -24px rgba(0,0,0,.75), inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  text-align:left;
+}
+.gk-cartao__titulo{
+  margin:0 0 18px;text-align:center;font-size:15px;font-weight:700;color:#dce8f8;
+}
+.gk-campo{margin-bottom:14px}
+.gk-campo label{display:block;margin-bottom:7px;font-size:13.5px;font-weight:600;color:#b9cbe3}
+.gk-campo input{
+  width:100%;padding:14px 15px;
+  font-family:inherit;font-size:16px;color:#fff;
+  background:rgba(3,12,26,.72);
+  border:1px solid rgba(147,178,222,.26);
+  border-radius:12px;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.gk-campo input::placeholder{color:#6c819c}
+.gk-campo input:focus{
+  outline:none;border-color:var(--azul-claro);
+  box-shadow:0 0 0 4px rgba(77,163,245,.18);
+}
+.gk-campo input[aria-invalid="true"]{border-color:var(--erro);box-shadow:0 0 0 4px rgba(255,139,139,.14)}
+.gk-campo__erro{margin:6px 0 0;min-height:16px;font-size:12.5px;font-weight:600;color:var(--erro)}
+
+.gk-botao{
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  width:100%;margin-top:6px;padding:16px 20px;
+  font-family:inherit;font-size:16.5px;font-weight:800;letter-spacing:-.01em;color:#04101f;
+  background:linear-gradient(180deg,#fff 0%,#cddef2 48%,#9fbfe4 100%);
+  border:0;border-radius:13px;cursor:pointer;
+  box-shadow:0 14px 30px -12px rgba(120,180,255,.65), inset 0 1px 0 rgba(255,255,255,.9);
+  transition:transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+  text-decoration:none;
+}
+.gk-botao:hover{transform:translateY(-1px);box-shadow:0 18px 36px -12px rgba(120,180,255,.8)}
+.gk-botao:active{transform:translateY(0)}
+.gk-botao[disabled]{opacity:.6;cursor:progress;transform:none}
+.gk-botao--verde{
+  color:#04241a;
+  background:linear-gradient(180deg,#5ff0a5 0%,#25c26f 100%);
+  box-shadow:0 14px 30px -12px rgba(37,194,111,.7), inset 0 1px 0 rgba(255,255,255,.45);
+}
+.gk-botao--verde:hover{box-shadow:0 18px 36px -12px rgba(37,194,111,.85)}
+.gk-botao svg{width:19px;height:19px;flex:none}
+
+.gk-cartao__aviso{margin:14px 0 0;font-size:12px;line-height:1.55;color:#7f93ad;text-align:center}
+.gk-falha{margin-top:14px;padding:14px;border:1px solid rgba(255,139,139,.35);border-radius:12px;background:rgba(255,139,139,.08)}
+.gk-falha p{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:#ffc9c9}
+.gk-isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.gk-rodape{margin:26px 0 0;font-size:12px;color:#6f8299;line-height:1.6}
+
+@media (max-width:420px){
+  .gk-cartao{padding:22px 16px 18px}
+  .gk-marca__icone{width:82px;height:82px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main class="gk-palco">
+  <div class="gk-conteudo">
+
+    <!-- Marca GK One Prime. Para usar o arquivo oficial, troque o <svg> por
+         <img class="gk-marca__icone" src="logo-gk-one-prime.png" alt="GK One Prime"> -->
+    <div class="gk-marca">
+      <svg class="gk-marca__icone" viewBox="0 0 200 200" role="img" aria-label="GK One Prime">
+        <defs>
+          <linearGradient id="gkPrata" gradientUnits="userSpaceOnUse" x1="52" y1="28" x2="128" y2="168">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="38%" stop-color="#e6edf5"/>
+            <stop offset="62%" stop-color="#9db0c6"/>
+            <stop offset="82%" stop-color="#d8e3ee"/>
+            <stop offset="100%" stop-color="#f4f8fc"/>
+          </linearGradient>
+          <linearGradient id="gkAzul" gradientUnits="userSpaceOnUse" x1="22" y1="110" x2="176" y2="140">
+            <stop offset="0%" stop-color="#7cc0ff"/>
+            <stop offset="48%" stop-color="#2274d6"/>
+            <stop offset="100%" stop-color="#0a3d84"/>
+          </linearGradient>
+          <radialGradient id="gkBrilho" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity=".9"/>
+            <stop offset="45%" stop-color="#bcdcff" stop-opacity=".35"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </radialGradient>
+          <!-- recorte: o K passa por cima e abre um vão no G e na varredura -->
+          <mask id="gkCorte">
+            <rect x="0" y="0" width="200" height="200" fill="#fff"/>
+            <g fill="none" stroke="#000" stroke-linecap="butt">
+              <path d="M129 38 V154" stroke-width="30"/>
+              <path d="M138 100 L179 55" stroke-width="31"/>
+              <path d="M138 100 L188 152" stroke-width="31"/>
+            </g>
+          </mask>
+        </defs>
+
+        <g mask="url(#gkCorte)">
+          <!-- varredura azul (a esfera da marca) -->
+          <path d="M22 114 C 38 168, 116 180, 168 134" fill="none" stroke="url(#gkAzul)"
+                stroke-width="17" stroke-linecap="round"/>
+          <!-- arco do G -->
+          <path d="M106 141 A 52 52 0 1 1 121 72" fill="none" stroke="url(#gkPrata)"
+                stroke-width="19"/>
+          <!-- barra do G -->
+          <path d="M76 89 h64 v18 h-64 z" fill="url(#gkPrata)"/>
+        </g>
+
+        <!-- K -->
+        <g fill="none" stroke="url(#gkPrata)" stroke-linecap="butt">
+          <path d="M129 40 V152" stroke-width="18"/>
+          <path d="M138 100 L179 55" stroke-width="19"/>
+          <path d="M138 100 L188 152" stroke-width="19"/>
+        </g>
+
+        <!-- estrela -->
+        <circle cx="174" cy="26" r="26" fill="url(#gkBrilho)"/>
+        <path d="M174 2 L179 20 L197 26 L179 32 L174 50 L169 32 L151 26 L169 20 z" fill="#ffffff"/>
+      </svg>
+      <p class="gk-marca__nome">One <span>Prime</span></p>
+    </div>
+
+    <p class="gk-selo"><span class="gk-selo__ponto"></span> Grupo aberto agora</p>
+
+    <h1 class="gk-titulo">Promoções de <em>iPhone</em> e produtos Apple todos os dias</h1>
+
+    <p class="gk-chamada">
+      No grupo do WhatsApp da GK One Prime a gente solta <strong>várias promoções por dia</strong>
+      de iPhone e produtos Apple — com preço abaixo do mercado e link direto pra comprar.
+      Preencha os dados e entre agora, é gratuito.
+    </p>
+
+    <ul class="gk-itens">
+      <li>iPhone</li><li>MacBook</li><li>iPad</li><li>Apple Watch</li><li>AirPods</li>
+    </ul>
+
+    <div class="gk-cartao">
+      <p class="gk-cartao__titulo">Preencha para receber o link do grupo</p>
+
+      <form novalidate data-form>
+        <div class="gk-campo">
+          <label for="nome">Seu nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name"
+                 placeholder="Como quer ser chamado" aria-describedby="erro-nome" required>
+          <p class="gk-campo__erro" id="erro-nome" data-erro="nome"></p>
+        </div>
+
+        <div class="gk-campo">
+          <label for="telefone">WhatsApp com DDD</label>
+          <input id="telefone" name="telefone" type="tel" autocomplete="tel" inputmode="numeric"
+                 placeholder="(11) 99999-9999" maxlength="15" aria-describedby="erro-telefone" required>
+          <p class="gk-campo__erro" id="erro-telefone" data-erro="telefone"></p>
+        </div>
+
+        <div class="gk-campo">
+          <label for="email">E-mail <span style="color:#7f93ad;font-weight:500">(opcional)</span></label>
+          <input id="email" name="email" type="email" autocomplete="email"
+                 placeholder="voce@email.com" aria-describedby="erro-email">
+          <p class="gk-campo__erro" id="erro-email" data-erro="email"></p>
+        </div>
+
+        <p class="gk-isca" aria-hidden="true">
+          <label for="empresa">Não preencha este campo</label>
+          <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
+        </p>
+
+        <button class="gk-botao" type="submit" data-enviar>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.9-4.45 9.9-9.91 0-2.65-1.03-5.14-2.9-7Zm-7.01 15.24c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.24 8.24 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.19 8.19 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.15.16-.29.18-.53.06-.25-.13-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.44.13-.15.17-.25.25-.41.09-.17.04-.31-.02-.44-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42l-.48-.01c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.02 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.08.15-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+          <span data-botao-texto>Quero entrar no grupo</span>
+        </button>
+
+        <p class="gk-cartao__aviso">
+          Ao entrar você concorda em receber as ofertas da GK One Prime pelo WhatsApp.
+          Pode sair do grupo quando quiser.
+        </p>
+
+        <div class="gk-falha" data-falha hidden>
+          <p data-falha-texto></p>
+          <a class="gk-botao gk-botao--verde" href="#" data-grupo-link>Entrar no grupo mesmo assim</a>
+        </div>
+      </form>
+    </div>
+
+    <p class="gk-rodape">GK One Prime · Promoções de iPhone e produtos Apple · Entrada gratuita</p>
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   GK One Prime — captação de leads do grupo do WhatsApp
+   Ajuste apenas o bloco CONFIG.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var CONFIG = {
+    // Webhook do n8n que recebe o lead.
+    // ATENÇÃO: a URL /webhook-test/ só aceita chamadas com o fluxo em modo
+    // "Listen for test event". Ao publicar o fluxo, troque para /webhook/.
+    endpoint: 'https://n8n.usekaycrm.com/webhook-test/faabc4d1-d4c3-44d0-93b1-0110c8b643b4',
+
+    // Página de obrigado (no WordPress, troque pela URL da página, ex.: '/obrigado').
+    paginaObrigado: 'obrigado.html',
+
+    // Convite do grupo no WhatsApp.
+    grupo: 'https://chat.whatsapp.com/BZwaulEmiiG0mT3qSnnvx3?s=sw&p=i&mlu=4',
+
+    // Identifica a campanha nos dados enviados.
+    origem: 'lp-grupo-apple',
+
+    // Tempo máximo de espera pelo webhook antes de liberar o visitante.
+    esperaMaximaMs: 4000
+  };
+
+  var form = document.querySelector('[data-form]');
+  if (!form) return;
+
+  var botao = form.querySelector('[data-enviar]');
+  var botaoTexto = form.querySelector('[data-botao-texto]');
+  var falha = form.querySelector('[data-falha]');
+  var falhaTexto = form.querySelector('[data-falha-texto]');
+
+  var campoNome = document.getElementById('nome');
+  var campoTelefone = document.getElementById('telefone');
+  var campoEmail = document.getElementById('email');
+  var campoIsca = document.getElementById('empresa');
+
+  Array.prototype.forEach.call(document.querySelectorAll('[data-grupo-link]'), function (alvo) {
+    alvo.setAttribute('href', CONFIG.grupo);
+    alvo.setAttribute('target', '_blank');
+    alvo.setAttribute('rel', 'noopener');
+  });
+
+  /* ---------- utilidades ---------- */
+
+  function digitos(valor) {
+    return (valor || '').replace(/\D/g, '');
+  }
+
+  function mascaraTelefone(valor) {
+    var d = digitos(valor).slice(0, 11);
+    if (d.length <= 2) return d.length ? '(' + d : '';
+    if (d.length <= 6) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    if (d.length <= 10) return '(' + d.slice(0, 2) + ') ' + d.slice(2, 6) + '-' + d.slice(6);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
+  }
+
+  function telefoneValido(valor) {
+    var d = digitos(valor);
+    if (d.length !== 10 && d.length !== 11) return false;
+    if (parseInt(d.slice(0, 2), 10) < 11) return false;
+    if (d.length === 11 && d.charAt(2) !== '9') return false;
+    return true;
+  }
+
+  function emailValido(valor) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((valor || '').trim());
+  }
+
+  function mostrarErro(campo, mensagem) {
+    var alvo = form.querySelector('[data-erro="' + campo + '"]');
+    if (alvo) alvo.textContent = mensagem || '';
+    var entrada = document.getElementById(campo);
+    if (!entrada) return;
+    if (mensagem) entrada.setAttribute('aria-invalid', 'true');
+    else entrada.removeAttribute('aria-invalid');
+  }
+
+  function validar(campo) {
+    if (campo === 'nome') {
+      var nome = campoNome.value.trim();
+      if (!nome) { mostrarErro('nome', 'Informe seu nome.'); return false; }
+      if (nome.length < 2) { mostrarErro('nome', 'Nome muito curto.'); return false; }
+      mostrarErro('nome', '');
+      return true;
+    }
+    if (campo === 'telefone') {
+      if (!campoTelefone.value.trim()) { mostrarErro('telefone', 'Informe seu WhatsApp.'); return false; }
+      if (!telefoneValido(campoTelefone.value)) { mostrarErro('telefone', 'Número incompleto. Use DDD + número.'); return false; }
+      mostrarErro('telefone', '');
+      return true;
+    }
+    if (campo === 'email') {
+      var email = campoEmail.value.trim();
+      if (email && !emailValido(email)) { mostrarErro('email', 'E-mail inválido.'); return false; }
+      mostrarErro('email', '');
+      return true;
+    }
+    return true;
+  }
+
+  campoTelefone.addEventListener('input', function () {
+    campoTelefone.value = mascaraTelefone(campoTelefone.value);
+  });
+
+  [campoNome, campoTelefone, campoEmail].forEach(function (campo) {
+    campo.addEventListener('blur', function () {
+      if (campo.value.trim()) validar(campo.id);
+    });
+  });
+
+  /* ---------- envio ---------- */
+
+  function parametrosDaUrl() {
+    var saida = {};
+    try {
+      var busca = new URLSearchParams(window.location.search);
+      ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'gclid']
+        .forEach(function (chave) {
+          var valor = busca.get(chave);
+          if (valor) saida[chave] = valor;
+        });
+    } catch (e) { /* navegador antigo: segue sem UTM */ }
+    return saida;
+  }
+
+  function enviar(dados) {
+    return fetch(CONFIG.endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados),
+      keepalive: true
+    }).then(function (resposta) {
+      if (!resposta.ok) throw new Error('HTTP ' + resposta.status);
+      return true;
+    }).catch(function () {
+      // Falha de CORS ou de rede: reenvia em modo opaco para o dado não se perder.
+      return fetch(CONFIG.endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: JSON.stringify(dados),
+        keepalive: true
+      }).then(function () { return true; }).catch(function () { return false; });
+    });
+  }
+
+  // replace() em vez de href: o botão "voltar" não devolve o formulário
+  // preenchido, então ninguém reenvia o mesmo cadastro sem querer.
+  function irParaObrigado(dados) {
+    try {
+      sessionStorage.setItem('gkLead', JSON.stringify({ nome: dados.nome, telefone: dados.telefone }));
+    } catch (e) { /* modo privado: segue sem personalizar a página */ }
+    window.location.replace(CONFIG.paginaObrigado);
+  }
+
+  form.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    if (falha) falha.hidden = true;
+
+    if (campoIsca && campoIsca.value) return; // armadilha de robô
+
+    var ok = ['nome', 'telefone', 'email'].map(validar).every(Boolean);
+    if (!ok) {
+      var primeiro = form.querySelector('[aria-invalid="true"]');
+      if (primeiro) primeiro.focus();
+      return;
+    }
+
+    var dados = {
+      nome: campoNome.value.trim().replace(/\s+/g, ' '),
+      telefone: digitos(campoTelefone.value),
+      telefoneFormatado: mascaraTelefone(campoTelefone.value),
+      whatsapp: '55' + digitos(campoTelefone.value),
+      email: campoEmail.value.trim(),
+      origem: CONFIG.origem,
+      pagina: window.location.href,
+      referencia: document.referrer || '',
+      enviadoEm: new Date().toISOString(),
+      utm: parametrosDaUrl()
+    };
+
+    botao.disabled = true;
+    botaoTexto.textContent = 'Enviando…';
+
+    if (!CONFIG.endpoint) { irParaObrigado(dados); return; }
+
+    var concluido = false;
+    function seguir() {
+      if (concluido) return;
+      concluido = true;
+      irParaObrigado(dados);
+    }
+
+    // O lead não pode ficar preso a um webhook lento: passado o tempo limite,
+    // o visitante segue para a página de obrigado de qualquer forma.
+    var relogio = setTimeout(seguir, CONFIG.esperaMaximaMs);
+
+    enviar(dados).then(function () {
+      clearTimeout(relogio);
+      seguir();
+    });
+  });
+})();
+</script>
+</body>
+</html>
