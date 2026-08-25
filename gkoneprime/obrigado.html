@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pronto! Entrando no grupo — GK One Prime</title>
+<title>Pronto! Já estamos te levando ao grupo — GK One Prime</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#061428">
 
@@ -48,7 +48,7 @@ body{margin:0;font-family:var(--fonte);color:var(--texto);background:var(--azul-
 .gk-conteudo{position:relative;z-index:1;width:100%;max-width:480px;text-align:center}
 
 .gk-marca{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:24px}
-.gk-marca__icone{width:82px;height:82px;filter:drop-shadow(0 10px 26px rgba(30,111,217,.5))}
+.gk-marca__icone{width:auto;height:82px;max-width:190px;object-fit:contain;filter:drop-shadow(0 10px 26px rgba(30,111,217,.5))}
 .gk-marca__nome{
   font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;
   background:linear-gradient(180deg,#fff 0%,#cfdcec 46%,#8fa6c2 100%);
@@ -179,8 +179,8 @@ h1.gk-titulo em{
 
     <h1 class="gk-titulo" data-titulo>Pronto! Agora é só <em>entrar no grupo</em></h1>
     <p class="gk-chamada">
-      Você já está na lista da GK One Prime. <strong>Toque no botão abaixo</strong> para entrar
-      no grupo do WhatsApp e começar a receber as promoções de iPhone e Apple.
+      Você já está na nossa lista. <strong>Toque no botão abaixo</strong> para entrar no nosso
+      grupo do WhatsApp e receber as promoções de iPhone e Apple que nós mandamos todo dia.
     </p>
 
     <div class="gk-cartao">
@@ -202,7 +202,7 @@ h1.gk-titulo em{
       </div>
 
       <p class="gk-aviso" data-aviso role="status" aria-live="polite">
-        Em <strong data-contador-texto>10</strong> segundos você é levado ao grupo automaticamente.
+        Em <strong data-contador-texto>10</strong> segundos nós te levamos direto para o grupo.
       </p>
 
       <a class="gk-botao" href="https://chat.whatsapp.com/BZwaulEmiiG0mT3qSnnvx3?s=sw&amp;p=i&amp;mlu=4"
@@ -212,13 +212,13 @@ h1.gk-titulo em{
       </a>
 
       <ul class="gk-lista">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Várias promoções de iPhone por dia</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> MacBook, iPad, Apple Watch e AirPods</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Link direto para comprar, sem intermediário</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Nós mandamos várias promoções de iPhone por dia</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Também mandamos MacBook, iPad, Apple Watch e AirPods</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Nós enviamos o link direto pra comprar, sem intermediário</li>
       </ul>
     </div>
 
-    <p class="gk-rodape">GK One Prime · Promoções de iPhone e produtos Apple · Entrada gratuita</p>
+    <p class="gk-rodape">GK One Prime · Nós mandamos promoções de iPhone e produtos Apple · Entrada gratuita</p>
   </div>
 </main>
 
@@ -231,8 +231,25 @@ h1.gk-titulo em{
 
   var CONFIG = {
     grupo: 'https://chat.whatsapp.com/BZwaulEmiiG0mT3qSnnvx3?s=sw&p=i&mlu=4',
-    segundos: 10
+    segundos: 10,
+
+    // URL do logo oficial (PNG/JPG). Preenchido, entra no lugar da marca em SVG.
+    // Use a mesma URL da página do formulário.
+    logo: ''
   };
+
+  /* ---------- logo oficial no lugar do SVG ---------- */
+
+  if (CONFIG.logo) {
+    var svg = document.querySelector('svg.gk-marca__icone');
+    if (svg) {
+      var img = document.createElement('img');
+      img.className = 'gk-marca__icone';
+      img.src = CONFIG.logo;
+      img.alt = 'GK One Prime';
+      svg.parentNode.replaceChild(img, svg);
+    }
+  }
 
   var links = document.querySelectorAll('[data-grupo-link]');
   Array.prototype.forEach.call(links, function (alvo) {
@@ -274,7 +291,7 @@ h1.gk-titulo em{
   function irParaOGrupo() {
     if (levado) return;
     levado = true;
-    if (aviso) aviso.innerHTML = 'Abrindo o grupo… se nada acontecer, toque no botão verde.';
+    if (aviso) aviso.innerHTML = 'Estamos abrindo o grupo… se nada acontecer, toque no botão verde.';
     window.location.href = CONFIG.grupo;
   }
 

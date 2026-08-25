@@ -31,7 +31,9 @@ JavaScript embutidos, com a marca desenhada em SVG.
 3. **Confira o destino.** No bloco do formulário, dentro de `CONFIG`, o campo
    `paginaObrigado` está como `'/obrigado'`. Se o slug da sua página for outro,
    ajuste ali.
-4. Use um template de página **em branco / largura total**, se o tema tiver. Não
+4. **Coloque o logo oficial.** Suba o arquivo na Biblioteca de Mídia e cole a URL
+   no campo `logo` do `CONFIG`, nos dois blocos (veja "Identidade visual").
+5. Use um template de página **em branco / largura total**, se o tema tiver. Não
    é obrigatório: o bloco já se estica para a largura da tela sozinho.
 
 No Elementor, use o widget **HTML** no lugar do bloco — o conteúdo é o mesmo.
@@ -96,14 +98,20 @@ Azul-marinho profundo com gradientes prata e azul metálico, no mesmo tom da
 marca. A cor base fica nas variáveis do topo do CSS (`--azul-fundo`,
 `--azul-marca`, `--texto`…).
 
-A marca está desenhada em SVG dentro das páginas. Para usar o arquivo oficial,
-substitua o bloco `<svg class="gk-marca__icone">…</svg>` por:
+A marca vem desenhada em SVG dentro das páginas, para nada depender de arquivo
+externo. Para usar o logo oficial, preencha `logo` no `CONFIG` das **duas**
+páginas com a URL da imagem:
 
-```html
-<img class="gk-marca__icone" src="URL-DO-LOGO.png" alt="GK One Prime">
+```js
+logo: 'https://seusite.com.br/wp-content/uploads/2026/08/gk-one-prime.png',
 ```
 
-No WordPress, suba o PNG na Biblioteca de Mídia e use a URL que ela gerar.
+Preenchido, o logo entra no lugar do SVG. Vazio, a marca desenhada continua
+valendo — nenhuma página quebra por falta do arquivo.
+
+No WordPress: Mídia → Adicionar nova, suba o PNG, copie a URL do arquivo e cole
+nos dois blocos. Use o PNG com fundo transparente, se tiver; o fundo do site já
+é azul-marinho.
 
 ## Alterar os textos
 

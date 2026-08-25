@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Grupo de promoções de iPhone e Apple — GK One Prime</title>
-<meta name="description" content="Entre no grupo do WhatsApp da GK One Prime e receba todos os dias as promoções de iPhone, MacBook, iPad, Apple Watch e AirPods.">
+<meta name="description" content="Todo dia nós mandamos promoções de iPhone, MacBook, iPad, Apple Watch e AirPods no nosso grupo do WhatsApp. Entre agora, é gratuito.">
 <meta name="theme-color" content="#061428">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Promoções de iPhone e produtos Apple todo dia">
-<meta property="og:description" content="Grupo exclusivo no WhatsApp da GK One Prime. Entrada gratuita.">
+<meta property="og:title" content="Todo dia nós mandamos promoções de iPhone e Apple">
+<meta property="og:description" content="Entre no nosso grupo do WhatsApp e receba as ofertas em primeira mão. Entrada gratuita.">
 <meta property="og:locale" content="pt_BR">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -75,7 +75,7 @@ body{
 
 /* logo */
 .gk-marca{display:flex;flex-direction:column;align-items:center;gap:10px;margin-bottom:26px}
-.gk-marca__icone{width:96px;height:96px;filter:drop-shadow(0 10px 26px rgba(30,111,217,.5))}
+.gk-marca__icone{width:auto;height:96px;max-width:210px;object-fit:contain;filter:drop-shadow(0 10px 26px rgba(30,111,217,.5))}
 .gk-marca__nome{
   font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1;
   background:linear-gradient(180deg,#fff 0%,#cfdcec 46%,#8fa6c2 100%);
@@ -172,15 +172,13 @@ h1.gk-titulo em{
 .gk-botao svg{width:19px;height:19px;flex:none}
 
 .gk-cartao__aviso{margin:14px 0 0;font-size:12px;line-height:1.55;color:#7f93ad;text-align:center}
-.gk-falha{margin-top:14px;padding:14px;border:1px solid rgba(255,139,139,.35);border-radius:12px;background:rgba(255,139,139,.08)}
-.gk-falha p{margin:0 0 12px;font-size:13.5px;line-height:1.5;color:#ffc9c9}
 .gk-isca{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 .gk-rodape{margin:26px 0 0;font-size:12px;color:#6f8299;line-height:1.6}
 
 @media (max-width:420px){
   .gk-cartao{padding:22px 16px 18px}
-  .gk-marca__icone{width:82px;height:82px}
+  .gk-marca__icone{height:82px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -189,8 +187,8 @@ h1.gk-titulo em{
 <main class="gk-palco">
   <div class="gk-conteudo">
 
-    <!-- Marca GK One Prime. Para usar o arquivo oficial, troque o <svg> por
-         <img class="gk-marca__icone" src="logo-gk-one-prime.png" alt="GK One Prime"> -->
+    <!-- Marca GK One Prime. Para usar o arquivo oficial, basta preencher
+         CONFIG.logo lá embaixo com a URL da imagem: ela entra no lugar deste SVG. -->
     <div class="gk-marca">
       <svg class="gk-marca__icone" viewBox="0 0 200 200" role="img" aria-label="GK One Prime">
         <defs>
@@ -249,12 +247,12 @@ h1.gk-titulo em{
 
     <p class="gk-selo"><span class="gk-selo__ponto"></span> Grupo aberto agora</p>
 
-    <h1 class="gk-titulo">Promoções de <em>iPhone</em> e produtos Apple todos os dias</h1>
+    <h1 class="gk-titulo">Todo dia nós mandamos <em>promoções de iPhone</em> e produtos Apple</h1>
 
     <p class="gk-chamada">
-      No grupo do WhatsApp da GK One Prime a gente solta <strong>várias promoções por dia</strong>
-      de iPhone e produtos Apple — com preço abaixo do mercado e link direto pra comprar.
-      Preencha os dados e entre agora, é gratuito.
+      No nosso grupo do WhatsApp nós mandamos <strong>várias promoções por dia</strong>
+      de iPhone e produtos Apple — sempre com preço abaixo do mercado e link direto pra comprar.
+      Preencha seus dados e entre agora, é gratuito.
     </p>
 
     <ul class="gk-itens">
@@ -262,7 +260,7 @@ h1.gk-titulo em{
     </ul>
 
     <div class="gk-cartao">
-      <p class="gk-cartao__titulo">Preencha para receber o link do grupo</p>
+      <p class="gk-cartao__titulo">Preencha e nós liberamos o link do grupo</p>
 
       <form novalidate data-form>
         <div class="gk-campo">
@@ -297,18 +295,13 @@ h1.gk-titulo em{
         </button>
 
         <p class="gk-cartao__aviso">
-          Ao entrar você concorda em receber as ofertas da GK One Prime pelo WhatsApp.
-          Pode sair do grupo quando quiser.
+          Ao entrar, você concorda em receber as nossas ofertas pelo WhatsApp.
+          Pode sair do nosso grupo quando quiser.
         </p>
-
-        <div class="gk-falha" data-falha hidden>
-          <p data-falha-texto></p>
-          <a class="gk-botao gk-botao--verde" href="#" data-grupo-link>Entrar no grupo mesmo assim</a>
-        </div>
       </form>
     </div>
 
-    <p class="gk-rodape">GK One Prime · Promoções de iPhone e produtos Apple · Entrada gratuita</p>
+    <p class="gk-rodape">GK One Prime · Nós mandamos promoções de iPhone e produtos Apple · Entrada gratuita</p>
   </div>
 </main>
 
@@ -335,17 +328,34 @@ h1.gk-titulo em{
     // Identifica a campanha nos dados enviados.
     origem: 'lp-grupo-apple',
 
+    // URL do logo oficial (PNG/JPG). Preenchido, entra no lugar da marca em SVG.
+    // No WordPress: suba o arquivo na Biblioteca de Mídia e cole a URL aqui.
+    logo: '',
+
     // Tempo máximo de espera pelo webhook antes de liberar o visitante.
     esperaMaximaMs: 4000
   };
+
+  /* ---------- logo oficial no lugar do SVG ---------- */
+
+  function aplicarLogo() {
+    if (!CONFIG.logo) return;
+    var svg = document.querySelector('svg.gk-marca__icone');
+    if (!svg) return;
+    var img = document.createElement('img');
+    img.className = 'gk-marca__icone';
+    img.src = CONFIG.logo;
+    img.alt = 'GK One Prime';
+    svg.parentNode.replaceChild(img, svg);
+  }
+
+  aplicarLogo();
 
   var form = document.querySelector('[data-form]');
   if (!form) return;
 
   var botao = form.querySelector('[data-enviar]');
   var botaoTexto = form.querySelector('[data-botao-texto]');
-  var falha = form.querySelector('[data-falha]');
-  var falhaTexto = form.querySelector('[data-falha-texto]');
 
   var campoNome = document.getElementById('nome');
   var campoTelefone = document.getElementById('telefone');
@@ -473,7 +483,6 @@ h1.gk-titulo em{
 
   form.addEventListener('submit', function (evento) {
     evento.preventDefault();
-    if (falha) falha.hidden = true;
 
     if (campoIsca && campoIsca.value) return; // armadilha de robô
 
