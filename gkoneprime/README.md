@@ -23,15 +23,23 @@ JavaScript e o logo estão todos embutidos.
 
 ## Publicar no WordPress
 
-1. **Crie a página de obrigado.** Nova página, título "Obrigado", slug `obrigado`.
+1. **Crie a página de obrigado.** Ela é a página
+   `https://smartyng.com/forms-one-prime-grupo-vip-obg`, para onde o formulário
+   manda o visitante.
    Adicione um bloco **HTML personalizado** e cole todo o conteúdo de
    `wordpress/pagina-obrigado.html`. Em Configurações da página, marque
    "Não permitir indexação" (é uma página interna de funil).
 2. **Crie a página do formulário.** Nova página, adicione um bloco
    **HTML personalizado** e cole `wordpress/pagina-formulario.html`.
 3. **Confira o destino.** No bloco do formulário, dentro de `CONFIG`, o campo
-   `paginaObrigado` está como `'/obrigado'`. Se o slug da sua página for outro,
-   ajuste ali.
+   `paginaObrigado` já aponta para
+   `https://smartyng.com/forms-one-prime-grupo-vip-obg`. Se a URL da página
+   mudar, é só trocar ali.
+
+   O nome de quem preencheu só aparece no título da página de obrigado quando as
+   duas páginas estão no mesmo domínio (é o navegador que guarda o dado, e ele
+   não atravessa domínios). Em domínios diferentes a página abre com o título
+   padrão, sem quebrar nada.
 4. **O logo já vai junto.** Está embutido no bloco, não precisa subir nada na
    Biblioteca de Mídia (veja "Identidade visual" se preferir hospedar à parte).
 5. Use um template de página **em branco / largura total**, se o tema tiver. Não
