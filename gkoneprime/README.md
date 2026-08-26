@@ -67,7 +67,6 @@ Corpo enviado:
   "telefone": "11987654321",
   "telefoneFormatado": "(11) 98765-4321",
   "whatsapp": "5511987654321",
-  "email": "kaiky@email.com",
   "origem": "lp-grupo-apple",
   "pagina": "https://…",
   "referencia": "https://…",

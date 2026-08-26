@@ -220,13 +220,6 @@
           <p class="gk-campo__erro" id="erro-telefone" data-erro="telefone"></p>
         </div>
 
-        <div class="gk-campo">
-          <label for="email">E-mail <span style="color:#7f93ad;font-weight:500">(opcional)</span></label>
-          <input id="email" name="email" type="email" autocomplete="email"
-                 placeholder="voce@email.com" aria-describedby="erro-email">
-          <p class="gk-campo__erro" id="erro-email" data-erro="email"></p>
-        </div>
-
         <p class="gk-isca" aria-hidden="true">
           <label for="empresa">Não preencha este campo</label>
           <input id="empresa" name="empresa" type="text" tabindex="-1" autocomplete="off">
@@ -296,7 +289,6 @@
 
   var campoNome = document.getElementById('nome');
   var campoTelefone = document.getElementById('telefone');
-  var campoEmail = document.getElementById('email');
   var campoIsca = document.getElementById('empresa');
 
   Array.prototype.forEach.call(document.querySelectorAll('[data-grupo-link]'), function (alvo) {
@@ -327,10 +319,6 @@
     return true;
   }
 
-  function emailValido(valor) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((valor || '').trim());
-  }
-
   function mostrarErro(campo, mensagem) {
     var alvo = form.querySelector('[data-erro="' + campo + '"]');
     if (alvo) alvo.textContent = mensagem || '';
@@ -354,12 +342,6 @@
       mostrarErro('telefone', '');
       return true;
     }
-    if (campo === 'email') {
-      var email = campoEmail.value.trim();
-      if (email && !emailValido(email)) { mostrarErro('email', 'E-mail inválido.'); return false; }
-      mostrarErro('email', '');
-      return true;
-    }
     return true;
   }
 
@@ -367,7 +349,7 @@
     campoTelefone.value = mascaraTelefone(campoTelefone.value);
   });
 
-  [campoNome, campoTelefone, campoEmail].forEach(function (campo) {
+  [campoNome, campoTelefone].forEach(function (campo) {
     campo.addEventListener('blur', function () {
       if (campo.value.trim()) validar(campo.id);
     });
@@ -423,7 +405,7 @@
 
     if (campoIsca && campoIsca.value) return; // armadilha de robô
 
-    var ok = ['nome', 'telefone', 'email'].map(validar).every(Boolean);
+    var ok = ['nome', 'telefone'].map(validar).every(Boolean);
     if (!ok) {
       var primeiro = form.querySelector('[aria-invalid="true"]');
       if (primeiro) primeiro.focus();
@@ -435,7 +417,6 @@
       telefone: digitos(campoTelefone.value),
       telefoneFormatado: mascaraTelefone(campoTelefone.value),
       whatsapp: '55' + digitos(campoTelefone.value),
-      email: campoEmail.value.trim(),
       origem: CONFIG.origem,
       pagina: window.location.href,
       referencia: document.referrer || '',
